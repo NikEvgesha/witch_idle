@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea983f2a1bbe24af9bffac8017f1c2a0, type: 3}
+  m_Name: JustTrackSettings
+  m_EditorClassIdentifier: 
+  alwaysUpdateInjectedCode: 0
+  ignoreFirebaseIntegration: 0
+  androidApiToken: prod-6e4527f0a8849c3d9f3dc6948bd2cbd5eb6f02c80901d1bcdeb8c30da466a2a9
+  iosApiToken: 
+  androidTrackingProvider: 65535
+  iosTrackingProvider: 65535
+  androidAdColonyIntegration: 0
+  iosAdColonyIntegration: 0
+  androidAppLovinIntegration: 0
+  iosAppLovinIntegration: 0
+  androidChartboostIntegration: 0
+  iosChartboostIntegration: 0
+  androidUnityAdsIntegration: 0
+  iosUnityAdsIntegration: 0
+  androidIronSourceSettings:
+    appKey: 
+    enableBanner: 0
+    enableInterstitial: 0
+    enableRewardedVideo: 0
+    enableOfferwall: 0
+  iosIronSourceSettings:
+    appKey: 
+    enableBanner: 0
+    enableInterstitial: 0
+    enableRewardedVideo: 0
+    enableOfferwall: 0
+  iosTrackingSettings:
+    requestTrackingPermission: 1
+    useCustomAdvertisingAttributionReportEndpoint: 0
+    trackingPermissionDescription: Your data will only be used to deliver personalized
+      ads to you
+    trackingPermissionDescriptionManaged: 0
+    facebookAudienceNetworkIntegration: 2
+  androidFirebaseSettings:
+    enableAutomaticIntegration: 1
+  iosDisableAutomaticInAppPurchaseTracking: 0
+  androidDisableAutomaticInAppPurchaseTracking: 0
+  iosFirebaseSettings:
+    enableAutomaticIntegration: 0
+  enableExperimentalPodFilePostProcessor: 0
+  enableDebugMode: 0

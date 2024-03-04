@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dependencies>
+  <androidPackages>
+    <androidPackage spec="androidx.lifecycle:lifecycle-process:2.1+" />
+    <androidPackage spec="com.android.installreferrer:installreferrer:2.1+" />
+    <androidPackage spec="com.google.android.gms:play-services-ads-identifier:16+" />
+    <androidPackage spec="com.google.android.gms:play-services-appset:16+" />
+    <androidPackage spec="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5+" />
+    <androidPackage spec="net.bytebuddy:byte-buddy:1.13+" />
+    <androidPackage spec="net.bytebuddy:byte-buddy-android:1.13+" />
+    <androidPackage spec="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6+" />
+    <androidPackage spec="io.justtrack:justtrack-android-sdk-no-dependencies:[4.4.0]">
+      <repositories>
+        <repository>https://sdk.justtrack.io/maven</repository>
+      </repositories>
+    </androidPackage>
+  </androidPackages>
+  <iosPods>
+    <iosPod name="JustTrackSDK" version="4.4.0">
+      <sources></sources>
+    </iosPod>
+  </iosPods>
+</dependencies>
