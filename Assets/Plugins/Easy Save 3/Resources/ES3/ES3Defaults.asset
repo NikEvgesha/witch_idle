@@ -40,7 +40,6 @@ MonoBehaviour:
     - ToonyColorsPro.Runtime
     - ToonyColorsPro2.Demo
     - UIEffect
-    - Unity.io.justtrack.justtrack-unity-sdk.Runtime
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

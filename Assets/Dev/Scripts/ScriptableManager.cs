@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ScriptableManager : MonoBehaviour
 {
@@ -25,7 +21,7 @@ public class ScriptableManager : MonoBehaviour
         timer+= Time.deltaTime;
         if (timer>60)
         {
-            SundaySDK.Tracking.TrackLevelStart(SceneManager.GetActiveScene().buildIndex);
+            //SundaySDK.Tracking.TrackLevelStart(SceneManager.GetActiveScene().buildIndex);
             timer = 0;
         }
     }
@@ -46,7 +42,7 @@ public class ScriptableManager : MonoBehaviour
 
     private void Start()
     {
-        SundaySDK.Tracking.TrackLevelStart(SceneManager.GetActiveScene().buildIndex);
+        //SundaySDK.Tracking.TrackLevelStart(SceneManager.GetActiveScene().buildIndex);
         gameData.Load();
         LevelData.Load();
         EventManager.StartGame();

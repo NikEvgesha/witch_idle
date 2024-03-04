@@ -1,4 +1,0 @@
-{
-    "name": "SundaySDK",
-    "version": "0.5.5"
-}
