@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0139f46fe15f04f188fe868079a2c0fe, type: 3}
   m_Name: New Machine Upgrade Data
   m_EditorClassIdentifier: 
-  machineData: []
+  machineData:
+  - machineData:
+    - type: 0
+      speedValues:
+      - amount: 0
+        price: 0
+      incomeValues:
+      - amount: 0
+        price: 0

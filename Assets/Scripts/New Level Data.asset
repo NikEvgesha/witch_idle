@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77c156c58435401f8333f111e900c08, type: 3}
   m_Name: New Level Data
   m_EditorClassIdentifier: 
-  data: []
+  data:
+  - data: []
