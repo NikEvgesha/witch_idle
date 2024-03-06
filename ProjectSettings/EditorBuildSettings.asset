@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Map_Level.unity
+    path: Assets/Scenes/MainScene/Map_Level.unity
     guid: 5d26911dc8fce694aa5e0b313fce60c1
   - enabled: 1
     path: Assets/Scenes/Evgesha.unity
