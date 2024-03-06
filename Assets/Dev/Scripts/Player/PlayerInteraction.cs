@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
@@ -98,6 +99,25 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
+   /*
+        if (other.transform.GetComponentInParent<Seedbed>() && other.GetComponent<PlantArea>())
+        {
+            var seedbed = other.transform.GetComponentInParent<Seedbed>();
+            if (seedbed.CanHarvest()) {
+                if (stackController.CheckIfCanStackItem())
+                {
+                    stackController.StackObject(seedbed.SpawnPlant());
+                    EventManager.PlantHarvested(seedbed);
+                }
+                else
+                {
+                    playerController.StackIsMax(true);
+                }
+            }
+        } */
+ 
+
+        
         if (other.transform.GetComponentInParent<WaterMachine>() && other.GetComponent<MachineInteraction>())
         {
             var machine = other.transform.GetComponentInParent<WaterMachine>();

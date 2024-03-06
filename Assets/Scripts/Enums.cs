@@ -6,3 +6,10 @@ using UnityEngine;
         Grown,
     }
 
+
+    public enum PlantTypes
+    {
+        Mushroom,
+        Dandelion,
+        Rose,
+    }

@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f298605c671634088808fb049efa1f04, type: 3}
-  m_Name: New Game Data
+  m_Script: {fileID: 11500000, guid: d81f3116a59794e4186f3a369cd6b874, type: 3}
+  m_Name: Dandelion
   m_EditorClassIdentifier: 
-  totalMoneyAmount: 99999600
+  _plantPrefab: {fileID: 0}
+  _growthTime: 10
+  _plantType: 1
+  _plantIcon: {fileID: 0}

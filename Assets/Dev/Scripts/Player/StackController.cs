@@ -19,7 +19,23 @@ public class StackController : MonoBehaviour
       stackObjects.Add(obj);
    }
 
-   public bool CheckIfCanBuyStackable(CustomerNeed stackableType)
+
+    public bool CheckIfCanStackItem()
+    {
+
+        if (stackObjects.Count >= maxStackCount)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+
+
+    public bool CheckIfCanBuyStackable(CustomerNeed stackableType)
    {
       int tempAmount = 0;
 
@@ -52,6 +68,8 @@ public class StackController : MonoBehaviour
       }
    }
 
+
+    /*Переделать под "нужды" котла*/
    public void CheckIfStackHasItem(Customer customer)
    {
       foreach (var obj in stackObjects)

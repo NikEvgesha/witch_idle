@@ -46,7 +46,7 @@ public class ScriptableManager : MonoBehaviour
         gameData.Load();
         LevelData.Load();
         EventManager.StartGame();
-        EventManager.SetGymMachines.Invoke();
+        //EventManager.SetGymMachines.Invoke();
 
     }
 }

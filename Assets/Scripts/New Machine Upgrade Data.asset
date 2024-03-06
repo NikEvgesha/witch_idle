@@ -21,3 +21,7 @@ MonoBehaviour:
       incomeValues:
       - amount: 0
         price: 0
+  - machineData:
+    - type: 0
+      speedValues: []
+      incomeValues: []

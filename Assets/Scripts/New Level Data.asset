@@ -13,4 +13,15 @@ MonoBehaviour:
   m_Name: New Level Data
   m_EditorClassIdentifier: 
   data:
+  - data:
+    - position: {x: 3.94, y: 0, z: -26.02}
+      type: 0
+      state: 1
+      speedLevel: 0
+      incomeLevel: 0
+    - position: {x: -0.16734171, y: -0.016839027, z: -27.369308}
+      type: 0
+      state: 1
+      speedLevel: 0
+      incomeLevel: 0
   - data: []

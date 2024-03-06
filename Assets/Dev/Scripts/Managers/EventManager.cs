@@ -32,4 +32,11 @@ public static class EventManager
     public static Func<GameData> GetGameData;
     public static Func<LevelData> GetLevelMachineData;
 
+
+    // новые
+
+    public static Action PlayerOnPlantArea;
+    public static Action PlayerOffPlantArea;
+    public static Action PlantHarvested;
+    public static Action UpdateUIInventory;
 }
