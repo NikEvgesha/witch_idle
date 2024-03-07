@@ -35,6 +35,9 @@ public static class EventManager
 
     // новые
 
+
+    public static Action<int> MoneyChange;
+    public static Func<GameData> GetWalletData;
     public static Action PlayerOnPlantArea;
     public static Action PlayerOffPlantArea;
     public static Action PlantHarvested;

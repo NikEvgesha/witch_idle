@@ -5,11 +5,15 @@ using UnityEngine;
         Growing,
         Grown,
     }
-
-
     public enum PlantTypes
     {
         Mushroom,
         Dandelion,
         Rose,
     }
+    public enum PurchasedState
+    {
+        Purchased,
+        Unpurchased,
+    }
+
