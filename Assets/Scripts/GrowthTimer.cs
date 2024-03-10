@@ -42,7 +42,7 @@ public class GrowthTimer : MonoBehaviour
 
         float minutes = Mathf.FloorToInt(_timeLeft / 60);
         float seconds = Mathf.FloorToInt(_timeLeft % 60);
-        _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds+1);
     }
 
 

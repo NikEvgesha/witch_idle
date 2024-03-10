@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class SaveControl : MonoBehaviour
 {
-
+    [SerializeField] private bool _removeSaveOnStart;
     private string _money = "Money";
     public static SaveControl Instanse;
     private void Awake()
     {
+        if (_removeSaveOnStart)
+        {
+            PlayerPrefs.DeleteAll();
+        }
         Instanse = this;
     }
     public void SaveMoney(int money)

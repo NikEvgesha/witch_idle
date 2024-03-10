@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class UIInventory : MonoBehaviour
 {
-    private List<GameObject> _items;
-    private List<GameObject> _UIitems;
-    
+    private List<PlantsData> _items;
+    private List<PlantIcon> _UIitems;
+
     private void Start()
     {
         RenderNewImage();
@@ -27,14 +28,18 @@ public class UIInventory : MonoBehaviour
         if (!CheckItem()) {
             return;
         }
-        _UIitems = new List<GameObject>();
+        if (_UIitems != null)
+        {
+            foreach (var _UIitems in _UIitems)
+            {
+                Destroy(_UIitems.gameObject);
+            }
+        }
+        _UIitems = new List<PlantIcon>();
         foreach (var item in _items)
         {
-            _UIitems.Add(Instantiate(item, this.transform));
-
+            _UIitems.Add(Instantiate(item.GetPlantIcon(), this.transform));
         }
-
-
     }
 
     private bool CheckItem() {

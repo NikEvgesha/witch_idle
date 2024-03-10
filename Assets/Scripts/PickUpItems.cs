@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PickUpItems : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerController;
     [SerializeField] private int _startCapacity;
     private int _capacity;
     public static PickUpItems Instanse;
@@ -24,18 +23,20 @@ public class PickUpItems : MonoBehaviour
     }
 
 
-    public List<GameObject> GetUIInventoryData() {
-
+    public List<PlantsData> GetUIInventoryData() {
+        if (_inventory == null)
+            return new List<PlantsData>();
+        return _inventory;
+        /*
         if (_inventory == null) {
-            return null;
+            return new List<GameObject>();
         }
         List<GameObject> iconList = new List<GameObject>();
         foreach (var item in _inventory)
         {
             iconList.Add(item.GetPlantIcon());
-
         }
-        return iconList;
+        return iconList;*/
     }
 
     public void AddItem(PlantsData plantData) {

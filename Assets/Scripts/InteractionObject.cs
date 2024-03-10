@@ -10,13 +10,11 @@ public class InteractionObject : MonoBehaviour
     [SerializeField]
     private int _firstPrice;
     [SerializeField]
-    private InteractionObjectUI _interactionObjectUI;
+    private BuyStruct _buyStruct;
     [SerializeField]
-    private GameObject _usebleObject;
+    private WorkStruct _workStruct;
     [SerializeField]
-    private CheckPlayer _buyArea;
-    [SerializeField] 
-    private GameObject _UIbuyArea;
+    private UpdateStruct _updateStruct;
     [SerializeField]
     private float _SpeedFill = 1;
 
@@ -27,19 +25,14 @@ public class InteractionObject : MonoBehaviour
     
     protected void OnEnable()
     {
-        EventManager.ObjectPurshuased += ObjectPurchased;
+        //EventManager.ObjectPurshuased += ObjectPurchased;
 
-        if (_buyArea)
-        {
-            _buyArea.OnTrigger += TryBuy;
-        }
+        _buyStruct._buyArea.OnTrigger += TryBuy;
+        
     }
     private void OnDisable()
     {
-        if (_buyArea)
-        {
-            _buyArea.OnTrigger -= TryBuy;
-        }
+        _buyStruct._buyArea.OnTrigger -= TryBuy;
     }
     private void FixedUpdate()
     {
@@ -79,35 +72,27 @@ public class InteractionObject : MonoBehaviour
         } 
         else if (_price <= 0)
         {
-            EventManager.ObjectPurshuased?.Invoke();
+            //EventManager.ObjectPurshuased?.Invoke();
+            ObjectPurchased();
         }
-        /*if (_fillState < 1)
-        {
-            _fillState += Time.fixedDeltaTime * _SpeedFill;
-        }
-        else
-        {
-            _purchasedState = PurchasedState.Purchased;
-            _fillState = 0;
-        }*/
     }
     private void ChangeUIPrice(int price)
     {
-        if (_interactionObjectUI.MoneyText != null)
+        if (_buyStruct.MoneyText != null)
         {
-            _interactionObjectUI.MoneyText.text = AbbrevationUtility.AbbreviateNumber(price);
+            _buyStruct.MoneyText.text = AbbrevationUtility.AbbreviateNumber(price);
         }
-        if (_interactionObjectUI.BuyTimeImage != null)
+        if (_buyStruct.BuyTimeImage != null)
         {
-            _interactionObjectUI.BuyTimeImage.fillAmount = 1 - price/(float)_firstPrice;
+            _buyStruct.BuyTimeImage.fillAmount = 1 - price/(float)_firstPrice;
         }
     }
     private void ObjectPurchased()
     {
         _purchasedState = PurchasedState.Purchased;
-        _usebleObject.SetActive(true);
+        _workStruct.UIObject.SetActive(true);
         _isChangeMoney = false;
-        _buyArea.gameObject.SetActive(false);
-        _UIbuyArea.gameObject.SetActive(false);
+        _buyStruct._buyArea.gameObject.SetActive(false);
+        _buyStruct.UIObject.gameObject.SetActive(false);
     }
 }

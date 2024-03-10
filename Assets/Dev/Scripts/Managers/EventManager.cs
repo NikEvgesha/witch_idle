@@ -40,8 +40,8 @@ public static class EventManager
     public static Func<GameData> GetWalletData;
     public static Action PlayerOnPlantArea;
     public static Action PlayerOffPlantArea;
-    public static Action PlantHarvested;
+    //public static Action PlantHarvested;
     public static Action UpdateUIInventory;
 
-    public static Action ObjectPurshuased;
+    //public static Action ObjectPurshuased;
 }

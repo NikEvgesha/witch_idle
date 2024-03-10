@@ -1,17 +1,20 @@
 
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Seedbed :  InteractionObject
 {
-    [SerializeField] private PlantArea _plantArea;
+    //[SerializeField] private PlantArea _plantArea;
+    [SerializeField] CheckPlayer _plantArea;
     [SerializeField] private GrowthTimer _growthTimer;
-    [SerializeField] private Plant _plant;
+    //[SerializeField] private Plant _plant;
     [SerializeField] private SeedbedState state;
     [SerializeField] private Transform _plantPoint;
 
     /* То, что отличается у разных грядок */
     [SerializeField] private PlantsData _plantData;
+    private Plant _plant;
 
     /*
     private void Start()
@@ -31,25 +34,30 @@ public class Seedbed :  InteractionObject
     private new void OnEnable()
     {
         base.OnEnable();
-        EventManager.ObjectPurshuased += SeedbedPurchased;
-        _plantArea.PlayerOnPlantArea += CheckState;
+        LoadSeedBed();
+        //_plantArea.PlayerOnPlantArea += CheckState;
+        _plantArea.OnTrigger += TryCollect;
         _growthTimer.TimerFinish += AddPlant;
-        EventManager.PlantHarvested += Harvest;
-
+        //EventManager.PlantHarvested += Harvest; Зачем? мы же от отсюда этот эвент и отправляем
     }
 
-    private void SeedbedPurchased()
+    private void LoadSeedBed()
     {
         state = SeedbedState.Empty;
-        _plantArea.gameObject.SetActive(true);
+        //_plantArea.gameObject.SetActive(true);
 
     }
 
     private void OnDisable()
     {
-        EventManager.ObjectPurshuased -= SeedbedPurchased;
+        _plantArea.OnTrigger -= TryCollect;
+        _growthTimer.TimerFinish -= AddPlant;
     }
-
+    private void TryCollect(bool inTrigger = true)
+    {
+        if (inTrigger)
+            CheckState();
+    }
 
     private void CheckState() {
         switch (state)
@@ -60,7 +68,9 @@ public class Seedbed :  InteractionObject
             case SeedbedState.Growing:
                 break;
             case SeedbedState.Grown:
-                EventManager.PlantHarvested?.Invoke();
+                //EventManager.PlantHarvested?.Invoke();
+                Harvest();
+
                 break;
         }
 
@@ -75,18 +85,22 @@ public class Seedbed :  InteractionObject
 
     private void AddPlant() {
         _growthTimer.gameObject.SetActive(false);
-        _plantPoint.gameObject.SetActive(true);
-        Instantiate(_plantData.GetPlant(), _plantPoint);
+        _plant = Instantiate(_plantData.GetPlant(), _plantPoint);
         state = SeedbedState.Grown;
         _plantArea.gameObject.SetActive(true);
+        _plantPoint.gameObject.SetActive(true);
     }
 
     private void Harvest()
     {
-        _plant.gameObject.SetActive(false);
+        //_plant.gameObject.SetActive(false);
+        if (_plant != null)
+            Destroy(_plant.gameObject);
+
         state = SeedbedState.Empty;
         PickUpItems.Instanse.AddItem(_plantData);
         EventManager.UpdateUIInventory?.Invoke();
+        CheckState();
     }
 
     /*

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81f3116a59794e4186f3a369cd6b874, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
-  _plantPrefab: {fileID: 8085025434314710035, guid: 7e71b358d22243b40b5a6494fcfb0dc3, type: 3}
+  _plantPrefab: {fileID: 7021581923392854783, guid: 07b6c68fef3de00459de0692f85b27de, type: 3}
   _growthTime: 5
   _plantType: 0
-  _plantIcon: {fileID: 4163549583797899036, guid: b30b93a7ef8bfdb43a42ecbf31834160, type: 3}
+  _plantIcon: {fileID: 3981138520188933807, guid: b30b93a7ef8bfdb43a42ecbf31834160, type: 3}
