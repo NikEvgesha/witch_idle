@@ -15,6 +15,8 @@ public class InteractionObject : MonoBehaviour
     private GameObject _usebleObject;
     [SerializeField]
     private CheckPlayer _buyArea;
+    [SerializeField] 
+    private GameObject _UIbuyArea;
     [SerializeField]
     private float _SpeedFill = 1;
 
@@ -23,8 +25,10 @@ public class InteractionObject : MonoBehaviour
 
     public Action ChangeMoney;
     
-    private void OnEnable()
+    protected void OnEnable()
     {
+        EventManager.ObjectPurshuased += ObjectPurchased;
+
         if (_buyArea)
         {
             _buyArea.OnTrigger += TryBuy;
@@ -75,7 +79,7 @@ public class InteractionObject : MonoBehaviour
         } 
         else if (_price <= 0)
         {
-            ObjectPurchased();
+            EventManager.ObjectPurshuased?.Invoke();
         }
         /*if (_fillState < 1)
         {
@@ -103,5 +107,7 @@ public class InteractionObject : MonoBehaviour
         _purchasedState = PurchasedState.Purchased;
         _usebleObject.SetActive(true);
         _isChangeMoney = false;
+        _buyArea.gameObject.SetActive(false);
+        _UIbuyArea.gameObject.SetActive(false);
     }
 }

@@ -27,7 +27,7 @@ public class UIInventory : MonoBehaviour
         if (!CheckItem()) {
             return;
         }
-
+        _UIitems = new List<GameObject>();
         foreach (var item in _items)
         {
             _UIitems.Add(Instantiate(item, this.transform));

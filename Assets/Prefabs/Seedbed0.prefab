@@ -2183,16 +2183,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb167499d38b46e4dab44de85704e406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machineState: 1
-  price: 10000
-  machineUI:
-    UIObject: {fileID: 2700597398694197652}
-    moneyText: {fileID: 6867600890955197943}
-    buyTimeImage: {fileID: 6187486431181406430}
-    workoutTimeImage: {fileID: 7394639299024647633}
-    upgradeAreaOpener: {fileID: 2241110567924364513}
-  machineObject: {fileID: 1708369231883212757}
-  income: 0
+  _purchasedState: 0
+  _firstPrice: 0
+  _interactionObjectUI:
+    UIObject: {fileID: 0}
+    MoneyText: {fileID: 0}
+    BuyTimeImage: {fileID: 0}
+    ProductionTimeImage: {fileID: 0}
+    UpgradeArea: {fileID: 0}
+  _usebleObject: {fileID: 1708369231883212757}
+  _buyArea: {fileID: 7916411127316501008}
+  _UIbuyArea: {fileID: 2700597398694197652}
+  _SpeedFill: 1
   _plantArea: {fileID: 7185376700300419242}
   _growthTimer: {fileID: 8881351098574414539}
   _plant: {fileID: 5920801977930793254}
@@ -2221,6 +2223,7 @@ MonoBehaviour:
     UpgradeArea: {fileID: 0}
   _usebleObject: {fileID: 1708369231883212757}
   _buyArea: {fileID: 7916411127316501008}
+  _UIbuyArea: {fileID: 0}
   _SpeedFill: 1
 --- !u!1 &5787659463054010055
 GameObject:

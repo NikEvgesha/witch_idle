@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public class Seedbed : Machine
+public class Seedbed :  InteractionObject
 {
     [SerializeField] private PlantArea _plantArea;
     [SerializeField] private GrowthTimer _growthTimer;
@@ -13,7 +13,7 @@ public class Seedbed : Machine
     /* То, что отличается у разных грядок */
     [SerializeField] private PlantsData _plantData;
 
-
+    /*
     private void Start()
     {
         switch (machineState)
@@ -26,18 +26,19 @@ public class Seedbed : Machine
                 break;
         }
 
-    }
+    }*/
 
-    private void OnEnable()
+    private new void OnEnable()
     {
-        EventManager.MachinePurchased += SeedbedPurchased;
+        base.OnEnable();
+        EventManager.ObjectPurshuased += SeedbedPurchased;
         _plantArea.PlayerOnPlantArea += CheckState;
         _growthTimer.TimerFinish += AddPlant;
         EventManager.PlantHarvested += Harvest;
 
     }
 
-    private void SeedbedPurchased(Machine obj)
+    private void SeedbedPurchased()
     {
         state = SeedbedState.Empty;
         _plantArea.gameObject.SetActive(true);
@@ -46,7 +47,7 @@ public class Seedbed : Machine
 
     private void OnDisable()
     {
-        EventManager.MachinePurchased -= SeedbedPurchased;
+        EventManager.ObjectPurshuased -= SeedbedPurchased;
     }
 
 

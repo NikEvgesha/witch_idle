@@ -26,7 +26,7 @@ public class WitchPlayerController : MonoBehaviour
 
 
     public int money;
-    public GameObject moneyTextPrefab;
+    //public GameObject moneyTextPrefab;
     public Transform moneyCanvas;
     public GameObject maxText;
     private void Awake()

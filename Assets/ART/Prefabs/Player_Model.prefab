@@ -1923,8 +1923,8 @@ MonoBehaviour:
   _money: 1050
   money: 2222
   moneyTextPrefab: {fileID: 0}
-  moneyCanvas: {fileID: 0}
-  maxText: {fileID: 0}
+  moneyCanvas: {fileID: 1315507733254144420}
+  maxText: {fileID: 8162731596169256267}
 --- !u!1 &1725985169829512811
 GameObject:
   m_ObjectHideFlags: 0

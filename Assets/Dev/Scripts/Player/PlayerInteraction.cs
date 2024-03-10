@@ -80,7 +80,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.CompareTag("MachineBuyArea"))
+        /*if (other.transform.CompareTag("MachineBuyArea"))
         {
             var machine = other.transform.GetComponentInParent<Machine>();
             if (playerController.money >= machine.price)
@@ -97,7 +97,7 @@ public class PlayerInteraction : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
 
    /*
         if (other.transform.GetComponentInParent<Seedbed>() && other.GetComponent<PlantArea>())

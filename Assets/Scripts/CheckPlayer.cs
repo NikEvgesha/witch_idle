@@ -7,11 +7,11 @@ public class CheckPlayer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<WitchPlayerController>())
-            OnTrigger(true);
+            OnTrigger?.Invoke(true);
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<WitchPlayerController>())
-            OnTrigger(false);
+            OnTrigger?.Invoke(false);
     }
 }
