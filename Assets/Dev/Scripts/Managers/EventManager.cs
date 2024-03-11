@@ -42,6 +42,7 @@ public static class EventManager
     public static Action PlayerOffPlantArea;
     //public static Action PlantHarvested;
     public static Action UpdateUIInventory;
+    public static Action<int> CapacityUpdate;
 
     //public static Action ObjectPurshuased;
 }

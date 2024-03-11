@@ -30,7 +30,7 @@ public class WitchPlayerController : MonoBehaviour
     }
     private void Start()
     {
-        Money = SaveControl.Instanse.TryGetMony() ? SaveControl.Instanse.GetMoney() : _money;
+        Money = SaveControl.Instanse.TryGetMoney() ? SaveControl.Instanse.GetMoney() : _money;
     }
     public bool HaveMoney() 
     { 

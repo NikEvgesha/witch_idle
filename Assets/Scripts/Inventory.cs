@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PickUpItems : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
     [SerializeField] private int _startCapacity;
+
     private int _capacity;
-    public static PickUpItems Instanse;
+
+    public int Capacity
+    {
+        get { return _capacity; }
+        set
+        {
+            _capacity = value;
+            EventManager.CapacityUpdate?.Invoke(_capacity);
+            SaveControl.Instanse.SaveCapacity(_capacity);
+        }
+    }
+    public static Inventory Instanse;
     private List<PlantsData> _inventory;
 
     private void Awake()
@@ -18,7 +30,12 @@ public class PickUpItems : MonoBehaviour
 
     private void Start()
     {
-        _capacity = _startCapacity;
+        if (SaveControl.Instanse.TryGetCapacity()) { 
+            Capacity = SaveControl.Instanse.GetCapacity();
+        } else
+        {
+            Capacity = _startCapacity;
+        }
         _inventory = new List<PlantsData>();
     }
 
@@ -39,8 +56,14 @@ public class PickUpItems : MonoBehaviour
         return iconList;*/
     }
 
-    public void AddItem(PlantsData plantData) {
+    public bool AddItem(PlantsData plantData) {
+
+        if (_inventory.Count >= _capacity) 
+            return false;
+
         _inventory.Add(plantData);
+        EventManager.UpdateUIInventory?.Invoke();
+        return true;
     }
 
 

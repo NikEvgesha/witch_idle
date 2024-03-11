@@ -93,13 +93,15 @@ public class Seedbed :  InteractionObject
 
     private void Harvest()
     {
+        if (!Inventory.Instanse.AddItem(_plantData))
+        {
+            return;
+        }
         //_plant.gameObject.SetActive(false);
         if (_plant != null)
             Destroy(_plant.gameObject);
 
         state = SeedbedState.Empty;
-        PickUpItems.Instanse.AddItem(_plantData);
-        EventManager.UpdateUIInventory?.Invoke();
         CheckState();
     }
 
