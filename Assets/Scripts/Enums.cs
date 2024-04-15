@@ -17,3 +17,18 @@ using UnityEngine;
         Unpurchased,
     }
 
+    public enum RecipeState
+{
+        Available, //Доступен для создания зелья
+        Unstudied, //Отображается в книге рецептов, но не доступен для выбора (нужно купить? Или вырастить нужный ингредиент?)
+        Hidden // Недоступен, не отображается в книге рецептов
+}
+
+    public enum PotState
+{
+        Empty,
+        RecipeChoosing,
+        Cooking,
+        Done
+}
+
