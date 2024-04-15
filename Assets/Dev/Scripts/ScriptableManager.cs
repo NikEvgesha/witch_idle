@@ -45,7 +45,7 @@ public class ScriptableManager : MonoBehaviour
         //SundaySDK.Tracking.TrackLevelStart(SceneManager.GetActiveScene().buildIndex);
         gameData.Load();
         LevelData.Load();
-        EventManager.StartGame();
+        //EventManager.StartGame();
         //EventManager.SetGymMachines.Invoke();
 
     }
