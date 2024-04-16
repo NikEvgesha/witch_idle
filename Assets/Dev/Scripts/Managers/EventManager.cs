@@ -44,5 +44,9 @@ public static class EventManager
     public static Action UpdateUIInventory;
     public static Action<int> CapacityUpdate;
 
+    public static Action<float> RecipeBookOpened;
+    public static Action RecipeBookClosed;
+    public static Action<RecipeData> RecipeSelected;
+
     //public static Action ObjectPurshuased;
 }

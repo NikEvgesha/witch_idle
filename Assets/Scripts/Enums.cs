@@ -27,7 +27,7 @@ using UnityEngine;
     public enum PotState
 {
         Empty,
-        RecipeChoosing,
+        IngredientRequire,
         Cooking,
         Done
 }

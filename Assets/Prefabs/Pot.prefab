@@ -1840,6 +1840,8 @@ MonoBehaviour:
     UIObject: {fileID: 8277814423730832640}
     UpgradeArea: {fileID: 5264696816292307496}
   _SpeedFill: 1
+  _potState: 0
+  _potArea: {fileID: 5004865240978727071}
 --- !u!1 &6619832936765261105
 GameObject:
   m_ObjectHideFlags: 0

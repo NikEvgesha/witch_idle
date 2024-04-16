@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4e478a7bcc3db45a02ff97bca3d16b, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
-  _recipeName: Heal Potion
+  _potionName: Heal Potion
   _cookTime: 10
   _ingredients: 0000000000000000
   _cost: 50
   _status: 0
+  _potionIcon: {fileID: 21300000, guid: 7505e7c6c292328429095ab7c7667e5e, type: 3}
