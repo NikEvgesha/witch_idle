@@ -1739,10 +1739,8 @@ GameObject:
   - component: {fileID: 8834708112067976878}
   - component: {fileID: 1638009269135201992}
   - component: {fileID: 5335299317546315901}
-  - component: {fileID: 1636579148856305874}
   - component: {fileID: 189459128831359139}
   - component: {fileID: 5584673894467189899}
-  - component: {fileID: 8680366477116556127}
   - component: {fileID: 5480756150975400640}
   - component: {fileID: 3254211389200633169}
   m_Layer: 0
@@ -1812,20 +1810,6 @@ MonoBehaviour:
   stackController: {fileID: 5480756150975400640}
   walkSpeed: 3
   animator: {fileID: 1638009269135201992}
---- !u!114 &1636579148856305874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723068491952210276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed2bc209485fd4764919f1307e8eea41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 8680366477116556127}
-  stackController: {fileID: 5480756150975400640}
 --- !u!54 &189459128831359139
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1876,22 +1860,6 @@ CapsuleCollider:
   m_Height: 1.93
   m_Direction: 1
   m_Center: {x: 0, y: 0.92, z: 0}
---- !u!114 &8680366477116556127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723068491952210276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df3f72b4f2823426dae6c25d114662f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money: 999999
-  moneyTextPrefab: {fileID: 4038291963789150480, guid: 4b28bb93f83cf46309cf51bd7e238f55, type: 3}
-  moneyCanvas: {fileID: 1315507733254144420}
-  maxText: {fileID: 8162731596169256267}
 --- !u!114 &5480756150975400640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1922,7 +1890,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _money: 1050
   money: 2222
-  moneyTextPrefab: {fileID: 0}
   moneyCanvas: {fileID: 1315507733254144420}
   maxText: {fileID: 8162731596169256267}
 --- !u!1 &1725985169829512811
