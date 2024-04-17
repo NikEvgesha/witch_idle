@@ -1,8 +1,5 @@
-
-using DG.Tweening;
-using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
+using YG;
 
 public class WitchPlayerController : MonoBehaviour
 {
@@ -15,7 +12,7 @@ public class WitchPlayerController : MonoBehaviour
         {
             _money = value;
             EventManager.MoneyChange(_money);
-            SaveControl.Instanse.SaveMoney(_money);
+            YandexGame.savesData.money = _money;
             // Функция изменения UI
             // Функция сохранения значения
         }
@@ -26,11 +23,17 @@ public class WitchPlayerController : MonoBehaviour
     public GameObject maxText;
     private void Awake()
     {
+        YandexGame.GetDataEvent += LoadMoney;
         Instanse = this;
+    }
+    private void LoadMoney()
+    {
+        Money = YandexGame.savesData.money;
     }
     private void Start()
     {
-        Money = SaveControl.Instanse.TryGetMoney() ? SaveControl.Instanse.GetMoney() : _money;
+
+        //Money = SaveControl.Instanse.TryGetMoney() ? SaveControl.Instanse.GetMoney() : _money;
     }
     public bool HaveMoney() 
     { 

@@ -1,7 +1,8 @@
 
-using System;
-using Unity.VisualScripting;
+using System.Diagnostics;
 using UnityEngine;
+using YG;
+using static UnityEditor.ObjectChangeEventStream;
 
 public class Seedbed :  InteractionObject
 {
@@ -34,24 +35,81 @@ public class Seedbed :  InteractionObject
     private new void OnEnable()
     {
         base.OnEnable();
-        LoadSeedBed();
         //_plantArea.PlayerOnPlantArea += CheckState;
         _plantArea.OnTrigger += TryCollect;
         _growthTimer.TimerFinish += AddPlant;
         //EventManager.PlantHarvested += Harvest; Зачем? мы же от отсюда этот эвент и отправляем
     }
 
-    private void LoadSeedBed()
-    {
-        state = SeedbedState.Empty;
-        //_plantArea.gameObject.SetActive(true);
-
-    }
 
     private void OnDisable()
     {
         _plantArea.OnTrigger -= TryCollect;
         _growthTimer.TimerFinish -= AddPlant;
+    }
+    private new void Start()
+    {
+        base.Start();
+        UpdateYGSaveSistem(ref YandexGame.savesData.SBState);
+        LoadSeedBed();
+    }
+    private void UpdateYGSaveSistem(ref int[] state)
+    {
+        if (state == null || state.Length == 0)
+        {
+            state = new int[YandexGame.savesData.IOName.Length];
+        }
+        else if (state.Length == YandexGame.savesData.IOName.Length) { return; }
+        else {
+            int[] newArrState = new int[YandexGame.savesData.IOName.Length];
+            for (int i = 0; i < state.Length; i++)
+            {
+                newArrState[i] = state[i];
+            }
+            state = newArrState;
+        }
+    }
+    private void LoadSeedBed()
+    {
+        switch (YandexGame.savesData.SBState[GetIndex()])
+        {
+            case 0:
+                state = SeedbedState.Empty;
+                break;
+            case 1:
+                state = SeedbedState.Growing;
+                break;
+            case 2:
+                state = SeedbedState.Grown;
+                break;
+            default:
+                state = SeedbedState.Empty;
+                break;
+        }
+        CheckStateLoad();
+        //_plantArea.gameObject.SetActive(true);
+
+    }
+    private void SaveSeedBed()
+    {
+        switch (state)
+        {
+            case SeedbedState.Empty:
+                YandexGame.savesData.SBState[GetIndex()] = 0;
+                return;
+            case SeedbedState.Growing:
+                YandexGame.savesData.SBState[GetIndex()] = 1;
+                return;
+            case SeedbedState.Grown:
+                YandexGame.savesData.SBState[GetIndex()] = 2;
+                return;
+            default:
+                YandexGame.savesData.SBState[GetIndex()] = 0;
+                return;
+        }
+        //CheckStateLoad();
+        //_plantArea.gameObject.SetActive(true);
+
     }
     private void TryCollect(bool inTrigger = true)
     {
@@ -76,11 +134,18 @@ public class Seedbed :  InteractionObject
 
     }
 
+    private void CheckStateLoad()
+    {
+        if (state == SeedbedState.Growing) { PlantSeeds(); }
+        else if (state == SeedbedState.Grown) { AddPlant(); }
+    }
+
     private void PlantSeeds() {
         state = SeedbedState.Growing;
         _growthTimer.gameObject.SetActive(true);
         _growthTimer.StartGrowthTimer(_plantData.GetGrowthTime());
         _plantArea.gameObject.SetActive(false);
+        SaveSeedBed();
     }
 
     private void AddPlant() {
@@ -89,6 +154,7 @@ public class Seedbed :  InteractionObject
         state = SeedbedState.Grown;
         _plantArea.gameObject.SetActive(true);
         _plantPoint.gameObject.SetActive(true);
+        SaveSeedBed();
     }
 
     private void Harvest()
@@ -103,6 +169,7 @@ public class Seedbed :  InteractionObject
 
         state = SeedbedState.Empty;
         CheckState();
+        SaveSeedBed();
     }
 
     /*

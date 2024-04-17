@@ -1,10 +1,13 @@
-
+using Sirenix.Utilities;
 using System;
 using Unity.Mathematics;
 using UnityEngine;
+using YG;
 
 public class InteractionObject : MonoBehaviour
 {
+    [SerializeField]
+    private string _uniqueName;
     [SerializeField]
     private PurchasedState _purchasedState;
     [SerializeField]
@@ -17,14 +20,34 @@ public class InteractionObject : MonoBehaviour
     private UpdateStruct _updateStruct;
     [SerializeField]
     private float _SpeedFill = 1;
-
-    private int _price;
+    [SerializeField]
+    private string _stringGUID;
+    private int _priceIn;
+    private int _price
+    {
+        get
+        {
+            return _priceIn;
+        }
+        set
+        {
+            _priceIn = value;
+            YandexGame.savesData.IOPrice[_saveIndex] = _price;
+            ChangeUIPrice(_price);
+        }
+    }
     private bool _isChangeMoney;
-
     public Action ChangeMoney;
-    
+
+    private int _saveIndex;
+
     protected void OnEnable()
     {
+        if (_uniqueName == "")
+        {
+            _uniqueName = this.gameObject.name;
+        }
+
         //EventManager.ObjectPurshuased += ObjectPurchased;
 
         _buyStruct._buyArea.OnTrigger += TryBuy;
@@ -43,20 +66,87 @@ public class InteractionObject : MonoBehaviour
     }
     public void Start()
     {
-        _price = _firstPrice;
-        ChangeUIPrice(_price);
+        if (!TryLoad(YandexGame.savesData.IOName))
+        {
+            CreateYGSaveSistem(ref YandexGame.savesData.IOName, ref YandexGame.savesData.IOPrice,ref YandexGame.savesData.IOBuild);
+            _price = _firstPrice;
+            SaveIO();
+        }
+        else
+        {
+            LoadIO();
+        }
         _SpeedFill /= 100;
     }
-
-    private void OnValidate()
+    private bool TryLoad(string[] names)
     {
-        ChangeUIPrice(_firstPrice);
+        bool check = false;
+        if (names == null || names.Length == 0)
+        {
+            return check;
+        }
+        names.ForEach((name, index) => 
+        {
+            if (name == _uniqueName && check == false)
+            {
+                check = true;
+                _saveIndex = index;
+            }
+        }
+        );
+
+        return check;
+    }
+    private void CreateYGSaveSistem(ref string[] names, ref int[] prices, ref bool[] builds)
+    {
+        if (names == null || names.Length == 0)
+        {
+            names = new string[1];
+            prices = new int[1];
+            builds = new bool[1];
+        }
+        else
+        {
+            string[] newArr = new string[names.Length + 1];
+            int[] newArrPrice = new int[prices.Length + 1];
+            bool[] newArrBuild = new bool[builds.Length + 1];
+            for (int i = 0; i < names.Length; i++)
+            {
+                newArr[i] = names[i];
+                newArrPrice[i] = prices[i];
+                newArrBuild[i] = builds[i];
+            }
+            names = newArr;
+            prices = newArrPrice;
+            builds = newArrBuild;
+        }
+        _saveIndex = names.Length - 1;
+        names[_saveIndex] = _uniqueName;
+    }
+    private void LoadIO()
+    {
+        if (YandexGame.savesData.IOBuild[_saveIndex]) 
+        { 
+            ObjectPurchased();
+            _price = 0;
+            return;
+        }
+        _price = YandexGame.savesData.IOPrice[_saveIndex];
+    }
+    private void SaveIO()
+    {
+        YandexGame.savesData.IOBuild[_saveIndex] = _purchasedState == PurchasedState.Purchased;
+        YandexGame.savesData.IOPrice[_saveIndex] = _price;
     }
     private void TryBuy(bool inTrigger)
     {
         if (_purchasedState == PurchasedState.Purchased)
         {
             return;
+        }
+        if (!inTrigger)
+        {
+            YandexGame.SaveProgress();
         }
         _isChangeMoney = inTrigger;
     }
@@ -68,12 +158,12 @@ public class InteractionObject : MonoBehaviour
         {
             _price -= rateInt;
             WitchPlayerController.Instanse.Money -= rateInt;
-            ChangeUIPrice(_price);
         } 
         else if (_price <= 0)
         {
             //EventManager.ObjectPurshuased?.Invoke();
             ObjectPurchased();
+
         }
     }
     private void ChangeUIPrice(int price)
@@ -94,5 +184,15 @@ public class InteractionObject : MonoBehaviour
         _isChangeMoney = false;
         _buyStruct._buyArea.gameObject.SetActive(false);
         _buyStruct.UIObject.gameObject.SetActive(false);
+        SaveIO();
+        YandexGame.SaveProgress();
+    }
+    public string GetName()
+    {
+        return _uniqueName;
+    }
+    public int GetIndex()
+    {
+        return _saveIndex;
     }
 }

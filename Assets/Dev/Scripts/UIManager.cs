@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateMoneyText()
     {
-        moneyText.text = AbbrevationUtility.AbbreviateNumber(EventManager.GetGameData().totalMoneyAmount);
+       // moneyText.text = AbbrevationUtility.AbbreviateNumber(EventManager.GetGameData().totalMoneyAmount);
     }
 
     public void OpenWorldMap()

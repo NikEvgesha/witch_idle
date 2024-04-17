@@ -188,7 +188,6 @@ GameObject:
   - component: {fileID: 8154564171985016999}
   - component: {fileID: 1262099275918143787}
   - component: {fileID: 1496243243354760973}
-  - component: {fileID: 7774615665610776003}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -280,19 +279,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
---- !u!114 &7774615665610776003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3935218433688492310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baa9e0c107e784574b65770faa102cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moneyText: {fileID: 6110790318554992688}
 --- !u!1 &3941965562030217987
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,7 +743,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7774615665610776003}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: AddMoney
         m_Mode: 1

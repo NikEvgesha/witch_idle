@@ -12,11 +12,18 @@ namespace YG
 
         // Тестовые сохранения для демо сцены
         // Можно удалить этот код, но тогда удалите и демо (папка Example)
-        public int money = 1;                       // Можно задать полям значения по умолчанию
+        public int money = 1000;                       // Можно задать полям значения по умолчанию
         public string newPlayerName = "Hello!";
         public bool[] openLevels = new bool[3];
 
         // Ваши сохранения
+        // Сохранения InteractionObject
+        public string[] IOName;
+        public bool[] IOBuild;
+        public int[] IOPrice;
+        // Сохранения Seedbed
+        public int[] SBState;
+
 
         // ...
 

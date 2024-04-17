@@ -1,0 +1,33 @@
+{
+    "idSave": 46,
+    "isFirstSession": false,
+    "language": "en",
+    "promptDone": false,
+    "money": 900,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "IOName": [
+        "Seedbed1",
+        "Seedbed0",
+        "Seedbed2"
+    ],
+    "IOBuild": [
+        false,
+        true,
+        false
+    ],
+    "IOPrice": [
+        100,
+        0,
+        100
+    ],
+    "SBState": [
+        0,
+        2,
+        0
+    ]
+}

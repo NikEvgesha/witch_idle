@@ -1,4 +1,5 @@
 using UnityEngine;
+using YG;
 
 public class SaveControl : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SaveControl : MonoBehaviour
     {
         if (_removeSaveOnStart)
         {
+            YandexGame.ResetSaveProgress();
             PlayerPrefs.DeleteAll();
         }
         Instanse = this;
