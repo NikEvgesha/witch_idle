@@ -1,13 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "WitchScripts/PlantsData")]
-public class PlantsData : ScriptableObject
+public class PlantsData : ScriptableObject, IInventoryItem
 {
     [SerializeField] private Plant _plantPrefab;
     [SerializeField] private float _growthTime;
     [SerializeField] private PlantTypes _plantType;
     [SerializeField] private PlantIcon _plantIcon;
+
+
     public float GetGrowthTime()
     {
         return _growthTime;
@@ -26,5 +29,6 @@ public class PlantsData : ScriptableObject
     {
         return _plantType;
     }
+
 
 }

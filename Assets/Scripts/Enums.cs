@@ -11,6 +11,15 @@ using UnityEngine;
         Dandelion,
         Rose,
     }
+
+    public enum PotionTypes
+    {
+        Health,
+        Strength
+    }
+
+    
+
     public enum PurchasedState
     {
         Purchased,

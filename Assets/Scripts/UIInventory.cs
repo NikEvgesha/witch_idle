@@ -72,9 +72,9 @@ public class UIInventory : MonoBehaviour
     }
 
     private bool CheckItem() {
-        _items = Inventory.Instanse.GetUIInventoryData();
+        Inventory.Instanse.GetUIInventoryData(out _items);
 
-        return _items != null && _items.Count > 0;
+        return _items != null; //&& _items.Count > 0;
     }
 
 

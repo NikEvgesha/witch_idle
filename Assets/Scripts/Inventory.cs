@@ -40,10 +40,14 @@ public class Inventory : MonoBehaviour
     }
 
 
-    public List<PlantsData> GetUIInventoryData() {
-        if (_inventory == null)
-            return new List<PlantsData>();
-        return _inventory;
+    public void GetUIInventoryData(out List<PlantsData> items) {
+        items = new List<PlantsData>();
+        if (_inventory != null) { 
+            foreach (var item in _inventory)
+            {
+                items.Add(item);
+            }
+        }
         /*
         if (_inventory == null) {
             return new List<GameObject>();
@@ -64,6 +68,27 @@ public class Inventory : MonoBehaviour
         _inventory.Add(plantData);
         EventManager.UpdateUIInventory?.Invoke();
         return true;
+    }
+
+    public bool RemoveItem(PlantsData plant)
+    {
+        if (_inventory.Contains(plant))
+        {
+            _inventory.Remove(plant);
+            EventManager.UpdateUIInventory?.Invoke();
+            return true;
+        }
+        return false;
+
+    }
+
+    public bool CheckItem(PlantTypes plant)
+    {
+        foreach (var item in _inventory)
+        {
+            if (item.GetPlantType() == plant) return true;
+        }
+        return false;
     }
 
 
