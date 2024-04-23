@@ -8,7 +8,14 @@ public class RecipeManager : MonoBehaviour
     [SerializeField] private GameObject _canvas;
     [SerializeField] private Recipe _recipePrefab;
     [SerializeField] private UIRecipeBook _UIRecipeBook;
+    private Pot _currentPot;
 
+    public static RecipeManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         LoadRecipes();
@@ -25,20 +32,41 @@ public class RecipeManager : MonoBehaviour
         EventManager.RecipeBookOpened -= DisplayRecipeBook;
         EventManager.RecipeBookClosed -= HideRecipeBook;
     }
-    public void DisplayRecipeBook(float timeDecreaseRate) { 
+    private void DisplayRecipeBook(float timeDecreaseRate = 0) { 
         if (!_canvas.activeInHierarchy)
         {
             _canvas.SetActive(true);
             UpdateTimeRate(timeDecreaseRate);
         }
     }
-
-    public void HideRecipeBook()
+    
+    private void HideRecipeBook()
     {
         if (_canvas.activeInHierarchy)
         {
             _canvas.SetActive(false);
         }
+    }
+
+    public void RequestRecipe(Pot pot) {
+        _currentPot = pot; 
+        DisplayRecipeBook();
+    }
+
+    public void FinishRequestRecipe(Pot pot)
+    {
+        if (_currentPot == pot)
+        {
+            _currentPot = null;
+            HideRecipeBook();
+        }
+    }
+
+    public void onRecipeSelect(RecipeData recipeData) {
+        if (_currentPot == null) return;
+
+        _currentPot.SetRecipe(recipeData);
+        FinishRequestRecipe(_currentPot);
     }
 
     private void LoadRecipes()

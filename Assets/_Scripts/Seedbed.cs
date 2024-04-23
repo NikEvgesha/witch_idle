@@ -1,8 +1,5 @@
-
-using System.Diagnostics;
 using UnityEngine;
 using YG;
-using static UnityEditor.ObjectChangeEventStream;
 
 public class Seedbed :  InteractionObject
 {
@@ -159,7 +156,8 @@ public class Seedbed :  InteractionObject
 
     private void Harvest()
     {
-        if (!Inventory.Instanse.AddItem(_plantData))
+        
+        if (!Inventory.Instanse.AddItem(_plantData.GetItem()))
         {
             return;
         }

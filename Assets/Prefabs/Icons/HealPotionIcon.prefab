@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 8052318480598196179}
   - component: {fileID: 340828331755638090}
   - component: {fileID: 3981138520188933807}
+  - component: {fileID: -4402948435363229608}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HealPotionIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5fa2b832eaeaa9e4d96f61ae782d6fef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7505e7c6c292328429095ab7c7667e5e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -86,5 +87,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecd0c8b8e8acd0041bfb840e4cb09ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4402948435363229608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163549583797899036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b57c412bb58c541a355fd85cab54d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

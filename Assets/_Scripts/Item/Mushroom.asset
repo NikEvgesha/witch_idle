@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d81f3116a59794e4186f3a369cd6b874, type: 3}
+  m_Script: {fileID: 11500000, guid: c5bc8dffbbbd1ca4188674e151383ee7, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
-  _plantPrefab: {fileID: 7021581923392854783, guid: 07b6c68fef3de00459de0692f85b27de, type: 3}
-  _growthTime: 5
+  _itemIcon: {fileID: -4402948435363229608, guid: b30b93a7ef8bfdb43a42ecbf31834160, type: 3}
+  _itemType: 0
+  _potionType: 2
   _plantType: 0
-  _plantIcon: {fileID: 3981138520188933807, guid: b30b93a7ef8bfdb43a42ecbf31834160, type: 3}

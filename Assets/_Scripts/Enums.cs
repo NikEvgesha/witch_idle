@@ -10,15 +10,21 @@ using UnityEngine;
         Mushroom,
         Dandelion,
         Rose,
+        None,
     }
 
     public enum PotionTypes
     {
         Health,
-        Strength
+        Strength,
+        None,
     }
 
-    
+    public enum ItemTypes
+    {
+        Plant,
+        Potion,
+}
 
     public enum PurchasedState
     {

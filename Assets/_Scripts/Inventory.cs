@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -20,7 +18,7 @@ public class Inventory : MonoBehaviour
         }
     }
     public static Inventory Instanse;
-    private List<PlantsData> _inventory;
+    private List<InventoryItem> _inventory;
 
     private void Awake()
     {
@@ -36,18 +34,19 @@ public class Inventory : MonoBehaviour
         {
             Capacity = _startCapacity;
         }
-        _inventory = new List<PlantsData>();
+        _inventory = new List<InventoryItem>();
     }
 
 
-    public void GetUIInventoryData(out List<PlantsData> items) {
-        items = new List<PlantsData>();
+    public List<InventoryItem> GetUIInventoryData() {
+        List<InventoryItem> items = new List<InventoryItem>();
         if (_inventory != null) { 
             foreach (var item in _inventory)
             {
                 items.Add(item);
             }
         }
+        return items;
         /*
         if (_inventory == null) {
             return new List<GameObject>();
@@ -60,36 +59,36 @@ public class Inventory : MonoBehaviour
         return iconList;*/
     }
 
-    public bool AddItem(PlantsData plantData) {
+    public bool AddItem(InventoryItem item) {
 
         if (_inventory.Count >= _capacity) 
             return false;
 
-        _inventory.Add(plantData);
-        EventManager.UpdateUIInventory?.Invoke();
+        _inventory.Add(item);
+        UIInventory.Instance.UpdateUI();
         return true;
     }
 
-    public bool RemoveItem(PlantsData plant)
+    public bool RemoveItem(InventoryItem plant)
     {
         if (_inventory.Contains(plant))
         {
             _inventory.Remove(plant);
-            EventManager.UpdateUIInventory?.Invoke();
+            UIInventory.Instance.UpdateUI();
             return true;
         }
         return false;
 
     }
 
-    public bool CheckItem(PlantTypes plant)
+    /*public bool CheckItem(PlantTypes plant)
     {
         foreach (var item in _inventory)
         {
             if (item.GetPlantType() == plant) return true;
         }
         return false;
-    }
+    }*/
 
 
 

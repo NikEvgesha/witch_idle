@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "WitchScripts/RecipeData")]
-public class RecipeData : ScriptableObject, IInventoryItem
+public class RecipeData : ScriptableObject
 {
     [SerializeField] private string _potionName;
     [SerializeField] private float _cookTime;
-    [SerializeField] private List<PlantTypes> _ingredients;
+    [SerializeField] private List<InventoryItem> _ingredients;
     [SerializeField] private int _cost;
     [SerializeField] private RecipeState _status;
     [SerializeField] private Sprite _potionIcon;
+    [SerializeField] private InventoryItem _potionItem;
     
 
     public string GetPotionName() { return _potionName; }
@@ -21,7 +22,7 @@ public class RecipeData : ScriptableObject, IInventoryItem
 
     public float GetCookTime() { return _cookTime;}
 
-    public void GetIngredients(out List<PlantTypes> items)
+   /* public void GetIngredients(out List<PlantTypes> items)
     {
         items = new List<PlantTypes>();
         foreach (var item in _ingredients)
@@ -29,5 +30,29 @@ public class RecipeData : ScriptableObject, IInventoryItem
             items.Add(item);
         }
        
+    }*/
+   public InventoryItem GetItem()
+    {
+        return _potionItem;
+    }
+
+    public List<PlantTypes> GetIngredientsTypes()
+    {
+        var items = new List<PlantTypes>();
+        foreach (var item in _ingredients)
+        {
+            items.Add(item.GetPlantType());
+        }
+        return items;
+    }
+
+    public List<InventoryItem> GetIngredients()
+    {
+        var items = new List<InventoryItem>();
+        foreach (var item in _ingredients)
+        {
+            items.Add(item);
+        }
+        return items;
     }
 }

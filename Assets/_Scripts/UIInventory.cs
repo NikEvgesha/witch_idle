@@ -1,18 +1,22 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class UIInventory : MonoBehaviour
 {
     [SerializeField] private GameObject _UIEmptySlot;
     [SerializeField] private Transform _SlotsPoint;
 
-    private List<PlantsData> _items;
-    private List<PlantIcon> _UIitems;
+    private List<InventoryItem> _items;
+    private List<ItemIcon> _UIitems;
     private List<GameObject> _UIslots;
     private bool _isVisible = true;
 
+    public static UIInventory Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         RenderNewImage();
@@ -20,12 +24,10 @@ public class UIInventory : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.UpdateUIInventory += UpdateUI;
         EventManager.CapacityUpdate += UpdateCapacityUI;
     }
 
-
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if (!_isVisible) {
             return;
@@ -57,22 +59,22 @@ public class UIInventory : MonoBehaviour
         }
         if (_UIitems != null)
         {
-            foreach (var _UIitems in _UIitems)
+            foreach (ItemIcon _UIitems in _UIitems)
             {
                 Destroy(_UIitems.gameObject);
             }
         }
-        _UIitems = new List<PlantIcon>();
+        _UIitems = new List<ItemIcon>();
         int i = 0;
         foreach (var item in _items)
         {
-            _UIitems.Add(Instantiate(item.GetPlantIcon(), _UIslots[i].transform));
+            _UIitems.Add(Instantiate(item.GetIcon(), _UIslots[i].transform));
             i++;
         }
     }
 
     private bool CheckItem() {
-        Inventory.Instanse.GetUIInventoryData(out _items);
+        _items = Inventory.Instanse.GetUIInventoryData();
 
         return _items != null; //&& _items.Count > 0;
     }
