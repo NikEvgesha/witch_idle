@@ -17938,6 +17938,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 105.3
       objectReference: {fileID: 0}
+    - target: {fileID: 6066914089321911881, guid: 3ad194c9b6b61814898c9e852bc14a74, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066914089321911881, guid: 3ad194c9b6b61814898c9e852bc14a74, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066914089321911881, guid: 3ad194c9b6b61814898c9e852bc14a74, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066914089321911881, guid: 3ad194c9b6b61814898c9e852bc14a74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6619333722495920566, guid: 3ad194c9b6b61814898c9e852bc14a74, type: 3}
       propertyPath: m_Name
       value: Pot

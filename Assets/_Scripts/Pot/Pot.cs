@@ -11,6 +11,7 @@ public class Pot : InteractionObject
     [SerializeField] private CheckPlayer _potArea;
     [SerializeField] private float _timeDecreaseRate;
     [SerializeField] private GrowthTimer _cookingTimer;
+    [SerializeField] private RecipeInfoUI _recipeInfoUI;
     private RecipeData _currentRecipe;
     private List<PlantTypes> _requiredIngredients;
     private bool _inTrigger;
@@ -88,12 +89,14 @@ public class Pot : InteractionObject
         _potState = PotState.IngredientRequire;
         _currentRecipe = recipeData;
         _requiredIngredients = _currentRecipe.GetIngredientsTypes();
+        _recipeInfoUI.SetRecipe(_currentRecipe);
         CheckState();
     }
 
     private void CheckIngredients(RecipeData recipeData)
     {
         List<InventoryItem> inventoryItems;
+        List<InventoryItem> addedItems = new List<InventoryItem>();
         inventoryItems = Inventory.Instanse.GetUIInventoryData();
         foreach (var item in inventoryItems)
         {
@@ -102,14 +105,20 @@ public class Pot : InteractionObject
             if (type != PlantTypes.None && _requiredIngredients.Contains(type))
             {
                 _requiredIngredients.Remove(type);
+                addedItems.Add(item_tmp);
                 Inventory.Instanse.RemoveItem(item_tmp);
             }
         }
-
+        if (addedItems.Count != 0)
+        {
+            _recipeInfoUI.UpdateIngredients(addedItems);
+        }
+        
     }
 
     private void StartCooking() {
         _potState = PotState.Cooking;
+        _recipeInfoUI.HideIngredients();
         _potArea.gameObject.SetActive(false);
         _cookingTimer.gameObject.SetActive(true);
         _cookingTimer.StartGrowthTimer(_currentRecipe.GetCookTime());
