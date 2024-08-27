@@ -114,7 +114,8 @@ public class Seedbed :  InteractionObject
             CheckState();
     }
 
-    private void CheckState() {
+    private new void CheckState() {
+        base.CheckState();
         switch (state)
         {
             case SeedbedState.Empty:
