@@ -12,6 +12,7 @@ public class Pot : InteractionObject
     [SerializeField] private float _timeDecreaseRate;
     [SerializeField] private GrowthTimer _cookingTimer;
     [SerializeField] private RecipeInfoUI _recipeInfoUI;
+    [SerializeField] private ItemStateProdaction _itemStateInfoUI;
     private RecipeData _currentRecipe;
     private List<PlantTypes> _requiredIngredients;
     private bool _inTrigger;
@@ -35,11 +36,14 @@ public class Pot : InteractionObject
         CheckState();
     }
 
-    private void CheckState()
+    private new void CheckState()
     {
-        switch (_potState) {
+        base.CheckState();
+        switch (_potState) 
+        {
             case PotState.Empty:
                 {
+                    _cookingTimer.gameObject.SetActive(false);
                     if (_inTrigger)
                         {
                         RecipeManager.Instance.RequestRecipe(this);   
@@ -54,11 +58,19 @@ public class Pot : InteractionObject
                 {
                     if (_inTrigger)
                     {
+
                         CheckIngredients(_currentRecipe);
                         if (_requiredIngredients.Count == 0)
                         {
                             StartCooking();
+                        } else
+                        {
+                            RecipeManager.Instance.RequestRecipe(this);
                         }
+
+                    } else
+                    {
+                        RecipeManager.Instance.FinishRequestRecipe(this);
                     }
                     break;
                 }
@@ -67,7 +79,9 @@ public class Pot : InteractionObject
                     PotionCollect();
                     break;
                 }
-                }
+            default:
+                break;
+        }
         
     }
 
@@ -79,6 +93,7 @@ public class Pot : InteractionObject
             return;
         }
 
+        _itemStateInfoUI.HideCookingItem();
         _potState = PotState.Empty;
         CheckState();
         //SaveSeedBed();
@@ -117,8 +132,11 @@ public class Pot : InteractionObject
     }
 
     private void StartCooking() {
+
+        RecipeManager.Instance.FinishRequestRecipe(this);
         _potState = PotState.Cooking;
         _recipeInfoUI.HideIngredients();
+        _itemStateInfoUI.ShowCookingItem(_currentRecipe.GetItem());
         _potArea.gameObject.SetActive(false);
         _cookingTimer.gameObject.SetActive(true);
         _cookingTimer.StartGrowthTimer(_currentRecipe.GetCookTime());

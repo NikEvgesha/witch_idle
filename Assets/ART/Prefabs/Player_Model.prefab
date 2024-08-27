@@ -1808,7 +1808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
   stackController: {fileID: 5480756150975400640}
-  walkSpeed: 3
+  walkSpeed: 5
   animator: {fileID: 1638009269135201992}
 --- !u!54 &189459128831359139
 Rigidbody:

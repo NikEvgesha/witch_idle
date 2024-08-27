@@ -1,6 +1,7 @@
 using Sirenix.Utilities;
 using System;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using YG;
 
@@ -69,7 +70,7 @@ public class InteractionObject : MonoBehaviour
         if (!TryLoad(YandexGame.savesData.IOName))
         {
             CreateYGSaveSistem(ref YandexGame.savesData.IOName, ref YandexGame.savesData.IOPrice,ref YandexGame.savesData.IOBuild);
-            _price = _firstPrice;
+            CheckState();
             SaveIO();
         }
         else
@@ -77,6 +78,26 @@ public class InteractionObject : MonoBehaviour
             LoadIO();
         }
         _SpeedFill /= 100;
+    }
+    public void CheckState()
+    {
+        switch (_purchasedState)
+        {
+            case PurchasedState.Unpurchased:
+                {
+                    ObjectUnPurchased();
+                    break;
+                }
+            case PurchasedState.Purchased:
+                {
+                    ObjectPurchased();
+                    break;
+                }
+            default:
+                break;
+
+        }
+        
     }
     private bool TryLoad(string[] names)
     {
@@ -91,6 +112,8 @@ public class InteractionObject : MonoBehaviour
             {
                 check = true;
                 _saveIndex = index;
+
+                return;
             }
         }
         );
@@ -128,7 +151,6 @@ public class InteractionObject : MonoBehaviour
         if (YandexGame.savesData.IOBuild[_saveIndex]) 
         { 
             ObjectPurchased();
-            _price = 0;
             return;
         }
         _price = YandexGame.savesData.IOPrice[_saveIndex];
@@ -179,11 +201,24 @@ public class InteractionObject : MonoBehaviour
     }
     private void ObjectPurchased()
     {
+        _price = 0;
         _purchasedState = PurchasedState.Purchased;
+        _updateStruct.UIObject.SetActive(false);
         _workStruct.UIObject.SetActive(true);
         _isChangeMoney = false;
         _buyStruct._buyArea.gameObject.SetActive(false);
         _buyStruct.UIObject.gameObject.SetActive(false);
+        SaveIO();
+        YandexGame.SaveProgress();
+    }
+    private void ObjectUnPurchased()
+    {
+
+        _price = _firstPrice;
+        _updateStruct.UIObject.SetActive(false);
+        _workStruct.UIObject.SetActive(false);
+        _buyStruct._buyArea.gameObject.SetActive(true);
+        _buyStruct.UIObject.gameObject.SetActive(true);
         SaveIO();
         YandexGame.SaveProgress();
     }

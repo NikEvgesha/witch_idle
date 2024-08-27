@@ -66,7 +66,7 @@ public class RecipeManager : MonoBehaviour
         if (_currentPot == null) return;
 
         _currentPot.SetRecipe(recipeData);
-        FinishRequestRecipe(_currentPot);
+        //FinishRequestRecipe(_currentPot);
     }
 
     private void LoadRecipes()

@@ -1,5 +1,5 @@
 {
-    "idSave": 121,
+    "idSave": 245,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -23,6 +23,6 @@
         0
     ],
     "SBState": [
-        0
+        2
     ]
 }
