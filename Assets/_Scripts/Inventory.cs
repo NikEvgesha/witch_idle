@@ -81,6 +81,12 @@ public class Inventory : MonoBehaviour
 
     }
 
+    public void ClearInventory()
+    {
+        _inventory.Clear();
+        UIInventory.Instance.UpdateUI();
+    }
+
     /*public bool CheckItem(PlantTypes plant)
     {
         foreach (var item in _inventory)

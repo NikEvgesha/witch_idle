@@ -49,4 +49,6 @@ public static class EventManager
     public static Action<RecipeData> RecipeSelected;
 
     //public static Action ObjectPurshuased;
+
+    public static Action<int> StorageCellClick;
 }
