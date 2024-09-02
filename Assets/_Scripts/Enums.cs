@@ -8,8 +8,7 @@ using UnityEngine;
     public enum PlantTypes
     {
         Mushroom,
-        Dandelion,
-        Rose,
+        Pumpkin,
         None,
     }
 

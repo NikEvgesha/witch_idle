@@ -17547,6 +17547,71 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 4578946785219511476, guid: 25035420e525c614da4bd4776bb9f23f, type: 3}
   m_PrefabInstance: {fileID: 2089997518}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2123803775
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5312343931481110563, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_Name
+      value: Seedbed_Pumpkin
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938151885607978211, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: _plantData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b8409a76f2763746886835f456bd411, type: 2}
+    - target: {fileID: 7286867012760768592, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
 --- !u!1001 &2138826021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18508,7 +18573,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5312343931481110563, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
       propertyPath: m_Name
-      value: Seedbed0
+      value: Seedbed_Mushroom
       objectReference: {fileID: 0}
     - target: {fileID: 7286867012760768592, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
       propertyPath: m_IsActive
@@ -18516,7 +18581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.93
+      value: 3.12
       objectReference: {fileID: 0}
     - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18524,7 +18589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.76
+      value: -18.52
       objectReference: {fileID: 0}
     - target: {fileID: 7791823624900753199, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18573,6 +18638,7 @@ SceneRoots:
   - {fileID: 1723328198}
   - {fileID: 22646457}
   - {fileID: 6501745184811764986}
+  - {fileID: 2123803775}
   - {fileID: 1718964262}
   - {fileID: 1892041354}
   - {fileID: 1329071639750291346}
