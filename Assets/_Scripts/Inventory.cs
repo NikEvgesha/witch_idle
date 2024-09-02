@@ -23,17 +23,18 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         Instanse = this;
-        
     }
 
     private void Start()
     {
         if (SaveControl.Instanse.TryGetCapacity()) { 
             Capacity = SaveControl.Instanse.GetCapacity();
+            
         } else
         {
             Capacity = _startCapacity;
         }
+        Debug.Log("Start Inventory");
         _inventory = new List<InventoryItem>();
     }
 

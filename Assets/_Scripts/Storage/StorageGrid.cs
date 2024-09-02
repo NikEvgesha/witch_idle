@@ -1,28 +1,28 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class StorageGrid : MonoBehaviour
 {
     [SerializeField] private StorageCell _cellPrefab;
-    private int _width = 1200;
-    private int _height = 800;
-    private int _cellSize = 150;
-    private int _cellsAmount = 24;
-
+    private int _cellsAmount;
     private List<StorageCell> _cells;
-
-    public void InitGrid()
+    private string _name;
+    public void InitGrid(string name, int cellsAmount)
     {
+        _name = name;
+        _cellsAmount = cellsAmount;
         _cells = new List<StorageCell>();
-        while (_cells.Count < _cellsAmount)
+        while (_cells.Count < cellsAmount)
         {
             StorageCell cell = Instantiate(_cellPrefab, transform);
             _cells.Add(cell);
             cell.SetIndex(_cells.Count - 1);
         }
+    }
+
+    public string GetName()
+    {
+        return _name;
     }
 
     public void setIcon(ItemIcon icon, int idx)

@@ -50,5 +50,5 @@ public static class EventManager
 
     //public static Action ObjectPurshuased;
 
-    public static Action<int> StorageCellClick;
+    public static Action<StorageAction, int> StorageCellClick;
 }

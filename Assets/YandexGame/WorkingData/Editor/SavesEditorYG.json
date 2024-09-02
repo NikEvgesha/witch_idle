@@ -1,9 +1,9 @@
 {
-    "idSave": 484,
+    "idSave": 872,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
-    "money": 900,
+    "money": 200,
     "newPlayerName": "Hello!",
     "openLevels": [
         false,
@@ -11,19 +11,18 @@
         false
     ],
     "IOName": [
-        "Pot",
-        "Seedbed0"
+        "Seedbed0",
+        "Pot"
     ],
     "IOBuild": [
-        false,
+        true,
         true
     ],
     "IOPrice": [
-        700,
+        0,
         0
     ],
     "SBState": [
-        0,
         2
     ]
 }

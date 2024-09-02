@@ -47,3 +47,9 @@ using UnityEngine;
         Done
 }
 
+public enum StorageAction
+{
+    PutToStorage,
+    GetFromStorage,
+}
+
