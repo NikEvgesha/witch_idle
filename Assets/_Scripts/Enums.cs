@@ -16,6 +16,9 @@ using UnityEngine;
     {
         Health,
         Strength,
+        Brave,
+        Poison,
+        Love,
         None,
     }
 

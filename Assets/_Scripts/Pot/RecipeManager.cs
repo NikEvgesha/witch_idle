@@ -66,7 +66,7 @@ public class RecipeManager : MonoBehaviour
         if (_currentPot == null) return;
 
         _currentPot.SetRecipe(recipeData);
-        //FinishRequestRecipe(_currentPot);
+        FinishRequestRecipe(_currentPot);
     }
 
     private void LoadRecipes()
@@ -87,6 +87,15 @@ public class RecipeManager : MonoBehaviour
     private void UpdateRecipe()
     {
 
+    }
+
+    public void onCloseButtonClick()
+    {
+        if (_canvas.activeInHierarchy)
+        {
+            _currentPot = null;
+            HideRecipeBook();
+        }     
     }
 
 

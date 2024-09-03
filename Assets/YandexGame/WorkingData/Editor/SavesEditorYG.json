@@ -1,9 +1,9 @@
 {
-    "idSave": 964,
+    "idSave": 1452,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
-    "money": 835,
+    "money": 300,
     "newPlayerName": "Hello!",
     "openLevels": [
         false,
@@ -11,9 +11,9 @@
         false
     ],
     "IOName": [
-        "Seedbed_Pumpkin",
+        "Pot",
         "Seedbed_Mushroom",
-        "Pot"
+        "Seedbed_Pumpkin"
     ],
     "IOBuild": [
         true,
@@ -22,11 +22,12 @@
     ],
     "IOPrice": [
         0,
-        35,
-        700
+        100,
+        100
     ],
     "SBState": [
-        1,
+        0,
+        0,
         0
     ]
 }
