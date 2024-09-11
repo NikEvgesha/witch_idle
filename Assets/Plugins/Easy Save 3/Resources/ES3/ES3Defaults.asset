@@ -32,10 +32,12 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - Autodesk.Fbx
     - Boxophobic.PolyverseSkies.Runtime
     - Boxophobic.PolyverseSkies.Scripts
     - Boxophobic.Utils.Scripts
     - Cinemachine
+    - FbxBuildTestAssets
     - KinoBloom.Runtime
     - ToonyColorsPro.Runtime
     - ToonyColorsPro2.Demo
