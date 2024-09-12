@@ -1,5 +1,5 @@
 {
-    "idSave": 1452,
+    "idSave": 1472,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -12,21 +12,17 @@
     ],
     "IOName": [
         "Pot",
-        "Seedbed_Mushroom",
-        "Seedbed_Pumpkin"
+        "Seedbed0"
     ],
     "IOBuild": [
         true,
-        false,
         false
     ],
     "IOPrice": [
         0,
-        100,
         100
     ],
     "SBState": [
-        0,
         0,
         0
     ]
