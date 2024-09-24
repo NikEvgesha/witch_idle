@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Properties;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class RecipeInfoUI : MonoBehaviour
 {
     [SerializeField] private GameObject _ingredients;
     [SerializeField] private IngredientSlot _ingredientPrefab;
+    [SerializeField] private InventoryItem _waterItem;
     private List<InventoryItem> _requiredIngredients;
     private List<IngredientSlot> _UIitems;
 
@@ -27,14 +29,24 @@ public class RecipeInfoUI : MonoBehaviour
 
         }
     }  
-/*    private void DisplayIngredients()
-    {
-        foreach (var item in _UIitems)
-        {
-            item.UpdateState();
-        }
 
-    }*/
+    public void SetWater()
+    {
+        DestroySlots();
+        _UIitems = new List<IngredientSlot>();
+        _ingredients.SetActive(true);
+        IngredientSlot slot = Instantiate(_ingredientPrefab, _ingredients.transform);
+        slot.InitSlot(_waterItem);
+        _UIitems.Add(slot);
+    }
+    /*    private void DisplayIngredients()
+        {
+            foreach (var item in _UIitems)
+            {
+                item.UpdateState();
+            }
+
+        }*/
 
     public void UpdateIngredients(List<InventoryItem> addedIngredients)
     {

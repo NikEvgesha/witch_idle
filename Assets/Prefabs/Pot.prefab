@@ -3900,6 +3900,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4759528731613404657, guid: cf344d66686e0eb4ab0011672eef638d, type: 3}
+      propertyPath: _waterItem
+      value: 
+      objectReference: {fileID: 11400000, guid: a284e30c300ee9943b029ac0545799af, type: 2}
     - target: {fileID: 6841053659157084235, guid: cf344d66686e0eb4ab0011672eef638d, type: 3}
       propertyPath: m_IsActive
       value: 0

@@ -54,6 +54,22 @@ public class Pot : InteractionObject
                         }
                     break;
                 }
+            case PotState.WaterRequire:
+                {
+                    if (_inTrigger)
+                    {
+                        if (!CheckWater())
+                        {
+                            RecipeManager.Instance.RequestRecipe(this);
+                        }
+                    }
+                    else
+                    {
+                        RecipeManager.Instance.FinishRequestRecipe(this);
+                    }
+
+                    break;
+                }
             case PotState.IngredientRequire:
                 {
                     if (_inTrigger)
@@ -101,11 +117,16 @@ public class Pot : InteractionObject
 
     public void SetRecipe(RecipeData recipeData)
     {
-        _potState = PotState.IngredientRequire;
+        _potState = PotState.WaterRequire;
         _currentRecipe = recipeData;
+        _recipeInfoUI.SetWater();
+        CheckState();
+    }
+
+    private void SetRecipeUI()
+    {
         _requiredIngredients = _currentRecipe.GetIngredientsTypes();
         _recipeInfoUI.SetRecipe(_currentRecipe);
-        CheckState();
     }
 
     private void CheckIngredients(RecipeData recipeData)
@@ -148,6 +169,29 @@ public class Pot : InteractionObject
         _cookingTimer.gameObject.SetActive(false);
         _potArea.gameObject.SetActive(true);
         _potState = PotState.Done;
+    }
+
+
+    private bool CheckWater()
+    {
+        bool waterAdded = false;
+        List<InventoryItem> inventoryItems = Inventory.Instanse.GetUIInventoryData();
+        foreach (var item in inventoryItems)
+        {
+            InventoryItem item_tmp = item;
+            ItemTypes type = item.GetItemType();
+            if (type == ItemTypes.Water)
+            {
+                Inventory.Instanse.RemoveItem(item_tmp);
+                waterAdded = true;
+            }
+        }
+        if (waterAdded)
+        {
+            _potState = PotState.IngredientRequire;
+            SetRecipeUI();
+        }
+        return waterAdded;
     }
 
 

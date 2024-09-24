@@ -24,5 +24,10 @@ public class InventoryItem : ScriptableObject
         return _potionType;
     }
 
+    public ItemTypes GetItemType()
+    {
+        return _itemType;
+    }
+
 
 }

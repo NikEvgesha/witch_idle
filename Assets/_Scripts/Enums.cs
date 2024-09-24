@@ -26,6 +26,7 @@ using UnityEngine;
     {
         Plant,
         Potion,
+        Water,
 }
 
     public enum PurchasedState
@@ -44,6 +45,7 @@ using UnityEngine;
     public enum PotState
 {
         Empty,
+        WaterRequire,
         IngredientRequire,
         Cooking,
         Done
