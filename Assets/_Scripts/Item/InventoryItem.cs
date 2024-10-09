@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "WitchScripts/InventoryItem")]
 public class InventoryItem : ScriptableObject
@@ -8,6 +7,7 @@ public class InventoryItem : ScriptableObject
     [SerializeField] private ItemTypes _itemType;
     [SerializeField] private PotionTypes _potionType;
     [SerializeField] private PlantTypes _plantType;
+    [SerializeField] private int _price;
 
     public ItemIcon GetIcon()
     {
@@ -27,6 +27,10 @@ public class InventoryItem : ScriptableObject
     public ItemTypes GetItemType()
     {
         return _itemType;
+    }
+    public int GetPrice()
+    {
+        return _price;
     }
 
 

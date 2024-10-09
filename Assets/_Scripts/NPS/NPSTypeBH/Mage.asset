@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Mage
   m_EditorClassIdentifier: 
   _name: Mage
-  _skin: {fileID: 0}
-  _product: {fileID: 0}
-  _products: []
-  _difficulty: 0
+  _skin: {fileID: 6455730400154909185, guid: 19c2cc6d0461a1b4bbb67ee97ebfcbcf, type: 3}
+  _potion: {fileID: 0}
+  _potions:
+  - Potion: {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}
+    MinLevelUse: 0
+  - Potion: {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
+    MinLevelUse: 0
+  - Potion: {fileID: 11400000, guid: e66c6785dbb830e428b466a748448172, type: 2}
+    MinLevelUse: 0

@@ -15,6 +15,7 @@ public class SellZone : MonoBehaviour
     public Action FillDone;
     protected void OnEnable()
     {
+        NoBuyer();
         _sellArea.OnTrigger += TrySell;
     }
     private void OnDisable()
@@ -44,10 +45,14 @@ public class SellZone : MonoBehaviour
     private void Done()
     {
         _haveBuyer = false;
-        _fill = 0.001F;
         TrySell(false);
-        _uIObject.SetActive(false);
+        NoBuyer();
         FillDone?.Invoke();
+    }
+    private void NoBuyer()
+    {
+        _fill = 0.001F;
+        _uIObject.SetActive(false);
     }
     public void NewBuyer()
     {

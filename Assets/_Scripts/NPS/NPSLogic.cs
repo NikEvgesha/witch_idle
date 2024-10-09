@@ -9,32 +9,25 @@ public class NPSLogic : MonoBehaviour
     */
 
     [SerializeField] private NavMeshAgent _meshAgent;
-    [SerializeField] private NPSType _NPSType;
-    [SerializeField] private storefront _storefront;
-    //public NPSState state;
+    [SerializeField] private NPSType _nPSType;
+    [SerializeField] private NPSAllTypes _nPSAllTypes;
     [SerializeField] private Animator _animator;
     [SerializeField] private float _distanceToStop;
-
-    [SerializeField] private float _testSpeed;
-
-
-    public NPSStates _nPSStates = new NPSStates();
+    [SerializeField] private GameObject _skin;
+    [SerializeField] private Transform _skinSpawnPoint;
+    [SerializeField] private Transform _itemIconPosition;
     //public GameObject moneyPrefab;
-    //public List<GameObject> dumbells;
-    //public List<GameObject> inclineDumbells;
 
-    //public GameObject benchBar;
-    //public CustomerWaterTowelUI waterTowelUI;
-    //public CustomerNeed customerNeed;
-    //[HideInInspector] public Vector3 workoutOverPosition;
     //public Renderer renderer; // Переделать на случайный скин?
-    //public GameObject waterAnimation;
-    //public GameObject towelAnimation;
-    //public GameObject deadLiftBar;
+
+    private storefront _storefront;
     private InventoryItem _needItem;
+    private ItemIcon _itemIcon;
     private bool _haveItem = false;
     private Transform _customerLookAt;
     private Transform _customerMovePoint;
+
+    [HideInInspector] public NPSStates _nPSStates = new NPSStates();
 
     public void SetSettingsNPS(Transform pointMove, Transform pointLook, int LevelSells)
     {
@@ -42,19 +35,32 @@ public class NPSLogic : MonoBehaviour
         SetLookPoint(pointLook);
         SetlevelSells(LevelSells);
     }
-    public void SetSettingsNPS(storefront storefront, int LevelSells)
+    public void SetSettingsNPS(storefront storefront, int LevelSells = -1)
     {
         _storefront = storefront;
-        SetMovePoint(storefront.StorefrontPoint);
-        SetLookPoint(storefront.LookPoint);
+        SetMovePoint(_storefront.StorefrontPoint);
+        SetLookPoint(_storefront.LookPoint);
         SetlevelSells(LevelSells);
-        _nPSStates = NPSStates.WalkingToStore;
+        _nPSStates = NPSStates.WalkingToStore; 
+        StartSetting(LevelSells);
+        _needItem = _nPSType.SelectPotion();
+        _itemIcon = Instantiate(_needItem.GetIcon(),_itemIconPosition);
+        
     }
-
+    public void StartSetting(int LevelSells = -1)
+    {
+        _nPSType = _nPSAllTypes.GetRandomNPS(LevelSells);
+        SetSkin();
+    }
+    private void SetSkin()
+    {
+        _skin = Instantiate(_nPSType.GetSkin(), _skinSpawnPoint);
+        _animator = _skin.GetComponent<Animator>();
+    }
     public void SetMovePoint(Transform point)
     {
         _customerMovePoint = point;
-        MoveTo(point);
+        MoveTo(_customerMovePoint);
     }
     public void SetLookPoint(Transform point)
     {
@@ -78,7 +84,6 @@ public class NPSLogic : MonoBehaviour
     }
     void Update()
     {
-        _testSpeed = _meshAgent.velocity.magnitude;
         _animator.SetFloat("Movement", _meshAgent.velocity.magnitude);
         switch (_nPSStates)
         {
@@ -153,6 +158,10 @@ public class NPSLogic : MonoBehaviour
     {
         _nPSStates = NPSStates.WalkingHome;
         SetMovePoint(point);
+    }
+    public int GetMoney() 
+    {
+        return _needItem.GetPrice();
     }
 }
 

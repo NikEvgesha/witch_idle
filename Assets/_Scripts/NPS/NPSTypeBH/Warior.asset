@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Warior
   m_EditorClassIdentifier: 
   _name: Warior
-  _skin: {fileID: 0}
-  _product: {fileID: 0}
-  _products: []
-  _difficulty: 0
+  _skin: {fileID: 6455730400154909185, guid: 867fd703ca49970479b75d0c2b1eafa1, type: 3}
+  _potion: {fileID: 0}
+  _potions:
+  - Potion: {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
+    MinLevelUse: 0
+  - Potion: {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}
+    MinLevelUse: 0

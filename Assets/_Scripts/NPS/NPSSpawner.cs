@@ -64,6 +64,7 @@ public class NPSSpawner : MonoBehaviour
             _store.New—ustomers(nPS);
             return;
         }
+        nPS.StartSetting();
         NPSGoHome(nPS);
     }
     public void NPSGoHome(NPSLogic nPS)

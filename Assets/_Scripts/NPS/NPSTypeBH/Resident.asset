@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Resident
   m_EditorClassIdentifier: 
   _name: Resident
-  _skin: {fileID: 0}
-  _product: {fileID: 0}
-  _products: []
-  _difficulty: 0
+  _skin: {fileID: 6455730400154909185, guid: 7697221c06af7d74ea84ca400ff28784, type: 3}
+  _potion: {fileID: 0}
+  _potions:
+  - Potion: {fileID: 11400000, guid: e66c6785dbb830e428b466a748448172, type: 2}
+    MinLevelUse: 0
+  - Potion: {fileID: 11400000, guid: 9b2dfc67d88683f49b6cbcd5e3a8fbbe, type: 2}
+    MinLevelUse: 0

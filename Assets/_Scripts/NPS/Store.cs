@@ -112,7 +112,7 @@ public class Store : MonoBehaviour
     {
         _levelSells = level;
     }
-    private void RemoveNPSOfQueue(NPSLogic customer = null)
+    private NPSLogic RemoveNPSOfQueue(NPSLogic customer = null)
     {
         if (customer == null)
         {
@@ -123,7 +123,7 @@ public class Store : MonoBehaviour
 
         _nPSInQueue.Remove(customer);
 
-        if (_nPSInQueue.Count <= 0) return;
+        if (_nPSInQueue.Count <= 0) return customer;
 
         _sellZone.NewBuyer();
 
@@ -131,6 +131,7 @@ public class Store : MonoBehaviour
         {
             SetPlaceInQueue(_customer);
         }
+        return customer;
     }
     public void TakeItem(NPSLogic nPS)
     {
@@ -170,7 +171,9 @@ public class Store : MonoBehaviour
     {
         if (!CheckQueue()) return;
         //продажа
-        RemoveNPSOfQueue();
+
+        WitchPlayerController.Instanse.Money += RemoveNPSOfQueue().GetMoney();
+        
     }
     public bool CheckQueue()
     {

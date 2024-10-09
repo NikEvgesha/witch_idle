@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Assassin
   m_EditorClassIdentifier: 
   _name: Assassin
-  _skin: {fileID: 0}
-  _product: {fileID: 0}
-  _products: []
-  _difficulty: 0
+  _skin: {fileID: 6455730400154909185, guid: 7b061682ade0cb9469c8b6e01383f373, type: 3}
+  _potion: {fileID: 0}
+  _potions:
+  - Potion: {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
+    MinLevelUse: 0
+  - Potion: {fileID: 11400000, guid: 5029939fa9ee8c340aaa2a36cb340fcb, type: 2}
+    MinLevelUse: 0
+  - Potion: {fileID: 11400000, guid: 9b2dfc67d88683f49b6cbcd5e3a8fbbe, type: 2}
+    MinLevelUse: 0

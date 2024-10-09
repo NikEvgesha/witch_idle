@@ -16,3 +16,4 @@ MonoBehaviour:
   _itemType: 1
   _potionType: 0
   _plantType: 1
+  _price: 200

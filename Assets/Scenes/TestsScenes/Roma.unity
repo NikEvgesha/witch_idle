@@ -10008,6 +10008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buyers
       objectReference: {fileID: 0}
+    - target: {fileID: 2758194241127535973, guid: 410a9e4b176d3ca438b578dbd7ba5d07, type: 3}
+      propertyPath: _NPSType
+      value: 
+      objectReference: {fileID: 11400000, guid: aa561f20e74902343825a157a0a88040, type: 2}
     - target: {fileID: 3722996769969393210, guid: 410a9e4b176d3ca438b578dbd7ba5d07, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
