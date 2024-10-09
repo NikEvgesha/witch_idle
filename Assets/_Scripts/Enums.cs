@@ -56,4 +56,14 @@ public enum StorageAction
     PutToStorage,
     GetFromStorage,
 }
+public enum NPSStates
+{
+
+    WalkingToStore,
+    WaitingItemSale,
+    WalkingToQueue,
+    WaitingInQueue,
+    WaitingSeller,
+    WalkingHome,
+}
 

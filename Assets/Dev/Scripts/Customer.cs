@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 public class Customer : MonoBehaviour
 {
     public NavMeshAgent meshAgent;
-    public Machine customerMachine;
+    public Machine customerMachine; 
     public CustomerStates state;
     public Animator animator;
     public GameObject moneyPrefab;
