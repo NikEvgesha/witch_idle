@@ -56,6 +56,11 @@ public enum StorageAction
     PutToStorage,
     GetFromStorage,
 }
+public enum GridUIType
+{
+    StorageGrid,
+    InventoryGrid,
+}
 public enum NPSStates
 {
 

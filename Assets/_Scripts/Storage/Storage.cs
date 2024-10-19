@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,23 +15,23 @@ public class Storage : MonoBehaviour
     private List<InventoryItem> _StorageItems;
     List<InventoryItem> _inventoryItems;
     private int _StorageCapacity = 25;
-
+    public Action<StorageAction, int> StorageCellClick;
     private void Start()
     {
         _inventoryItems = new List<InventoryItem>();
         _StorageItems = new List<InventoryItem>();
-        _StorageGrid.InitGrid("storage", _StorageCapacity);
+        _StorageGrid.InitGrid(this, _StorageCapacity);
         _Canvas.gameObject.SetActive(false);
     }
-    private new void OnEnable()
+    private void OnEnable()
     {
-        EventManager.StorageCellClick += tryCollectItem;
+        StorageCellClick += tryCollectItem;
         _InteractionArea.OnTrigger += onInteractionAreaEnter;
     }
 
     private void OnDisable()
     {
-        EventManager.StorageCellClick -= tryCollectItem;
+        StorageCellClick -= tryCollectItem;
         _InteractionArea.OnTrigger -= onInteractionAreaEnter;
     }
 
@@ -48,7 +49,7 @@ public class Storage : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
-            _InventoryGrid.InitGrid("inventory", Inventory.Instanse.Capacity);
+            _InventoryGrid.InitGrid(this, Inventory.Instanse.Capacity);
             _Canvas.gameObject.SetActive(true);
             UpdateStorageUI();
         }
