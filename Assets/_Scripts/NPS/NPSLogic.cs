@@ -21,7 +21,7 @@ public class NPSLogic : MonoBehaviour
     //public Renderer renderer; // Переделать на случайный скин?
 
     private storefront _storefront;
-    private InventoryItem _needItem;
+    [SerializeField] private InventoryItem _needItem;
     private ItemIcon _itemIcon;
     private bool _haveItem = false;
     private Transform _customerLookAt;
@@ -162,6 +162,10 @@ public class NPSLogic : MonoBehaviour
     public int GetMoney() 
     {
         return _needItem.GetPrice();
+    }
+    public storefront GetStorefront()
+    {
+        return _storefront;
     }
 }
 

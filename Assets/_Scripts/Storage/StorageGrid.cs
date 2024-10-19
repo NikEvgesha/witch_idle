@@ -32,7 +32,7 @@ public class StorageGrid : MonoBehaviour
         return gridUIType;
     }
 
-    public void setIcon(ItemIcon icon, int idx)
+    public void SetIcon(ItemIcon icon, int idx)
     {
         if (idx >= 0 && idx < _cellsAmount)
         {

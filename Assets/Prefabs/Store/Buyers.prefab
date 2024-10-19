@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _NPSLogic: {fileID: 8511823998783810152, guid: 0c01f659691efa64a95c63ec039f475a, type: 3}
+  _storage: {fileID: 5069452570526047096}
   _spawnPoints:
   - {fileID: 4635767663346353003}
   - {fileID: 7632655442884193826}
@@ -325,6 +326,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6410540023872906706, guid: 0baf7e9d47f66b145b35ef9659210ae6, type: 3}
+      propertyPath: _storefrontPoints.Array.data[2].LookPoint
+      value: 
+      objectReference: {fileID: 4024297292985995661}
+    - target: {fileID: 6410540023872906706, guid: 0baf7e9d47f66b145b35ef9659210ae6, type: 3}
+      propertyPath: _storefrontPoints.Array.data[3].LookPoint
+      value: 
+      objectReference: {fileID: 5586665158272100584}
+    - target: {fileID: 6410540023872906706, guid: 0baf7e9d47f66b145b35ef9659210ae6, type: 3}
+      propertyPath: _storefrontPoints.Array.data[2].StorefrontPoint
+      value: 
+      objectReference: {fileID: 7368148990495713719}
+    - target: {fileID: 6410540023872906706, guid: 0baf7e9d47f66b145b35ef9659210ae6, type: 3}
+      propertyPath: _storefrontPoints.Array.data[3].StorefrontPoint
+      value: 
+      objectReference: {fileID: 3136800885409654860}
     - target: {fileID: 9137918230038557648, guid: 0baf7e9d47f66b145b35ef9659210ae6, type: 3}
       propertyPath: m_Name
       value: Store
@@ -350,6 +367,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2026307241361596233, guid: 0baf7e9d47f66b145b35ef9659210ae6, type: 3}
   m_PrefabInstance: {fileID: 109546787851329249}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5069452570526047096 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5178964172927174041, guid: 0baf7e9d47f66b145b35ef9659210ae6, type: 3}
+  m_PrefabInstance: {fileID: 109546787851329249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e34a5455e46294abb969e579e7c0b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6445741880238390067 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6410540023872906706, guid: 0baf7e9d47f66b145b35ef9659210ae6, type: 3}

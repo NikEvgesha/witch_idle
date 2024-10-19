@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPSSpawner : MonoBehaviour
@@ -14,7 +13,6 @@ public class NPSSpawner : MonoBehaviour
     [SerializeField] private int _spawnCount = 10;
     [SerializeField] private float _spawnTime = 10;
     [SerializeField] private bool _isSpawning = true;
-
     private float _spawnTimeLast;
     private int _spawnCountLast;
 

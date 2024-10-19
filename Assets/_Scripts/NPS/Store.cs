@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 [System.Serializable]
 public struct storefront
@@ -6,11 +7,11 @@ public struct storefront
     public Transform StorefrontPoint;
     public Transform LookPoint;
     public int Weight;
-    public int WeightStatic;
 }
 public class Store : MonoBehaviour
 {
     public static Store Init;
+    [SerializeField] private Storage _storage;
     [SerializeField] private List<storefront> _storefrontPoints;
     [SerializeField] private List<Transform> _queuePoints = new List<Transform>();
     [SerializeField] private List<NPSLogic> _nPSInStorefront;
@@ -22,6 +23,8 @@ public class Store : MonoBehaviour
     private int _levelSells = 1;
     [SerializeField] private int _storefrontCount;
     [SerializeField] private int _queueCount;
+    private List<InventoryItem> _itemsInQueue = new List<InventoryItem>();
+    [SerializeField] private List<storefront> _storefrontPointsDontUse = new List<storefront>();
     private void Awake()
     {
         Init = this;
@@ -29,6 +32,14 @@ public class Store : MonoBehaviour
         {
             _sellZone.FillDone += SellItemFirstInQueue;
         }
+        foreach (storefront point in _storefrontPoints)
+        {
+            _storefrontPointsDontUse.Add(point);
+        }
+    }
+    private void OnEnable()
+    {
+        _storage.StorageUpdate += UpdateStoreWarehouse;
     }
     private void Start()
     {
@@ -52,37 +63,22 @@ public class Store : MonoBehaviour
     private storefront GetStorefrontPoint(NPSLogic customer = null)
     {
         int coutWeight = 0;
-        storefront storefrontPoint;
-        foreach (storefront point in _storefrontPoints)
+        foreach (storefront point in _storefrontPointsDontUse)
         {
-            if (point.Weight == 0)
-            {
-                continue;
-            }
             coutWeight += point.Weight;
         }
-
-        if (coutWeight == 0) return new storefront();
 
         int randomWeight = Random.Range(0, coutWeight);
         coutWeight = 0;
-
-        foreach (storefront point in _storefrontPoints)
+        foreach (storefront point in _storefrontPointsDontUse)
         {
-            if (point.Weight == 0)
-            {
-                continue;
-            }
             coutWeight += point.Weight;
-
             if (coutWeight > randomWeight)
             {
-                storefrontPoint = point;
-                storefrontPoint.Weight = 0;
-                return storefrontPoint;
+                _storefrontPointsDontUse.Remove(point);
+                return point;
             }
         }
-
         return new storefront();
     }
     private Transform GetQueuePoint(NPSLogic customer = null)
@@ -122,7 +118,7 @@ public class Store : MonoBehaviour
         NPSSpawner.Instans.NPSGoHome(customer);
 
         _nPSInQueue.Remove(customer);
-
+        _itemsInQueue.Remove(customer.GetInventoryItem());
         if (_nPSInQueue.Count <= 0) return customer;
 
         _sellZone.NewBuyer();
@@ -139,13 +135,15 @@ public class Store : MonoBehaviour
         {
             _sellZone.NewBuyer();
         }
+
         _nPSInStorefront.Remove(nPS);
         _nPSInQueue.Add(nPS);
+        _storefrontPointsDontUse.Add(nPS.GetStorefront());
         SetPlaceInQueue(nPS);
         nPS.AddItem();
         StoreRemoveItem(nPS.GetInventoryItem());
     }
-    public void NPSReachedPoint(NPSLogic nPS)
+    /*public void NPSReachedPoint(NPSLogic nPS)
     {
         if (CheckItemInStoreWarehouse(nPS.GetInventoryItem()))
         {
@@ -166,7 +164,7 @@ public class Store : MonoBehaviour
                 NPSReachedPoint(customer);
             }
         }
-    }
+    }*/
     public void SellItem()
     {
         if (!CheckQueue()) return;
@@ -185,15 +183,33 @@ public class Store : MonoBehaviour
         {
             return false;
         }
+        if (!_storage.CheckItemInStorage(inventoryItem))
+        {
+            return false;
+        }
         return true;
     }
     private void StoreRemoveItem(InventoryItem inventoryItem)
     {
-
+        _itemsInQueue.Add(inventoryItem);
+        _storage.TakeItemVault(inventoryItem);
     }
     private void SellItemFirstInQueue()
     {
         SellItem();
     }
-
+    private void UpdateStoreWarehouse()
+    {
+        foreach (NPSLogic customer in _nPSInStorefront)
+        {
+            if (customer._nPSStates == NPSStates.WaitingItemSale)
+            {
+                if (CheckItemInStore(customer.GetInventoryItem()))
+                {
+                    customer.StoreItemUpdate();
+                    return;
+                }
+            }
+        }
+    }
 }

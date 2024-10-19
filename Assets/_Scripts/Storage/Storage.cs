@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Storage : MonoBehaviour
 {
@@ -13,14 +11,15 @@ public class Storage : MonoBehaviour
     private bool _inUnloadAreaTrigger = false;
     private bool _inInteractionAreaTrigger = false;
     private List<InventoryItem> _StorageItems;
-    List<InventoryItem> _inventoryItems;
+    private List<InventoryItem> _inventoryItems;
     private int _StorageCapacity = 25;
     public Action<StorageAction, int> StorageCellClick;
+    public Action StorageUpdate;
     private void Start()
     {
         _inventoryItems = new List<InventoryItem>();
         _StorageItems = new List<InventoryItem>();
-        _StorageGrid.InitGrid(this, _StorageCapacity);
+        _StorageGrid.InitGrid(this, _StorageCapacity,GridUIType.StorageGrid);
         _Canvas.gameObject.SetActive(false);
     }
     private void OnEnable()
@@ -49,7 +48,7 @@ public class Storage : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
-            _InventoryGrid.InitGrid(this, Inventory.Instanse.Capacity);
+            _InventoryGrid.InitGrid(this, Inventory.Instanse.Capacity,GridUIType.InventoryGrid);
             _Canvas.gameObject.SetActive(true);
             UpdateStorageUI();
         }
@@ -86,7 +85,7 @@ public class Storage : MonoBehaviour
         {
             _StorageGrid.ClearCell(i);
             ItemIcon icon = _StorageItems[i].GetIcon();
-            _StorageGrid.setIcon(icon, i);
+            _StorageGrid.SetIcon(icon, i);
         }
 
         for (; i < _StorageCapacity; i++)
@@ -98,13 +97,14 @@ public class Storage : MonoBehaviour
         {
             _InventoryGrid.ClearCell(i);
             ItemIcon icon = _inventoryItems[i].GetIcon();
-            _InventoryGrid.setIcon(icon, i);
+            _InventoryGrid.SetIcon(icon, i);
         }
 
         for (; i < Inventory.Instanse.Capacity; i++)
         {
             _InventoryGrid.ClearCell(i);
         }
+        StorageUpdate?.Invoke();
     }
 
 
@@ -117,17 +117,49 @@ public class Storage : MonoBehaviour
             {
                 return;
             }
-            _StorageItems.RemoveAt(idx);
+            TakeItemVault(idx);
         } else if (action == StorageAction.PutToStorage)
         {
-            if (_StorageItems.Count < _StorageCapacity)
+            InventoryItem item_tmp = _inventoryItems[idx];
+            if (PlaceItemVault(item_tmp))
             {
-                InventoryItem item_tmp = _inventoryItems[idx];
-                _StorageItems.Add(item_tmp);
                 Inventory.Instanse.RemoveItem(item_tmp);
             }
         }
         UpdateStorageUI();
+    }
+    public bool PlaceItemVault(InventoryItem item) //положить в хранилище
+    {
+        if (_StorageItems.Count >= _StorageCapacity)
+        {
+            return false;
+        }
+        _StorageItems.Add(item);
+        UpdateStorageUI();
+        return true;
+    }
+    public void TakeItemVault(InventoryItem item) //взять из хранилища
+    {
+        _StorageItems.Remove(item);
+        UpdateStorageUI();
+
+    }
+    private void TakeItemVault(int idx) //взять из хранилища по индексу
+    {
+        _StorageItems.RemoveAt(idx);
+        UpdateStorageUI();
+
+    }
+    public bool CheckItemInStorage(InventoryItem item)
+    {
+        foreach (var itemStore in _StorageItems)
+        {
+            if (item.GetPotionType() == itemStore.GetPotionType())
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 

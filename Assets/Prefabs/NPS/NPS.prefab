@@ -457,10 +457,11 @@ MonoBehaviour:
   _nPSType: {fileID: 0}
   _nPSAllTypes: {fileID: 11400000, guid: f66417d2aeddfb241843dedb2471f8b5, type: 2}
   _animator: {fileID: 0}
-  _distanceToStop: 0.1
+  _distanceToStop: 0.2
   _skin: {fileID: 0}
   _skinSpawnPoint: {fileID: 8185941685840937230}
   _itemIconPosition: {fileID: 3566125179669159069}
+  _needItem: {fileID: 0}
   _nPSStates: 0
 --- !u!1 &7247484889740069231
 GameObject:
