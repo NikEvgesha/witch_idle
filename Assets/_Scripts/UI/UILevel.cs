@@ -23,6 +23,6 @@ public class UILevel : MonoBehaviour
     {
         _levelExpNow.text = experienceNow.ToString();
         _levelExpNeed.text = experienceNeed.ToString();
-        _levelSlider.value = (float)experienceNeed / experienceNow;
+        _levelSlider.value = (float)experienceNow / experienceNeed;
     }
 }
