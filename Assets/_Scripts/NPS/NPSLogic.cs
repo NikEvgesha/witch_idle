@@ -29,12 +29,6 @@ public class NPSLogic : MonoBehaviour
 
     [HideInInspector] public NPSStates _nPSStates = new NPSStates();
 
-    public void SetSettingsNPS(Transform pointMove, Transform pointLook, int LevelSells)
-    {
-        SetMovePoint(pointMove);
-        SetLookPoint(pointLook);
-        SetlevelSells(LevelSells);
-    }
     public void SetSettingsNPS(storefront storefront, int LevelSells = -1)
     {
         _storefront = storefront;
@@ -145,6 +139,7 @@ public class NPSLogic : MonoBehaviour
     }
     public void AddItem()
     {
+        _itemIcon.ChangeIcon();
         _haveItem = true;
     }
     public void StoreItemUpdate()
@@ -152,10 +147,15 @@ public class NPSLogic : MonoBehaviour
         if (Store.Init.CheckItemInStore(_needItem))
         {
             BuyItem();
+
         }
     }
     public void GoHome(Transform point)
     {
+        if (_haveItem)
+        {
+            Destroy(_itemIcon.gameObject);
+        }
         _nPSStates = NPSStates.WalkingHome;
         SetMovePoint(point);
     }

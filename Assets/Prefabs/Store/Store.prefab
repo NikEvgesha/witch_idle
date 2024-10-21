@@ -405,19 +405,15 @@ MonoBehaviour:
   - StorefrontPoint: {fileID: 5731631452238484575}
     LookPoint: {fileID: 5732235222619331410}
     Weight: 10
-    WeightStatic: 10
   - StorefrontPoint: {fileID: 9112705178498543107}
     LookPoint: {fileID: 3037156776594416142}
     Weight: 10
-    WeightStatic: 10
   - StorefrontPoint: {fileID: 0}
     LookPoint: {fileID: 0}
     Weight: 10
-    WeightStatic: 10
   - StorefrontPoint: {fileID: 0}
     LookPoint: {fileID: 0}
     Weight: 10
-    WeightStatic: 10
   _queuePoints:
   - {fileID: 3114619437119257473}
   - {fileID: 2070040137005444012}
@@ -432,6 +428,7 @@ MonoBehaviour:
   _sellZone: {fileID: 8393451363414570298}
   _storefrontCount: 0
   _queueCount: 0
+  _storefrontPointsDontUse: []
 --- !u!1001 &1436510426868210332
 PrefabInstance:
   m_ObjectHideFlags: 0

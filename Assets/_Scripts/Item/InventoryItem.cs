@@ -8,6 +8,8 @@ public class InventoryItem : ScriptableObject
     [SerializeField] private PotionTypes _potionType;
     [SerializeField] private PlantTypes _plantType;
     [SerializeField] private int _price;
+    [SerializeField] private int _experience;
+    [SerializeField] private int _levelUnlock = 0;
 
     public ItemIcon GetIcon()
     {
@@ -31,6 +33,14 @@ public class InventoryItem : ScriptableObject
     public int GetPrice()
     {
         return _price;
+    }
+    public int GetLevelUnlock()
+    {
+        return _levelUnlock;
+    }
+    public int GetExperience()
+    {
+        return _experience;
     }
 
 

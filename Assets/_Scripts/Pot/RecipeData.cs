@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "WitchScripts/RecipeData")]
 public class RecipeData : ScriptableObject
@@ -13,7 +11,8 @@ public class RecipeData : ScriptableObject
     [SerializeField] private RecipeState _status;
     [SerializeField] private Sprite _potionIcon;
     [SerializeField] private InventoryItem _potionItem;
-    
+    [SerializeField] private int _needLevelToUse;
+
 
     public string GetPotionName() { return _potionName; }
     public int GetCost() { return _cost;}
@@ -21,6 +20,7 @@ public class RecipeData : ScriptableObject
     public RecipeState GetState() { return _status; }
 
     public float GetCookTime() { return _cookTime;}
+    public int GetOpenLevel() { return _needLevelToUse; }
 
    /* public void GetIngredients(out List<PlantTypes> items)
     {

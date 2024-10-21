@@ -1890,6 +1890,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _money: 1050
+  _experience: 0
+  _level: 0
+  _levelSteps: {fileID: 11400000, guid: c2f4ca666ee24384ab50ae57fa9cca48, type: 2}
   money: 2222
   moneyCanvas: {fileID: 1315507733254144420}
   maxText: {fileID: 8162731596169256267}

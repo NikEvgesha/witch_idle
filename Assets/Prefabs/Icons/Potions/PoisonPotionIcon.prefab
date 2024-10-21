@@ -101,3 +101,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b57c412bb58c541a355fd85cab54d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _useImage: {fileID: 340828331755638090}
+  _coinImage: {fileID: 21300000, guid: 03667c797759538438e73dddfc7fb672, type: 3}

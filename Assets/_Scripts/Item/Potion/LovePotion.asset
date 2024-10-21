@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5bc8dffbbbd1ca4188674e151383ee7, type: 3}
-  m_Name: HealPotion
+  m_Name: LovePotion
   m_EditorClassIdentifier: 
-  _itemIcon: {fileID: -4402948435363229608, guid: c9b051c1cb804384eb30eb937f59b8d7, type: 3}
+  _itemIcon: {fileID: -4402948435363229608, guid: 4a8facbf4d807af42ba8252eeb24d9d1, type: 3}
   _itemType: 1
-  _potionType: 0
-  _plantType: 1
-  _price: 200
+  _potionType: 4
+  _plantType: 2
+  _price: 300
+  _experience: 500
+  _levelUnlock: 0

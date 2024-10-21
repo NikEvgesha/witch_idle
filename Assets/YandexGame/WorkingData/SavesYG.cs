@@ -15,6 +15,8 @@ namespace YG
         public int money = 1000;                       // Можно задать полям значения по умолчанию
         public string newPlayerName = "Hello!";
         public bool[] openLevels = new bool[3];
+        public int Experience = 0;
+        public int PlayerLevel = 0;
 
         // Ваши сохранения
         // Сохранения InteractionObject

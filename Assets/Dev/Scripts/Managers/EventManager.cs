@@ -37,6 +37,9 @@ public static class EventManager
 
 
     public static Action<int> MoneyChange;
+    public static Action<int,int> ExperienceChange;
+    public static Action<int> PlayerLevelChange;
+
     public static Func<GameData> GetWalletData;
     public static Action PlayerOnPlantArea;
     public static Action PlayerOffPlantArea;
