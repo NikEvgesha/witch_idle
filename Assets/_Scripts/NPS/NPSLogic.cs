@@ -29,21 +29,20 @@ public class NPSLogic : MonoBehaviour
 
     [HideInInspector] public NPSStates _nPSStates = new NPSStates();
 
-    public void SetSettingsNPS(storefront storefront, int LevelSells = -1)
+    public void SetSettingsNPS(storefront storefront)
     {
         _storefront = storefront;
         SetMovePoint(_storefront.StorefrontPoint);
         SetLookPoint(_storefront.LookPoint);
-        SetlevelSells(LevelSells);
         _nPSStates = NPSStates.WalkingToStore; 
-        StartSetting(LevelSells);
+        StartSetting();
         _needItem = _nPSType.SelectPotion();
         _itemIcon = Instantiate(_needItem.GetIcon(),_itemIconPosition);
         
     }
-    public void StartSetting(int LevelSells = -1)
+    public void StartSetting()
     {
-        _nPSType = _nPSAllTypes.GetRandomNPS(LevelSells);
+        _nPSType = _nPSAllTypes.GetRandomNPS();
         SetSkin();
     }
     private void SetSkin()
@@ -59,10 +58,6 @@ public class NPSLogic : MonoBehaviour
     public void SetLookPoint(Transform point)
     {
         _customerLookAt = point;
-    }
-    public void SetlevelSells(int level)
-    {
-
     }
     public InventoryItem GetInventoryItem()
     {
@@ -162,6 +157,10 @@ public class NPSLogic : MonoBehaviour
     public int GetMoney() 
     {
         return _needItem.GetPrice();
+    }
+    public int GetExp()
+    {
+        return _needItem.GetExperience();
     }
     public storefront GetStorefront()
     {

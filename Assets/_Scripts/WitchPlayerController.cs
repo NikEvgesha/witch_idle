@@ -31,7 +31,7 @@ public class WitchPlayerController : MonoBehaviour
         {
             _experience = value;
             CheckNextLevel();
-            EventManager.ExperienceChange(_experience, _levelSteps.GetExperience(_level));
+            EventManager.ExperienceChange(_experience, _levelSteps.GetExperience(_level),_level);
             YandexGame.savesData.Experience = _experience;
             // Функция изменения UI
             // Функция сохранения значения
@@ -52,7 +52,7 @@ public class WitchPlayerController : MonoBehaviour
         set
         {
             _level = value;
-            EventManager.PlayerLevelChange(_level);
+            //EventManager.PlayerLevelChange(_level);
             YandexGame.savesData.PlayerLevel = _level;
             // Функция изменения UI
             // Функция сохранения значения

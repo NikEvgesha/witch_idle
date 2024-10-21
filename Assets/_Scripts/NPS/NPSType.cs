@@ -1,12 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct Potions
-{
-    public InventoryItem Potion;
-    public int MinLevelUse;
-}
 [CreateAssetMenu(menuName = "WitchScripts/NPS/Type")]
 public class NPSType : ScriptableObject
 {
@@ -22,33 +16,47 @@ public class NPSType : ScriptableObject
     [SerializeField] private string _name;
     [SerializeField] private GameObject _skin;
     [SerializeField] private InventoryItem _potion;
-    [SerializeField] private List<Potions> _potions = new List<Potions>();
+    [SerializeField] private List<InventoryItem> _potions = new List<InventoryItem>();
+    private int _minLevel = int.MaxValue;
+    private bool _minLevelInit;
     
-    public InventoryItem SelectPotion(int level = -1)
+    public InventoryItem SelectPotion()
     {
-        List<Potions> potions = new List<Potions>();
-        if (level == -1)
+        int level = WitchPlayerController.Instanse.PlayerLevel;
+        List<InventoryItem> potions = new List<InventoryItem>();
+
+        foreach (InventoryItem potion in _potions)
         {
-            potions = _potions;
-        }
-        else
-        {
-            foreach (Potions potion in _potions)
+            if (potion.GetLevelUnlock() <= level)
             {
-                if (potion.MinLevelUse <= level)
-                {
-                    potions.Add(potion);
-                }
+                potions.Add(potion);
             }
         }
+
         int random = 0;
         random = Random.Range(0, potions.Count);
-        _potion = potions[random].Potion;
+        _potion = potions[random];
         return _potion;
     }
     public GameObject GetSkin() 
     { 
         return _skin; 
+    }
+    public int GetMinLevel()
+    {
+        if (_minLevelInit)
+        {
+            return _minLevel;
+        }
+        foreach (InventoryItem potion in _potions)
+        {
+            if(_minLevel > potion.GetLevelUnlock())
+            {
+                _minLevel = potion.GetLevelUnlock();
+            }
+        }
+        _minLevelInit = true;
+        return _minLevel;
     }
 
 

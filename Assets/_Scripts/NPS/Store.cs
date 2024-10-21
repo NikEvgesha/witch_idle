@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 [System.Serializable]
 public struct storefront
@@ -20,7 +19,6 @@ public class Store : MonoBehaviour
     [SerializeField] private int _nPSInQueueCount = 0;
     [SerializeField] private GameObject _storeObject;
     [SerializeField] private SellZone _sellZone;
-    private int _levelSells = 1;
     [SerializeField] private int _storefrontCount;
     [SerializeField] private int _queueCount;
     private List<InventoryItem> _itemsInQueue = new List<InventoryItem>();
@@ -57,7 +55,7 @@ public class Store : MonoBehaviour
     public void New—ustomers(NPSLogic customer)
     {
         _nPSInStorefront.Add(customer);
-        customer.SetSettingsNPS(GetStorefrontPoint(customer), _levelSells);
+        customer.SetSettingsNPS(GetStorefrontPoint(customer));
         //_nPSInStorefrontCount++;
     }
     private storefront GetStorefrontPoint(NPSLogic customer = null)
@@ -103,10 +101,6 @@ public class Store : MonoBehaviour
     {
         customer.SetMovePoint(GetQueuePoint(customer));
         customer.SetLookPoint(GetLookPoint(customer));
-    }
-    private void NewLevelSells(int level)
-    {
-        _levelSells = level;
     }
     private NPSLogic RemoveNPSOfQueue(NPSLogic customer = null)
     {
@@ -169,9 +163,11 @@ public class Store : MonoBehaviour
     {
         if (!CheckQueue()) return;
         //ÔÓ‰‡Ê‡
+        NPSLogic removeCustomers = RemoveNPSOfQueue();
+        WitchPlayerController.Instanse.Money += removeCustomers.GetMoney();
+        WitchPlayerController.Instanse.Experience += removeCustomers.GetExp();
 
-        WitchPlayerController.Instanse.Money += RemoveNPSOfQueue().GetMoney();
-        
+
     }
     public bool CheckQueue()
     {

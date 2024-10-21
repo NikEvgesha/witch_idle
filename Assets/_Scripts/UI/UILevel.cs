@@ -9,6 +9,8 @@ public class UILevel : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _levelExpNeed;
     [SerializeField]
+    private TextMeshProUGUI _levelNum;
+    [SerializeField]
     private Slider _levelSlider;
     private void OnEnable()
     {
@@ -19,10 +21,11 @@ public class UILevel : MonoBehaviour
     {
         EventManager.ExperienceChange -= UpdateUI;
     }
-    private void UpdateUI(int experienceNow,int experienceNeed)
+    private void UpdateUI(int experienceNow,int experienceNeed,int level)
     {
         _levelExpNow.text = experienceNow.ToString();
         _levelExpNeed.text = experienceNeed.ToString();
+        _levelNum.text = level.ToString();
         _levelSlider.value = (float)experienceNow / experienceNeed;
     }
 }

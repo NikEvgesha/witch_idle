@@ -13,13 +13,8 @@ MonoBehaviour:
   m_Name: NPS All Types
   m_EditorClassIdentifier: 
   _nPSTypes:
-  - NPSType: {fileID: 11400000, guid: dad93d4a2357a7949af5fe96352732d9, type: 2}
-    MinLevelUse: 0
-  - NPSType: {fileID: 11400000, guid: e3b63c510cb74be48af35bbed93a31c3, type: 2}
-    MinLevelUse: 0
-  - NPSType: {fileID: 11400000, guid: 36ceab734ba0a4643aebdab889d03533, type: 2}
-    MinLevelUse: 0
-  - NPSType: {fileID: 11400000, guid: aa561f20e74902343825a157a0a88040, type: 2}
-    MinLevelUse: 2
-  - NPSType: {fileID: 11400000, guid: 041122660eb02544b80643d9d5358c4c, type: 2}
-    MinLevelUse: 2
+  - {fileID: 11400000, guid: aa561f20e74902343825a157a0a88040, type: 2}
+  - {fileID: 11400000, guid: 041122660eb02544b80643d9d5358c4c, type: 2}
+  - {fileID: 11400000, guid: 36ceab734ba0a4643aebdab889d03533, type: 2}
+  - {fileID: 11400000, guid: dad93d4a2357a7949af5fe96352732d9, type: 2}
+  - {fileID: 11400000, guid: e3b63c510cb74be48af35bbed93a31c3, type: 2}

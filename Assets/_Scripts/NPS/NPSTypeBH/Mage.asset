@@ -16,9 +16,6 @@ MonoBehaviour:
   _skin: {fileID: 6455730400154909185, guid: 19c2cc6d0461a1b4bbb67ee97ebfcbcf, type: 3}
   _potion: {fileID: 0}
   _potions:
-  - Potion: {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}
-    MinLevelUse: 0
-  - Potion: {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
-    MinLevelUse: 0
-  - Potion: {fileID: 11400000, guid: e66c6785dbb830e428b466a748448172, type: 2}
-    MinLevelUse: 0
+  - {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
+  - {fileID: 11400000, guid: 9b2dfc67d88683f49b6cbcd5e3a8fbbe, type: 2}
+  - {fileID: 11400000, guid: 5029939fa9ee8c340aaa2a36cb340fcb, type: 2}

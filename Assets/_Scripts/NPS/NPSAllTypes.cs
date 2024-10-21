@@ -1,38 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct NPSTypes
-{
-    public NPSType NPSType;
-    public int MinLevelUse;
-}
-
 [CreateAssetMenu(menuName = "WitchScripts/NPS/ListTypes")]
-
 public class NPSAllTypes : ScriptableObject
 {
-    [SerializeField] List<NPSTypes> _nPSTypes = new List<NPSTypes>();
+    [SerializeField] List<NPSType> _nPSTypes = new List<NPSType>();
 
-    public NPSType GetRandomNPS(int level = -1)
+    public NPSType GetRandomNPS()
     {
-        List<NPSTypes> useTypes = new List<NPSTypes>();
-        if (level == -1)
+        int level = WitchPlayerController.Instanse.PlayerLevel;
+        List<NPSType> useTypes = new List<NPSType>();
+        
+        foreach (NPSType nPSType in _nPSTypes)
         {
-            useTypes = _nPSTypes;
-        }
-        else
-        {
-            foreach (NPSTypes nPSType in _nPSTypes)
+            if (nPSType.GetMinLevel() <= level)
             {
-                if (nPSType.MinLevelUse <= level)
-                {
-                    useTypes.Add(nPSType);
-                }
+                useTypes.Add(nPSType);
             }
         }
+        
         int random = 0;
         random = Random.Range(0, useTypes.Count);
-        return useTypes[random].NPSType;
+        return useTypes[random];
     }
 }
