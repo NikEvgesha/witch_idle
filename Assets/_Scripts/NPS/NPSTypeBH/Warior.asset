@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Warior
   m_EditorClassIdentifier: 
   _name: Warior
-  _skin: {fileID: 6455730400154909185, guid: 867fd703ca49970479b75d0c2b1eafa1, type: 3}
+  _skin: {fileID: 1125088666059422, guid: 151e871e72342be43b6e27fdca4d17a5, type: 3}
   _potion: {fileID: 0}
   _potions:
   - {fileID: 11400000, guid: e66c6785dbb830e428b466a748448172, type: 2}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Resident
   m_EditorClassIdentifier: 
   _name: Resident
-  _skin: {fileID: 6455730400154909185, guid: 7697221c06af7d74ea84ca400ff28784, type: 3}
-  _potion: {fileID: 0}
+  _skin: {fileID: 1279540086164470, guid: 1ce018254c84fda46ba5da21046e614e, type: 3}
+  _potion: {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}
   _potions:
   - {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}
   - {fileID: 11400000, guid: e66c6785dbb830e428b466a748448172, type: 2}

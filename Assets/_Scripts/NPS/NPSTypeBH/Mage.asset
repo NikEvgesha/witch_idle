@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Mage
   m_EditorClassIdentifier: 
   _name: Mage
-  _skin: {fileID: 6455730400154909185, guid: 19c2cc6d0461a1b4bbb67ee97ebfcbcf, type: 3}
-  _potion: {fileID: 0}
+  _skin: {fileID: 1125088666059422, guid: 252a512dd98766344a3e98962ce240d7, type: 3}
+  _potion: {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
   _potions:
   - {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
   - {fileID: 11400000, guid: 9b2dfc67d88683f49b6cbcd5e3a8fbbe, type: 2}

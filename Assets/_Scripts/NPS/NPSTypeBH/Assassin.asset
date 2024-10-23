@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Assassin
   m_EditorClassIdentifier: 
   _name: Assassin
-  _skin: {fileID: 6455730400154909185, guid: 7b061682ade0cb9469c8b6e01383f373, type: 3}
-  _potion: {fileID: 0}
+  _skin: {fileID: 1209543301476556, guid: 953667ada6702494d8d9c1a11b7c9142, type: 3}
+  _potion: {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
   _potions:
   - {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
   - {fileID: 11400000, guid: e66c6785dbb830e428b466a748448172, type: 2}

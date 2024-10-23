@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0f838a8b744cb429b53c323d6ab44c, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: 
-  _name: Archer
-  _skin: {fileID: 6455730400154909185, guid: 867fd703ca49970479b75d0c2b1eafa1, type: 3}
-  _potion: {fileID: 0}
+  _name: Druid
+  _skin: {fileID: 1832220664399794, guid: 180a5d9ad208141468642642ab23e0ad, type: 3}
+  _potion: {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
   _potions:
   - {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
   - {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}

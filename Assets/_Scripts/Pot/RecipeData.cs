@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "WitchScripts/RecipeData")]
-public class RecipeData : ScriptableObject
+public class RecipeData : ScriptableObject, IComparable
 {
     [SerializeField] private string _potionName;
     [SerializeField] private float _cookTime;
@@ -55,4 +56,14 @@ public class RecipeData : ScriptableObject
         }
         return items;
     }
+
+    public int CompareTo(object? o)
+    {
+        if (o is RecipeData obj) { 
+            int comp = _needLevelToUse.CompareTo(obj._needLevelToUse);
+            if (comp != 0) return comp;
+            else return _potionName.CompareTo(obj._potionName);
+        } 
+        else throw new ArgumentException("Некорректное значение параметра");
+    } 
 }

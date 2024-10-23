@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RecipeManager : MonoBehaviour
@@ -71,8 +72,11 @@ public class RecipeManager : MonoBehaviour
 
     private void LoadRecipes()
     {
+        _recipes.Sort();
+
         for (int i = 0; i < _recipes.Count; i++)
         {
+            Debug.Log(_recipes[i].GetPotionName());
             var recipeSlot = Instantiate(_recipePrefab, _UIRecipeBook.transform.position, Quaternion.identity);
             recipeSlot.transform.SetParent(_UIRecipeBook.transform, false);
             recipeSlot.InitSlot(_recipes[i]);
