@@ -17,8 +17,6 @@ public class InteractionObject : MonoBehaviour
     [SerializeField]
     private WorkStruct _workStruct;
     [SerializeField]
-    private UpdateStruct _updateStruct;
-    [SerializeField]
     private LockStruct _lockStruct;
     [SerializeField]
     private float _SpeedFill = 1;
@@ -228,7 +226,6 @@ public class InteractionObject : MonoBehaviour
     {
         _price = 0;
         _purchasedState = PurchasedState.Purchased;
-        _updateStruct.UIObject.SetActive(false);
         _workStruct.UIObject.SetActive(true);
         _isChangeMoney = false;
         _buyStruct._buyArea.gameObject.SetActive(false);
@@ -241,7 +238,6 @@ public class InteractionObject : MonoBehaviour
     {
 
         _price = _firstPrice;
-        _updateStruct.UIObject.SetActive(false);
         _workStruct.UIObject.SetActive(false);
         _buyStruct._buyArea.gameObject.SetActive(true);
         _buyStruct.UIObject.gameObject.SetActive(true);
@@ -251,7 +247,6 @@ public class InteractionObject : MonoBehaviour
     }
     private void ObjectLocked()
     {
-        _updateStruct.UIObject.SetActive(false);
         _workStruct.UIObject.SetActive(false);
         _buyStruct._buyArea.gameObject.SetActive(false);
         _buyStruct.UIObject.gameObject.SetActive(false);

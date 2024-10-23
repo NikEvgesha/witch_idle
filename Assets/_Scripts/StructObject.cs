@@ -24,13 +24,6 @@ public struct BuyStruct
 public struct WorkStruct
 {
     public GameObject UIObject;
-    public Image ProductionTimeImage;
-}
-[Serializable]
-public struct UpdateStruct
-{
-    public GameObject UIObject;
-    public CheckPlayer UpgradeArea;
 }
 [Serializable]
 public struct LockStruct
