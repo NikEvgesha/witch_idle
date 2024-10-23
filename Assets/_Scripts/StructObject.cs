@@ -32,3 +32,9 @@ public struct UpdateStruct
     public GameObject UIObject;
     public CheckPlayer UpgradeArea;
 }
+[Serializable]
+public struct LockStruct
+{
+    public GameObject UIObject;
+    public TextMeshProUGUI LevelText;
+}

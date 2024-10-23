@@ -52,7 +52,7 @@ public class WitchPlayerController : MonoBehaviour
         set
         {
             _level = value;
-            //EventManager.PlayerLevelChange(_level);
+            EventManager.PlayerLevelChange(_level);
             YandexGame.savesData.PlayerLevel = _level;
             // Функция изменения UI
             // Функция сохранения значения

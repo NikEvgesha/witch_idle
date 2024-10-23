@@ -33,7 +33,8 @@ using UnityEngine;
     {
         Purchased,
         Unpurchased,
-    }
+        Locked,
+}
 
     public enum RecipeState
 {

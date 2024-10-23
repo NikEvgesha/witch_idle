@@ -19,7 +19,7 @@ public class Recipe : MonoBehaviour
     }
     private void OnDisable()
     {
-        EventManager.PlayerLevelChange -= CheckRecipeLock;
+        //EventManager.PlayerLevelChange -= CheckRecipeLock;
     }
     public void InitSlot(RecipeData recipeData)
     {

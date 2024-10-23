@@ -1,7 +1,6 @@
 using Sirenix.Utilities;
 using System;
 using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
 using YG;
 
@@ -20,9 +19,14 @@ public class InteractionObject : MonoBehaviour
     [SerializeField]
     private UpdateStruct _updateStruct;
     [SerializeField]
+    private LockStruct _lockStruct;
+    [SerializeField]
     private float _SpeedFill = 1;
     [SerializeField]
     private string _stringGUID;
+    [SerializeField]
+    private int _levelToUnlock;
+
     private int _priceIn;
     private int _price
     {
@@ -41,6 +45,7 @@ public class InteractionObject : MonoBehaviour
     public Action ChangeMoney;
 
     private int _saveIndex;
+    private bool _unlock = true;
 
     protected void OnEnable()
     {
@@ -50,9 +55,22 @@ public class InteractionObject : MonoBehaviour
         }
 
         //EventManager.ObjectPurshuased += ObjectPurchased;
-
         _buyStruct._buyArea.OnTrigger += TryBuy;
+        EventManager.PlayerLevelChange += CheckLock;
         
+    }
+    private void CheckLock()
+    {
+        _lockStruct.LevelText.text = _levelToUnlock.ToString();
+        _unlock = _levelToUnlock <= WitchPlayerController.Instanse.PlayerLevel;
+        _purchasedState = _unlock ? PurchasedState.Unpurchased : PurchasedState.Locked;
+    }
+    private void CheckLock(int level)
+    {
+        if (_purchasedState != PurchasedState.Locked) { return; }
+        _unlock = _levelToUnlock <= level;
+        _purchasedState = _unlock ? PurchasedState.Unpurchased : PurchasedState.Locked;
+        CheckState();
     }
     private void OnDisable()
     {
@@ -70,6 +88,7 @@ public class InteractionObject : MonoBehaviour
         if (!TryLoad(YandexGame.savesData.IOName))
         {
             CreateYGSaveSistem(ref YandexGame.savesData.IOName, ref YandexGame.savesData.IOPrice,ref YandexGame.savesData.IOBuild);
+            CheckLock();
             CheckState();
             SaveIO();
         }
@@ -83,6 +102,11 @@ public class InteractionObject : MonoBehaviour
     {
         switch (_purchasedState)
         {
+            case PurchasedState.Locked:
+                {
+                    ObjectLocked();
+                    break;
+                }
             case PurchasedState.Unpurchased:
                 {
                     ObjectUnPurchased();
@@ -153,6 +177,7 @@ public class InteractionObject : MonoBehaviour
             ObjectPurchased();
             return;
         }
+        CheckLock();
         _price = YandexGame.savesData.IOPrice[_saveIndex];
     }
     private void SaveIO()
@@ -208,6 +233,7 @@ public class InteractionObject : MonoBehaviour
         _isChangeMoney = false;
         _buyStruct._buyArea.gameObject.SetActive(false);
         _buyStruct.UIObject.gameObject.SetActive(false);
+        _lockStruct.UIObject.gameObject.SetActive(false);
         SaveIO();
         YandexGame.SaveProgress();
     }
@@ -219,8 +245,17 @@ public class InteractionObject : MonoBehaviour
         _workStruct.UIObject.SetActive(false);
         _buyStruct._buyArea.gameObject.SetActive(true);
         _buyStruct.UIObject.gameObject.SetActive(true);
+        _lockStruct.UIObject.gameObject.SetActive(false);
         SaveIO();
         YandexGame.SaveProgress();
+    }
+    private void ObjectLocked()
+    {
+        _updateStruct.UIObject.SetActive(false);
+        _workStruct.UIObject.SetActive(false);
+        _buyStruct._buyArea.gameObject.SetActive(false);
+        _buyStruct.UIObject.gameObject.SetActive(false);
+        _lockStruct.UIObject.gameObject.SetActive(true);
     }
     public string GetName()
     {
