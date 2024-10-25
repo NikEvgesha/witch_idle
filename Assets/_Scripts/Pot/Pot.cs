@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,9 +13,9 @@ public class Pot : InteractionObject
     [SerializeField] private float _timeDecreaseRate;
     [SerializeField] private GrowthTimer _cookingTimer;
     [SerializeField] private RecipeInfoUI _recipeInfoUI;
-    [SerializeField] private ItemStateProdaction _itemStateInfoUI;
+    //[SerializeField] private ItemStateProdaction _itemStateInfoUI;
     private RecipeData _currentRecipe;
-    private List<PlantTypes> _requiredIngredients;
+    private List<InventoryItem> _requiredIngredients;
     private bool _inTrigger;
 
     private new void OnEnable()
@@ -22,12 +23,14 @@ public class Pot : InteractionObject
         base.OnEnable();
         _potArea.OnTrigger += TryCollect;
         _cookingTimer.TimerFinish += FinishCooking;
+        _recipeInfoUI.DropButtonClick += DropRecipe;
     }
 
     private void OnDisable()
     {
         _potArea.OnTrigger -= TryCollect;
         _cookingTimer.TimerFinish -= FinishCooking;
+        _recipeInfoUI.DropButtonClick -= DropRecipe;
     }
 
     private void TryCollect(bool inTrigger = true)
@@ -60,12 +63,12 @@ public class Pot : InteractionObject
                     {
                         if (!CheckWater())
                         {
-                            RecipeManager.Instance.RequestRecipe(this);
+                            _recipeInfoUI.ShowDropButton();
                         }
                     }
                     else
                     {
-                        RecipeManager.Instance.FinishRequestRecipe(this);
+                        _recipeInfoUI.HideDropButton();
                     }
 
                     break;
@@ -81,12 +84,12 @@ public class Pot : InteractionObject
                             StartCooking();
                         } else
                         {
-                            RecipeManager.Instance.RequestRecipe(this);
+                            _recipeInfoUI.ShowDropButton();
                         }
 
                     } else
                     {
-                        RecipeManager.Instance.FinishRequestRecipe(this);
+                        _recipeInfoUI.HideDropButton();
                     }
                     break;
                 }
@@ -109,7 +112,7 @@ public class Pot : InteractionObject
             return;
         }
 
-        _itemStateInfoUI.HideCookingItem();
+        _recipeInfoUI.HideCookingItem();
         _potState = PotState.Empty;
         CheckState();
         //SaveSeedBed();
@@ -125,8 +128,9 @@ public class Pot : InteractionObject
 
     private void SetRecipeUI()
     {
-        _requiredIngredients = _currentRecipe.GetIngredientsTypes();
+        _requiredIngredients = _currentRecipe.GetIngredients();
         _recipeInfoUI.SetRecipe(_currentRecipe);
+        _recipeInfoUI.ShowCookingItem(_currentRecipe.GetItem());
     }
 
     private void CheckIngredients(RecipeData recipeData)
@@ -137,10 +141,10 @@ public class Pot : InteractionObject
         foreach (var item in inventoryItems)
         {
             InventoryItem item_tmp = item;
-            var type = item.GetPlantType();
-            if (type != PlantTypes.None && _requiredIngredients.Contains(type))
+            //var type = item.GetPlantType();
+            if (_requiredIngredients.Contains(item_tmp))
             {
-                _requiredIngredients.Remove(type);
+                _requiredIngredients.Remove(item_tmp);
                 addedItems.Add(item_tmp);
                 Inventory.Instanse.RemoveItem(item_tmp);
             }
@@ -149,7 +153,6 @@ public class Pot : InteractionObject
         {
             _recipeInfoUI.UpdateIngredients(addedItems);
         }
-        
     }
 
     private void StartCooking() {
@@ -157,7 +160,7 @@ public class Pot : InteractionObject
         RecipeManager.Instance.FinishRequestRecipe(this);
         _potState = PotState.Cooking;
         _recipeInfoUI.HideIngredients();
-        _itemStateInfoUI.ShowCookingItem(_currentRecipe.GetItem());
+        //_itemStateInfoUI.ShowCookingItem(_currentRecipe.GetItem());
         _potArea.gameObject.SetActive(false);
         _cookingTimer.gameObject.SetActive(true);
         _cookingTimer.StartGrowthTimer(_currentRecipe.GetCookTime());
@@ -190,10 +193,23 @@ public class Pot : InteractionObject
         {
             _potState = PotState.IngredientRequire;
             SetRecipeUI();
+            CheckState();
         }
         return waterAdded;
     }
 
+
+    public void DropRecipe()
+    {
+        if (_potState == PotState.IngredientRequire)
+        {
+            _recipeInfoUI.HideCookingItem();
+        }
+        _recipeInfoUI.HideIngredients();
+        _potState = PotState.Empty;
+        _currentRecipe = null;
+        CheckState();
+    }
 
    
 

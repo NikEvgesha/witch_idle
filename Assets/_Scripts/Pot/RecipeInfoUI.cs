@@ -1,19 +1,37 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RecipeInfoUI : MonoBehaviour
 {
     [SerializeField] private GameObject _ingredients;
     [SerializeField] private IngredientSlot _ingredientPrefab;
+    [SerializeField] private PotRecipeSlot _recipePrefab;
     [SerializeField] private InventoryItem _waterItem;
+    [SerializeField] private Button _dropButton;
+    [SerializeField] private Transform _recipe;
+    [SerializeField] private GrowthTimer _cookTimer;
     private List<InventoryItem> _requiredIngredients;
     private List<IngredientSlot> _UIitems;
+    private PotRecipeSlot _currentItem;
+    
+
+    public Action DropButtonClick;
 
     private void Start()
     {
         _UIitems = new List<IngredientSlot>();
+        //_pot = transform.parent.parent.GetComponent<Pot>();
     }
+
+    private void OnEnable()
+    {
+        _cookTimer.TimerFinish += onCookingComplete;
+    }
+
     public void SetRecipe(RecipeData recipe) {
+
         DestroySlots();
         _UIitems = new List<IngredientSlot>();
         _requiredIngredients = recipe.GetIngredients();
@@ -86,6 +104,38 @@ public class RecipeInfoUI : MonoBehaviour
         }
     }
 
+    public void ShowDropButton()
+    {
+        _dropButton.gameObject.SetActive(true);
+    }
+
+    public void HideDropButton()
+    {
+        _dropButton.gameObject.SetActive(false);
+    }
+
+
+
+    public void onDropButtonClick()
+    {
+        DropButtonClick?.Invoke();
+    }
+
+    public void HideCookingItem()
+    {
+        _currentItem.SetProcessIcon(true);
+        Destroy(_currentItem.gameObject);
+    }
+    public void ShowCookingItem(InventoryItem item)
+    {
+        _currentItem = Instantiate(_recipePrefab, _recipe);
+        _currentItem.InitSlot(item);
+    }
+
+    private void onCookingComplete()
+    {
+        _currentItem.SetProcessIcon(false);
+    }
 
 
 }

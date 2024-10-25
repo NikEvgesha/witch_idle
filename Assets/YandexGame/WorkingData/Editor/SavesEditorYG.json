@@ -1,9 +1,9 @@
 {
-    "idSave": 2343,
+    "idSave": 3256,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
-    "money": 200,
+    "money": 100,
     "newPlayerName": "Hello!",
     "openLevels": [
         false,
@@ -11,45 +11,24 @@
         false
     ],
     "Experience": 0,
-    "PlayerLevel": 1,
+    "PlayerLevel": 0,
     "IOName": [
-        "Seedbed_Pumpkin (1)",
-        "Pot (3)",
-        "Pot (2)",
-        "Pot (1)",
-        "Seedbed_Mushroom (1)",
-        "Pot",
+        "Seedbed_Mushroom",
         "Seedbed_Pumpkin",
-        "Seedbed_Mushroom"
+        "Pot"
     ],
     "IOBuild": [
-        false,
         true,
-        false,
-        false,
-        false,
-        false,
         true,
         true
     ],
     "IOPrice": [
         0,
         0,
-        700,
-        0,
-        100,
-        0,
-        0,
         0
     ],
     "SBState": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         2,
-        2
+        1
     ]
 }

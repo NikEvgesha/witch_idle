@@ -21,4 +21,4 @@ MonoBehaviour:
   _status: 0
   _potionIcon: {fileID: 21300000, guid: 7505e7c6c292328429095ab7c7667e5e, type: 3}
   _potionItem: {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}
-  _needLevelToUse: 1
+  _needLevelToUse: 0

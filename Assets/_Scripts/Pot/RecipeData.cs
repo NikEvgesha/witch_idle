@@ -37,6 +37,16 @@ public class RecipeData : ScriptableObject, IComparable
         return _potionItem;
     }
 
+    public List<InventoryItem> GetIngredientList()
+    {
+        List<InventoryItem> list = new List<InventoryItem>();
+        foreach (InventoryItem item in _ingredients)
+        {
+            list.Add(item);
+        }
+        return list;
+    }
+
     public List<PlantTypes> GetIngredientsTypes()
     {
         var items = new List<PlantTypes>();
