@@ -10,7 +10,7 @@ public class WellTimer : MonoBehaviour
     [SerializeField] private Image _fillImage;
     private float _timeLeft;
     private float _timeFull;
-    private bool _isRunning;
+    //private bool _isRunning;
 
 
     public void StartWellTimer(int time/*, float speed*/)
@@ -24,7 +24,7 @@ public class WellTimer : MonoBehaviour
 
     private IEnumerator StartTimer()
     {
-        _isRunning = true;
+        //_isRunning = true;
         while (_timeLeft > 0)
         {
             _timeLeft -= Time.deltaTime;
@@ -33,7 +33,7 @@ public class WellTimer : MonoBehaviour
             UpdateFilling();
             yield return null;
         }
-        _isRunning = false;
+        //_isRunning = false;
         TimerFinish?.Invoke();
     }
 

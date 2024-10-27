@@ -215,7 +215,7 @@ public class InteractionObject : MonoBehaviour
     {
         if (_buyStruct.MoneyText != null)
         {
-            _buyStruct.MoneyText.text = AbbrevationUtility.AbbreviateNumber(price);
+            _buyStruct.MoneyText.text = price.ToString(); // Изменил, Нужно проверить DOTHIS
         }
         if (_buyStruct.BuyTimeImage != null)
         {

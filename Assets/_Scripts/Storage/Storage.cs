@@ -8,8 +8,8 @@ public class Storage : MonoBehaviour
     [SerializeField] private StorageGrid _StorageGrid;
     [SerializeField] private StorageGrid _InventoryGrid;
     [SerializeField] private Canvas _Canvas;
-    private bool _inUnloadAreaTrigger = false;
-    private bool _inInteractionAreaTrigger = false;
+    //private bool _inUnloadAreaTrigger = false;
+    //private bool _inInteractionAreaTrigger = false;
     private List<InventoryItem> _StorageItems;
     private List<InventoryItem> _inventoryItems;
     private int _StorageCapacity = 25;
@@ -41,7 +41,7 @@ public class Storage : MonoBehaviour
 
     private void onInteractionAreaEnter(bool inTrigger = true)
     {
-        _inInteractionAreaTrigger = inTrigger;
+        //_inInteractionAreaTrigger = inTrigger;
         if (inTrigger)
         {
             foreach (Transform child in _InventoryGrid.transform)

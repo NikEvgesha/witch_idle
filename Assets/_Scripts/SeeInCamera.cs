@@ -53,7 +53,7 @@ public class SeeInCamera : MonoBehaviour
                 testV = Vector3.zero;
                 break;
             case 8:
-                testV = Vector3.fwd;
+                testV = Vector3.forward;
                 break;
             case 9:
                 testV = Vector3.negativeInfinity;

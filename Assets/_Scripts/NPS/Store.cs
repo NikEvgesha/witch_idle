@@ -15,7 +15,7 @@ public class Store : MonoBehaviour
     [SerializeField] private List<Transform> _queuePoints = new List<Transform>();
     [SerializeField] private List<NPSLogic> _nPSInStorefront;
     [SerializeField] private List<NPSLogic> _nPSInQueue;
-    [SerializeField] private int _nPSInStorefrontCount = 0;
+    //[SerializeField] private int _nPSInStorefrontCount = 0;
     [SerializeField] private int _nPSInQueueCount = 0;
     [SerializeField] private GameObject _storeObject;
     [SerializeField] private SellZone _sellZone;

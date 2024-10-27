@@ -1,5 +1,5 @@
 {
-    "idSave": 3256,
+    "idSave": 3325,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -13,22 +13,39 @@
     "Experience": 0,
     "PlayerLevel": 0,
     "IOName": [
-        "Seedbed_Mushroom",
+        "Seedbed_Pumpkin (1)",
         "Seedbed_Pumpkin",
+        "Seedbed_Mushroom (1)",
+        "Seedbed_Mushroom",
+        "Pot (3)",
+        "Pot (2)",
+        "Pot (1)",
         "Pot"
     ],
     "IOBuild": [
+        false,
+        true,
+        false,
         true,
         true,
-        true
+        false,
+        false,
+        false
     ],
     "IOPrice": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0
     ],
     "SBState": [
+        0,
         2,
-        1
+        0,
+        2
     ]
 }
