@@ -7359,6 +7359,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1628865854 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 863640327379672615, guid: 0325d41014aee0940b9812627923bbf5, type: 3}
+  m_PrefabInstance: {fileID: 1026699738840585913}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ec790d7fc4d2241ab4176f4c1dbf30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1637498360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8725,6 +8736,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1870159475334496741, guid: 0325d41014aee0940b9812627923bbf5, type: 3}
+      propertyPath: _spawnNPS.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870159475334496741, guid: 0325d41014aee0940b9812627923bbf5, type: 3}
+      propertyPath: _spawnNPS.Array.data[0]
+      value: 
+      objectReference: {fileID: 1628865854}
     - target: {fileID: 3272441344582976547, guid: 0325d41014aee0940b9812627923bbf5, type: 3}
       propertyPath: m_Name
       value: Scripts
@@ -8769,7 +8788,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2474017790419042053, guid: 0325d41014aee0940b9812627923bbf5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

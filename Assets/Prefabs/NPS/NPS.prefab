@@ -156,6 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6671ab66ee2ffd94b8b074b0a3749245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 0}
+  testVector: 0
+  Vector3Test: {x: 0, y: 0, z: 0}
 --- !u!1 &3799469652878103990
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +336,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2291261274329207061}
-  - component: {fileID: 6884082483288197962}
   - component: {fileID: 8276561626415378245}
   - component: {fileID: 3343256117225227428}
   - component: {fileID: 8511823998783810152}
@@ -362,42 +364,6 @@ Transform:
   - {fileID: 8185941685840937230}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6884082483288197962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6433896693888221175}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 166c7fba029064811bfd0b545baaa186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshAgent: {fileID: 8276561626415378245}
-  customerMachine: {fileID: 0}
-  state: 0
-  animator: {fileID: 0}
-  moneyPrefab: {fileID: 5361279836584693406, guid: aee4d085d23367246bb242227e71c6ec, type: 3}
-  dumbells:
-  - {fileID: 0}
-  - {fileID: 0}
-  inclineDumbells:
-  - {fileID: 0}
-  - {fileID: 0}
-  benchBar: {fileID: 0}
-  waterTowelUI:
-    canvas: {fileID: 7605921500607848685}
-    towelObject: {fileID: 430478126921787768}
-    waterObject: {fileID: 5959434853761452770}
-    snackObject: {fileID: 3799469652878103990}
-    machineImage: {fileID: 7291700350305452973}
-  customerNeed: 0
-  workoutOverPosition: {x: 0, y: 0, z: 0}
-  renderer: {fileID: 0}
-  waterAnimation: {fileID: 0}
-  towelAnimation: {fileID: 0}
-  deadLiftBar: {fileID: 0}
 --- !u!195 &8276561626415378245
 NavMeshAgent:
   m_ObjectHideFlags: 0

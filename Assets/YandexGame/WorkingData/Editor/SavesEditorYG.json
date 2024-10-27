@@ -1,17 +1,17 @@
 {
-    "idSave": 3372,
+    "idSave": 3384,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
-    "money": 1100,
+    "money": 1000,
     "newPlayerName": "Hello!",
     "openLevels": [
         false,
         true,
         false
     ],
-    "Experience": 50,
-    "PlayerLevel": 2,
+    "Experience": 0,
+    "PlayerLevel": 0,
     "IOName": [
         "Seedbed_Pumpkin (1)",
         "Seedbed_Pumpkin",
@@ -26,26 +26,26 @@
         false,
         false,
         false,
-        true,
-        true,
-        true,
+        false,
+        false,
+        false,
         false,
         false
     ],
     "IOPrice": [
+        0,
         100,
+        0,
         100,
-        100,
+        700,
         0,
         0,
-        0,
-        0,
-        700
+        0
     ],
     "SBState": [
         0,
         0,
         0,
-        2
+        0
     ]
 }

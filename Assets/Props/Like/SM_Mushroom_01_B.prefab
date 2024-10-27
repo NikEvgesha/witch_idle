@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8896886796343035561}
   - component: {fileID: 5537119606779201804}
   - component: {fileID: 7724583464023637446}
-  - component: {fileID: 3263234733551568406}
   m_Layer: 0
   m_Name: SM_Mushroom_01_B
   m_TagString: Untagged
@@ -84,18 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3263234733551568406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8085025434314710035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f71c2f0bbf444588a84da3eda4d6ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
-  collider: {fileID: 0}
-  income: 0
