@@ -73,3 +73,9 @@ public enum NPSStates
     WalkingHome,
 }
 
+public enum ControlType
+{
+    Keyboard,
+    Joystick,
+}
+
