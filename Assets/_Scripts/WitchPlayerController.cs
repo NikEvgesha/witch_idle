@@ -69,7 +69,9 @@ public class WitchPlayerController : MonoBehaviour
     }
     private void LoadMoney()
     {
-        Money = YandexGame.savesData.money;
+        Money = _money;//Костыль!
+        //Money = YandexGame.savesData.money; //Потом вернуть
+
     }
     private void LoadLevel()
     {

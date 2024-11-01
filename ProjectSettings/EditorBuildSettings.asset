@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OldScene/Map_Level.unity
     guid: 5d26911dc8fce694aa5e0b313fce60c1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestsScenes/Evgesha.unity
     guid: ab0fc4cced97c0c4b8965b59f228bbd1
+  - enabled: 1
+    path: "Assets/Scenes/\u0412\u0430\u0440\u0438\u0430\u043D\u0442 2.unity"
+    guid: dbe6baf854029db45b831540936c3022
   m_configObjects: {}
