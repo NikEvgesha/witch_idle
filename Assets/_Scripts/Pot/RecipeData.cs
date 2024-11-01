@@ -21,7 +21,19 @@ public class RecipeData : ScriptableObject, IComparable
     public RecipeState GetState() { return _status; }
 
     public float GetCookTime() { return _cookTime;}
-    public int GetOpenLevel() { return _needLevelToUse; }
+    public int GetOpenLevel() 
+    {
+        int minLevel = 0;
+        foreach (InventoryItem ingredient in _ingredients)
+        {
+            if (minLevel < ingredient.GetLevelUnlockRecept())
+            {
+                minLevel = ingredient.GetLevelUnlockRecept();
+            }
+        }
+        
+        return _needLevelToUse < minLevel ? minLevel : _needLevelToUse;
+    }
 
    /* public void GetIngredients(out List<PlantTypes> items)
     {
@@ -69,6 +81,7 @@ public class RecipeData : ScriptableObject, IComparable
 
     public int CompareTo(object? o)
     {
+        _needLevelToUse = GetOpenLevel();
         if (o is RecipeData obj) { 
             int comp = _needLevelToUse.CompareTo(obj._needLevelToUse);
             if (comp != 0) return comp;

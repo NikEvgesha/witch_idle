@@ -18,4 +18,4 @@ MonoBehaviour:
   _plantType: 2
   _price: 500
   _experience: 300
-  _levelUnlock: 4
+  _levelUnlock: 0

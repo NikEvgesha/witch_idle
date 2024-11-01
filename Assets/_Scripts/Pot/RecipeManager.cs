@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class RecipeManager : MonoBehaviour
@@ -100,6 +98,17 @@ public class RecipeManager : MonoBehaviour
             _currentPot = null;
             HideRecipeBook();
         }     
+    }
+    public RecipeData CheckReciept(InventoryItem potion)
+    {
+        foreach (RecipeData recipe in _recipes) 
+        {
+            if (recipe.GetItem() == potion)
+            {
+                return recipe;
+            }
+        }
+        return null;
     }
 
 

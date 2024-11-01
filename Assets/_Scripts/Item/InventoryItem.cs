@@ -42,6 +42,16 @@ public class InventoryItem : ScriptableObject
     {
         return _experience;
     }
+    public int GetLevelUnlockRecept()
+    {
+        RecipeData recipe;
+        recipe = RecipeManager.Instance.CheckReciept(this);
+        if (recipe != null)
+        {
+            return recipe.GetOpenLevel();
+        }
+        return _levelUnlock;
+    }
 
 
 }

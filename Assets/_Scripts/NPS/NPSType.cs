@@ -18,7 +18,7 @@ public class NPSType : ScriptableObject
     [SerializeField] private InventoryItem _potion;
     [SerializeField] private List<InventoryItem> _potions = new List<InventoryItem>();
     private int _minLevel = int.MaxValue;
-    private bool _minLevelInit;
+    //private bool _minLevelInit = false;
     
     public InventoryItem SelectPotion()
     {
@@ -27,7 +27,7 @@ public class NPSType : ScriptableObject
 
         foreach (InventoryItem potion in _potions)
         {
-            if (potion.GetLevelUnlock() <= level)
+            if (potion.GetLevelUnlockRecept() <= level)
             {
                 potions.Add(potion);
             }
@@ -44,20 +44,16 @@ public class NPSType : ScriptableObject
     }
     public int GetMinLevel()
     {
-        if (_minLevelInit)
-        {
-            return _minLevel;
-        }
+        int minLevel = int.MaxValue;
         foreach (InventoryItem potion in _potions)
         {
-            if(_minLevel > potion.GetLevelUnlock())
+            if (minLevel > potion.GetLevelUnlockRecept())
             {
-                _minLevel = potion.GetLevelUnlock();
+                minLevel = potion.GetLevelUnlockRecept();
             }
         }
-        _minLevelInit = true;
+        _minLevel = minLevel;
         return _minLevel;
     }
-
 
 }

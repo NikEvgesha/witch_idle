@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: b30b93a7ef8bfdb43a42ecbf31834160, type: 3}
   _itemType: 0
-  _potionType: 2
+  _potionType: 5
   _plantType: 0
+  _price: 0
+  _experience: 0
+  _levelUnlock: 0

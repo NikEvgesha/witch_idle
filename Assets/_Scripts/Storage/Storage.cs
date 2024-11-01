@@ -152,7 +152,7 @@ public class Storage : MonoBehaviour
     }
     public bool CheckItemInStorage(InventoryItem item)
     {
-        foreach (var itemStore in _StorageItems)
+        foreach (InventoryItem itemStore in _StorageItems)
         {
             if (item.GetPotionType() == itemStore.GetPotionType())
             {
