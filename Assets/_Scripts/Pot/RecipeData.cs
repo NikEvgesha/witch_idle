@@ -8,6 +8,7 @@ public class RecipeData : ScriptableObject, IComparable
     [SerializeField] private string _potionName;
     [SerializeField] private float _cookTime;
     [SerializeField] private List<InventoryItem> _ingredients;
+    [SerializeField] private InventoryItem _basisItem;
     [SerializeField] private int _cost;
     [SerializeField] private RecipeState _status;
     [SerializeField] private Sprite _potionIcon;
@@ -77,6 +78,11 @@ public class RecipeData : ScriptableObject, IComparable
             items.Add(item);
         }
         return items;
+    }
+
+    public InventoryItem GetBasis()
+    {
+        return _basisItem;
     }
 
     public int CompareTo(object? o)

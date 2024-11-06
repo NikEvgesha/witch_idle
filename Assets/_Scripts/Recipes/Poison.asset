@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c2123e9d7b36fc84d83d15b9d4f6b485, type: 2}
   - {fileID: 11400000, guid: ddf5da762f3e7b74aa44bbb719cd322d, type: 2}
   - {fileID: 11400000, guid: ddf5da762f3e7b74aa44bbb719cd322d, type: 2}
+  _basisItem: {fileID: 11400000, guid: a284e30c300ee9943b029ac0545799af, type: 2}
   _cost: 100
   _status: 0
   _potionIcon: {fileID: 21300000, guid: 29636656a0ab24842b7ea280cf4050fb, type: 3}

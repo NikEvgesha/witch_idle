@@ -17,6 +17,7 @@ MonoBehaviour:
   _ingredients:
   - {fileID: 11400000, guid: c2123e9d7b36fc84d83d15b9d4f6b485, type: 2}
   - {fileID: 11400000, guid: c2123e9d7b36fc84d83d15b9d4f6b485, type: 2}
+  _basisItem: {fileID: 11400000, guid: a284e30c300ee9943b029ac0545799af, type: 2}
   _cost: 50
   _status: 0
   _potionIcon: {fileID: 21300000, guid: 7505e7c6c292328429095ab7c7667e5e, type: 3}

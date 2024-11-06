@@ -43,4 +43,5 @@ public static class EventManager
     //public static Action<StorageAction, int> StorageCellClick;
 
     public static Action<ControlType> ControlSwitch;
+    public static Action<InventoryItem, Transform> Item—ollect;
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7753598650066235450}
   - component: {fileID: 6066598178127568645}
+  - component: {fileID: 6306748262960826618}
   m_Layer: 0
   m_Name: Storage
   m_TagString: Untagged
@@ -51,6 +52,20 @@ MonoBehaviour:
   _StorageGrid: {fileID: 7406074408281613540}
   _InventoryGrid: {fileID: 7693645689923466277}
   _Canvas: {fileID: 5695123014206459596}
+--- !u!114 &6306748262960826618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965016868690294511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d67a5af1e0c0f74286927ea21aacffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _moveSpeed: 2
 --- !u!1 &1669667167021493592
 GameObject:
   m_ObjectHideFlags: 0

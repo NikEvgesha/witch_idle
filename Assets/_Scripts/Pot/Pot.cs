@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pot : InteractionObject
@@ -57,11 +53,16 @@ public class Pot : InteractionObject
                         }
                     break;
                 }
-            case PotState.WaterRequire:
+            case PotState.BasisRequire:
                 {
                     if (_inTrigger)
                     {
-                        if (!CheckWater())
+                        CheckIngredients();
+                        if (_requiredIngredients.Count == 0)
+                        {
+                            OnBasisAdd();
+                        }
+                        else
                         {
                             _recipeInfoUI.ShowDropButton();
                         }
@@ -70,15 +71,13 @@ public class Pot : InteractionObject
                     {
                         _recipeInfoUI.HideDropButton();
                     }
-
                     break;
                 }
             case PotState.IngredientRequire:
                 {
                     if (_inTrigger)
                     {
-
-                        CheckIngredients(_currentRecipe);
+                        CheckIngredients();
                         if (_requiredIngredients.Count == 0)
                         {
                             StartCooking();
@@ -86,7 +85,6 @@ public class Pot : InteractionObject
                         {
                             _recipeInfoUI.ShowDropButton();
                         }
-
                     } else
                     {
                         _recipeInfoUI.HideDropButton();
@@ -120,20 +118,37 @@ public class Pot : InteractionObject
 
     public void SetRecipe(RecipeData recipeData)
     {
-        _potState = PotState.WaterRequire;
+        _potState = PotState.BasisRequire;
         _currentRecipe = recipeData;
-        _recipeInfoUI.SetWater();
+        _requiredIngredients = new List<InventoryItem>();
+        RequestIngredients();
+        _recipeInfoUI.SetRecipeUI(_currentRecipe.GetItem(), _requiredIngredients);
         CheckState();
     }
 
-    private void SetRecipeUI()
+    private void OnBasisAdd()
     {
-        _requiredIngredients = _currentRecipe.GetIngredients();
-        _recipeInfoUI.SetRecipe(_currentRecipe);
-        _recipeInfoUI.ShowCookingItem(_currentRecipe.GetItem());
+        _potState = PotState.IngredientRequire;
+        RequestIngredients();
+        _recipeInfoUI.SetRecipeUI(_currentRecipe.GetItem(), _requiredIngredients);
+        CheckState();
     }
 
-    private void CheckIngredients(RecipeData recipeData)
+
+    private void RequestIngredients()
+    {
+        Debug.Log(_currentRecipe.GetPotionName());
+        if (_potState == PotState.BasisRequire)
+        {
+            _requiredIngredients.Add(_currentRecipe.GetBasis());
+        }
+        else
+        {
+            _requiredIngredients = _currentRecipe.GetIngredients();
+        }
+    }
+
+    private void CheckIngredients()
     {
         List<InventoryItem> inventoryItems;
         List<InventoryItem> addedItems = new List<InventoryItem>();
@@ -141,7 +156,6 @@ public class Pot : InteractionObject
         foreach (var item in inventoryItems)
         {
             InventoryItem item_tmp = item;
-            //var type = item.GetPlantType();
             if (_requiredIngredients.Contains(item_tmp))
             {
                 _requiredIngredients.Remove(item_tmp);
@@ -160,12 +174,10 @@ public class Pot : InteractionObject
         RecipeManager.Instance.FinishRequestRecipe(this);
         _potState = PotState.Cooking;
         _recipeInfoUI.HideIngredients();
-        //_itemStateInfoUI.ShowCookingItem(_currentRecipe.GetItem());
         _potArea.gameObject.SetActive(false);
         _cookingTimer.gameObject.SetActive(true);
         _cookingTimer.StartGrowthTimer(_currentRecipe.GetCookTime());
     }
-
 
     private void FinishCooking()
     {
@@ -173,31 +185,6 @@ public class Pot : InteractionObject
         _potArea.gameObject.SetActive(true);
         _potState = PotState.Done;
     }
-
-
-    private bool CheckWater()
-    {
-        bool waterAdded = false;
-        List<InventoryItem> inventoryItems = Inventory.Instanse.GetUIInventoryData();
-        foreach (var item in inventoryItems)
-        {
-            InventoryItem item_tmp = item;
-            ItemTypes type = item.GetItemType();
-            if (type == ItemTypes.Water)
-            {
-                Inventory.Instanse.RemoveItem(item_tmp);
-                waterAdded = true;
-            }
-        }
-        if (waterAdded)
-        {
-            _potState = PotState.IngredientRequire;
-            SetRecipeUI();
-            CheckState();
-        }
-        return waterAdded;
-    }
-
 
     public void DropRecipe()
     {

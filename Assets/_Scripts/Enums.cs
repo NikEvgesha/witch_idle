@@ -46,7 +46,7 @@ using UnityEngine;
     public enum PotState
 {
         Empty,
-        WaterRequire,
+        BasisRequire,
         IngredientRequire,
         Cooking,
         Done

@@ -8,10 +8,10 @@ public class RecipeInfoUI : MonoBehaviour
     [SerializeField] private GameObject _ingredients;
     [SerializeField] private IngredientSlot _ingredientPrefab;
     [SerializeField] private PotRecipeSlot _recipePrefab;
-    [SerializeField] private InventoryItem _waterItem;
     [SerializeField] private Button _dropButton;
     [SerializeField] private Transform _recipe;
     [SerializeField] private GrowthTimer _cookTimer;
+    [SerializeField] private GameObject _arrowImg;
     private List<InventoryItem> _requiredIngredients;
     private List<IngredientSlot> _UIitems;
     private PotRecipeSlot _currentItem;
@@ -22,7 +22,6 @@ public class RecipeInfoUI : MonoBehaviour
     private void Start()
     {
         _UIitems = new List<IngredientSlot>();
-        //_pot = transform.parent.parent.GetComponent<Pot>();
     }
 
     private void OnEnable()
@@ -30,38 +29,24 @@ public class RecipeInfoUI : MonoBehaviour
         _cookTimer.TimerFinish += onCookingComplete;
     }
 
-    public void SetRecipe(RecipeData recipe) {
-
+    public void SetRecipeUI(InventoryItem potion, List<InventoryItem> ingredients)
+    {
         DestroySlots();
-        _UIitems = new List<IngredientSlot>();
-        _requiredIngredients = recipe.GetIngredients();
+        _requiredIngredients = ingredients;
         _ingredients.SetActive(true);
-        foreach (var item in _requiredIngredients)
+        _arrowImg.SetActive(true);
+        if (_currentItem == null)
+        {
+            ShowCookingItem(potion);
+        }
+
+        foreach (var item in ingredients)
         {
             IngredientSlot slot = Instantiate(_ingredientPrefab, _ingredients.transform);
             slot.InitSlot(item);
             _UIitems.Add(slot);
-
         }
-    }  
-
-    public void SetWater()
-    {
-        DestroySlots();
-        _UIitems = new List<IngredientSlot>();
-        _ingredients.SetActive(true);
-        IngredientSlot slot = Instantiate(_ingredientPrefab, _ingredients.transform);
-        slot.InitSlot(_waterItem);
-        _UIitems.Add(slot);
     }
-    /*    private void DisplayIngredients()
-        {
-            foreach (var item in _UIitems)
-            {
-                item.UpdateState();
-            }
-
-        }*/
 
     public void UpdateIngredients(List<InventoryItem> addedIngredients)
     {
@@ -91,6 +76,7 @@ public class RecipeInfoUI : MonoBehaviour
     public void HideIngredients()
     {
         _ingredients.SetActive(false);
+        _arrowImg.SetActive(false);
     }
 
     private void DestroySlots()
@@ -102,6 +88,7 @@ public class RecipeInfoUI : MonoBehaviour
                 Destroy(item.gameObject);
             }
         }
+        _UIitems.Clear();
     }
 
     public void ShowDropButton()
@@ -125,6 +112,7 @@ public class RecipeInfoUI : MonoBehaviour
     {
         _currentItem.SetProcessIcon(true);
         Destroy(_currentItem.gameObject);
+        _currentItem = null;
     }
     public void ShowCookingItem(InventoryItem item)
     {

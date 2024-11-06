@@ -157,7 +157,6 @@ public class Seedbed :  InteractionObject
 
     private void Harvest()
     {
-        
         if (!Inventory.Instanse.AddItem(_plantData.GetItem()))
         {
             return;
@@ -165,6 +164,7 @@ public class Seedbed :  InteractionObject
         //_plant.gameObject.SetActive(false);
         if (_plant != null)
             Destroy(_plant.gameObject);
+        EventManager.Item—ollect?.Invoke(_plantData.GetItem(), this.transform);
 
         state = SeedbedState.Empty;
         CheckState();
