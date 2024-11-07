@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81f3116a59794e4186f3a369cd6b874, type: 3}
   m_Name: Goodberry
   m_EditorClassIdentifier: 
-  _plantPrefab: {fileID: 7021581923392854783, guid: 07b6c68fef3de00459de0692f85b27de, type: 3}
-  _growthTime: 2
-  _inventoryItem: {fileID: 11400000, guid: c2123e9d7b36fc84d83d15b9d4f6b485, type: 2}
+  _plantPrefab: {fileID: 1123476041394547639, guid: a834fdd3a7ed5264ba5f16c4d2131809, type: 3}
+  _growthTime: 180
+  _inventoryItem: {fileID: 11400000, guid: cbc550c221c57794eb4ef012d32900d8, type: 2}

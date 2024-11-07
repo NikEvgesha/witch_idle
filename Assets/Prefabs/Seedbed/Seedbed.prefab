@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 7791823624900753199}
   - component: {fileID: 5938151885607978211}
   m_Layer: 0
-  m_Name: Seedbed0
+  m_Name: Seedbed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

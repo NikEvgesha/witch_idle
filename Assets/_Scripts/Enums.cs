@@ -10,7 +10,15 @@ using UnityEngine;
         Mushroom,
         Pumpkin,
         None,
-    }
+        Bloodthorn,
+        Boombloom,
+        Coldleaf,
+        Dandelion,
+        Goodberry,
+        Lifelist,
+        Rosemary,
+        Spellbloom,
+}
 
     public enum PotionTypes
     {

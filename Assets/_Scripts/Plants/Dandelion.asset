@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81f3116a59794e4186f3a369cd6b874, type: 3}
   m_Name: Dandelion
   m_EditorClassIdentifier: 
-  _plantPrefab: {fileID: 0}
-  _growthTime: 10
-  _plantType: 1
-  _plantIcon: {fileID: 0}
+  _plantPrefab: {fileID: 4972591172546882091, guid: fa5b8710a5a9c6845bd562bb25a4e957, type: 3}
+  _growthTime: 150
+  _inventoryItem: {fileID: 11400000, guid: 50ada9c136c9b3748856f7a18084d45d, type: 2}

@@ -18,5 +18,5 @@ MonoBehaviour:
   _potionType: 5
   _plantType: 0
   _price: 0
-  _experience: 0
+  _experience: 1
   _levelUnlock: 0

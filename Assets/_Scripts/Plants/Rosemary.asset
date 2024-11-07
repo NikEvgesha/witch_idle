@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81f3116a59794e4186f3a369cd6b874, type: 3}
   m_Name: Rosemary
   m_EditorClassIdentifier: 
-  _plantPrefab: {fileID: 7021581923392854783, guid: 07b6c68fef3de00459de0692f85b27de, type: 3}
-  _growthTime: 2
-  _inventoryItem: {fileID: 11400000, guid: c2123e9d7b36fc84d83d15b9d4f6b485, type: 2}
+  _plantPrefab: {fileID: 2676791930241903185, guid: fad29ef1b6588134fac5865afaae81bc, type: 3}
+  _growthTime: 240
+  _inventoryItem: {fileID: 11400000, guid: 5162f060318ba57479149f7e57686fcf, type: 2}
