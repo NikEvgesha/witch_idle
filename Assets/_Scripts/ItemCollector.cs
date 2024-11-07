@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Diagnostics.Tracing;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
@@ -16,22 +18,23 @@ public class ItemCollector : MonoBehaviour
         if (item == null || source.gameObject == this.gameObject) return;
         GameObject prefab = item.GetItemPrefab();
         var itemObj = Instantiate(prefab, source);
-        itemObj.transform.Translate(source.position + new Vector3(0, 5, 0));
-        //StartCoroutine(MoveCoroutine(itemObj, this.transform.position));
+        StartCoroutine(MoveCoroutine(itemObj));
     }
 
-    IEnumerator MoveCoroutine(GameObject itemObj, Vector3 moveTo)
+    IEnumerator MoveCoroutine(GameObject itemObj)
     {
+        Vector3 moveTo = this.transform.position;
         _isMoving = true;
         var iniPosition = itemObj.transform.position;
-        while (transform.position != moveTo)
+        while ((itemObj.transform.position - moveTo).magnitude > 0.5f)
         {
-            Vector3 newPosition = moveTo - transform.position;
-            transform.Translate(newPosition.normalized * Time.deltaTime * _moveSpeed);
-            yield return null;
+            moveTo = this.transform.position;
+            Vector3 newPosition = moveTo - itemObj.transform.position;
+            itemObj.transform.Translate(newPosition.normalized * Time.deltaTime * _moveSpeed);
+            yield return new WaitForFixedUpdate();
         }
 
         _isMoving = false;
-        Destroy(itemObj);
+       Destroy(itemObj);
     }
 }

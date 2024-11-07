@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pumpkin
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: 34a21b5c99b4d5f4d8f7b15955fd16b4, type: 3}
+  _itemPrefab: {fileID: 2838989298766468622, guid: 36822d58ca1537940b2976ebe4667bc1, type: 3}
   _itemType: 0
   _potionType: 5
   _plantType: 1

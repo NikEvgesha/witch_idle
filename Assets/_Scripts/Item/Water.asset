@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: ab1aae555de87fd42a3fcfdf1063d0a3, type: 3}
+  _itemPrefab: {fileID: 8857821170799327853, guid: b054853eac53d554c9ad1e79804916a1, type: 3}
   _itemType: 2
   _potionType: 5
   _plantType: 2
+  _price: 0
+  _experience: 0
+  _levelUnlock: 0

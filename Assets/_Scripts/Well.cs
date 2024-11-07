@@ -31,8 +31,12 @@ public class Well : MonoBehaviour
 
     private void tryCollectItem()
     {
-        Inventory.Instanse.AddItem(_waterItem);
-        _timer.gameObject.SetActive(false);
+        if (Inventory.Instanse.AddItem(_waterItem))
+        {
+             _timer.gameObject.SetActive(false);
+            EventManager.Item—ollect?.Invoke(_waterItem, this.transform);
+        }
+       
     }
 
 
