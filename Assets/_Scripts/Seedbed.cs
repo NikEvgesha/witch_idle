@@ -9,9 +9,13 @@ public class Seedbed :  InteractionObject
     //[SerializeField] private Plant _plant;
     [SerializeField] private SeedbedState state;
     [SerializeField] private Transform _plantPoint;
+    [SerializeField] private HarvestTimer _timer;
+    [SerializeField] private int _fillTime = 1;
+    [SerializeField] private Transform _iconSign;
 
     /* То, что отличается у разных грядок */
     [SerializeField] private PlantsData _plantData;
+    [SerializeField] private ItemCollector _itemCollector;
     private Plant _plant;
 
     /*
@@ -33,22 +37,25 @@ public class Seedbed :  InteractionObject
     {
         base.OnEnable();
         //_plantArea.PlayerOnPlantArea += CheckState;
-        _plantArea.OnTrigger += TryCollect;
+        _plantArea.OnTrigger += CheckState;
         _growthTimer.TimerFinish += AddPlant;
-        //EventManager.PlantHarvested += Harvest; Зачем? мы же от отсюда этот эвент и отправляем
+        _timer.TimerFinish += Harvest;
     }
 
 
     private void OnDisable()
     {
-        _plantArea.OnTrigger -= TryCollect;
+        _plantArea.OnTrigger -= CheckState;
         _growthTimer.TimerFinish -= AddPlant;
+        _timer.TimerFinish -= Harvest;
     }
     private new void Start()
     {
         base.Start();
         UpdateYGSaveSistem(ref YandexGame.savesData.SBState);
         LoadSeedBed();
+        var icon = Instantiate(_plantData.GetItem().GetIcon(), _iconSign);
+        
     }
     private void UpdateYGSaveSistem(ref int[] state)
     {
@@ -110,11 +117,20 @@ public class Seedbed :  InteractionObject
     }
     private void TryCollect(bool inTrigger = true)
     {
-        if (inTrigger)
-            CheckState();
+        _timer.gameObject.SetActive(inTrigger);
+        if (inTrigger && Inventory.Instanse.HaveEmptySlot())
+        {
+            _timer.StartWellTimer(_fillTime);
+        } else
+        {
+            // анимация отсутствия места в инвентаре
+        }
+        
+        /*if (inTrigger)
+            CheckState();*/
     }
 
-    private new void CheckState() {
+    private new void CheckState(bool inTrigger) {
         base.CheckState();
         switch (state)
         {
@@ -124,12 +140,9 @@ public class Seedbed :  InteractionObject
             case SeedbedState.Growing:
                 break;
             case SeedbedState.Grown:
-                //EventManager.PlantHarvested?.Invoke();
-                Harvest();
-
+                TryCollect(inTrigger);
                 break;
         }
-
     }
 
     private void CheckStateLoad()
@@ -161,12 +174,12 @@ public class Seedbed :  InteractionObject
         {
             return;
         }
-        //_plant.gameObject.SetActive(false);
         if (_plant != null)
             Destroy(_plant.gameObject);
-        EventManager.ItemСollect?.Invoke(_plantData.GetItem(), this.transform);
+        _itemCollector.ItemCollect(_plantData.GetItem(), this.transform, true);
 
         state = SeedbedState.Empty;
+        _timer.gameObject.SetActive(false);
         CheckState();
         SaveSeedBed();
     }

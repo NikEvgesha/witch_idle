@@ -97,6 +97,10 @@ public class Inventory : MonoBehaviour
         return false;
     }*/
 
+    public bool HaveEmptySlot()
+    {
+        return ((_capacity - _inventory.Count) > 0);
+    }
 
 
 }

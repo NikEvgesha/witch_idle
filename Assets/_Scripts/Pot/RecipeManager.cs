@@ -7,6 +7,7 @@ public class RecipeManager : MonoBehaviour
     [SerializeField] private GameObject _canvas;
     [SerializeField] private Recipe _recipePrefab;
     [SerializeField] private UIRecipeBook _UIRecipeBook;
+    //[SerializeField] private Animator _animator;
     private Pot _currentPot;
 
     public static RecipeManager Instance;
@@ -35,6 +36,7 @@ public class RecipeManager : MonoBehaviour
         if (!_canvas.activeInHierarchy)
         {
             _canvas.SetActive(true);
+            //_animator.SetTrigger("Display");
             UpdateTimeRate(timeDecreaseRate);
         }
     }
@@ -43,6 +45,7 @@ public class RecipeManager : MonoBehaviour
     {
         if (_canvas.activeInHierarchy)
         {
+            //_animator.SetTrigger("Hide");
             _canvas.SetActive(false);
         }
     }

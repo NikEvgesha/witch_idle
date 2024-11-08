@@ -9,6 +9,7 @@ public class Pot : InteractionObject
     [SerializeField] private float _timeDecreaseRate;
     [SerializeField] private GrowthTimer _cookingTimer;
     [SerializeField] private RecipeInfoUI _recipeInfoUI;
+    [SerializeField] private ItemCollector _itemCollector;
     //[SerializeField] private ItemStateProdaction _itemStateInfoUI;
     private RecipeData _currentRecipe;
     private List<InventoryItem> _requiredIngredients;
@@ -161,6 +162,7 @@ public class Pot : InteractionObject
                 _requiredIngredients.Remove(item_tmp);
                 addedItems.Add(item_tmp);
                 Inventory.Instanse.RemoveItem(item_tmp);
+                _itemCollector.ItemCollect(item_tmp, this.transform, false);
             }
         }
         if (addedItems.Count != 0)

@@ -1064,6 +1064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4013558736834400051}
   - component: {fileID: 858694103040356594}
+  - component: {fileID: 6900414292322852935}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Untagged
@@ -1122,6 +1123,20 @@ MonoBehaviour:
   _timeDecreaseRate: 0
   _cookingTimer: {fileID: 8191350308714617707}
   _recipeInfoUI: {fileID: 4611566986370677927}
+  _itemCollector: {fileID: 6900414292322852935}
+--- !u!114 &6900414292322852935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6619333722495920566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d67a5af1e0c0f74286927ea21aacffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 2
 --- !u!1 &6619832936765261105
 GameObject:
   m_ObjectHideFlags: 0

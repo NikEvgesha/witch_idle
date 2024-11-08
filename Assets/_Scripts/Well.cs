@@ -3,12 +3,13 @@ using UnityEngine;
 public class Well : MonoBehaviour
 {
     [SerializeField] private CheckPlayer _interactionArea;
-    [SerializeField] private WellTimer _timer;
+    [SerializeField] private HarvestTimer _timer;
     //[SerializeField] private float _fillSpeed = 1f;
     [SerializeField] private int _fillTime = 5;
     [SerializeField] private InventoryItem _waterItem;
+    [SerializeField] private ItemCollector _itemCollector;
     //private bool _inInteractionArea;
-    
+
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class Well : MonoBehaviour
         if (Inventory.Instanse.AddItem(_waterItem))
         {
              _timer.gameObject.SetActive(false);
-            EventManager.Item—ollect?.Invoke(_waterItem, this.transform);
+            _itemCollector.ItemCollect(_waterItem, this.transform, true);
         }
        
     }

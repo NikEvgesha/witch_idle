@@ -6,35 +6,45 @@ using UnityEngine;
 public class ItemCollector : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
-    private bool _isMoving = false;
+    private Transform _source;
+    private Transform _target;
+    private GameObject _itemObj;
+    private float _distance;
+    private float _minDist = 1f;
+    private float _lerpPoint = 0;
 
-    private void OnEnable()
+    public void ItemCollect(InventoryItem item, Transform obj, bool toPlayer)
     {
-        EventManager.ItemÑollect += ItemCollect;
-    }
-
-    private void ItemCollect(InventoryItem item, Transform source)
-    {
-        if (item == null || source.gameObject == this.gameObject) return;
-        GameObject prefab = item.GetItemPrefab();
-        var itemObj = Instantiate(prefab, source);
-        StartCoroutine(MoveCoroutine(itemObj));
-    }
-
-    IEnumerator MoveCoroutine(GameObject itemObj)
-    {
-        Vector3 moveTo = this.transform.position;
-        _isMoving = true;
-        var iniPosition = itemObj.transform.position;
-        while ((itemObj.transform.position - moveTo).magnitude > 0.5f)
+        if (toPlayer)
         {
-            moveTo = this.transform.position;
-            Vector3 newPosition = moveTo - itemObj.transform.position;
-            itemObj.transform.Translate(newPosition.normalized * Time.deltaTime * _moveSpeed);
-            yield return new WaitForFixedUpdate();
+            _source = obj.transform;
+            _target = Inventory.Instanse.gameObject.transform;
+        } else
+        {
+            _source = Inventory.Instanse.gameObject.transform;
+            _target = obj.transform;
         }
-
-        _isMoving = false;
-       Destroy(itemObj);
+        GameObject itemPrefab = item.GetItemPrefab();
+        _itemObj = Instantiate(itemPrefab, _source);
     }
+
+    private void FixedUpdate()
+    {
+        if (_itemObj != null)
+        {
+            _lerpPoint += Time.fixedDeltaTime * _moveSpeed;
+            _itemObj.transform.position = Vector3.Lerp(_itemObj.transform.position, _target.position, _lerpPoint);
+            //_distance = (_target.position - _itemObj.transform.position).magnitude;
+            if (_lerpPoint >= 1)
+            {
+                Destroy(_itemObj);
+                _itemObj = null;
+                _source = null;
+                _target = null;
+                _distance = 0;
+                _lerpPoint = 0;
+            }
+        }
+    }
+
 }

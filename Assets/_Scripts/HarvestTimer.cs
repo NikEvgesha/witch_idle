@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class WellTimer : MonoBehaviour
+public class HarvestTimer : MonoBehaviour
 {
     public event Action TimerFinish;
 

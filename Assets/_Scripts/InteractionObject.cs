@@ -44,6 +44,7 @@ public class InteractionObject : MonoBehaviour
 
     private int _saveIndex;
     private bool _unlock = true;
+    private int _currentMoney = 0;
 
     protected void OnEnable()
     {
@@ -192,6 +193,8 @@ public class InteractionObject : MonoBehaviour
         if (!inTrigger)
         {
             YandexGame.SaveProgress();
+            WitchPlayerController.Instanse.Money -= _currentMoney;
+            _currentMoney = 0;
         }
         _isChangeMoney = inTrigger;
     }
@@ -199,16 +202,17 @@ public class InteractionObject : MonoBehaviour
     {
         float rate = math.ceil(_SpeedFill * (float)_firstPrice);
         int rateInt = (int)rate;
-        if (WitchPlayerController.Instanse.HaveMoney(rateInt) && _price > 0)
+        if (WitchPlayerController.Instanse.HaveMoney(_currentMoney + rateInt) && _price > 0)
         {
             _price -= rateInt;
-            WitchPlayerController.Instanse.Money -= rateInt;
+            _currentMoney += rateInt;
         } 
         else if (_price <= 0)
         {
             //EventManager.ObjectPurshuased?.Invoke();
             ObjectPurchased();
-
+            WitchPlayerController.Instanse.Money -= _currentMoney;
+            _currentMoney = 0;
         }
     }
     private void ChangeUIPrice(int price)
