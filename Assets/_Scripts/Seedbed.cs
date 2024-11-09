@@ -77,17 +77,17 @@ public class Seedbed :  InteractionObject
     {
         switch (YandexGame.savesData.SBState[GetIndex()])
         {
-            case 0:
+            case 1:
                 state = SeedbedState.Empty;
                 break;
-            case 1:
+            case 2:
                 state = SeedbedState.Growing;
                 break;
-            case 2:
+            case 3:
                 state = SeedbedState.Grown;
                 break;
             default:
-                state = SeedbedState.Empty;
+                //state = SeedbedState.Empty;
                 break;
         }
         CheckStateLoad();
@@ -99,16 +99,16 @@ public class Seedbed :  InteractionObject
         switch (state)
         {
             case SeedbedState.Empty:
-                YandexGame.savesData.SBState[GetIndex()] = 0;
-                return;
-            case SeedbedState.Growing:
                 YandexGame.savesData.SBState[GetIndex()] = 1;
                 return;
-            case SeedbedState.Grown:
+            case SeedbedState.Growing:
                 YandexGame.savesData.SBState[GetIndex()] = 2;
                 return;
+            case SeedbedState.Grown:
+                YandexGame.savesData.SBState[GetIndex()] = 3;
+                return;
             default:
-                YandexGame.savesData.SBState[GetIndex()] = 0;
+                YandexGame.savesData.SBState[GetIndex()] = 1;
                 return;
         }
         //CheckStateLoad();

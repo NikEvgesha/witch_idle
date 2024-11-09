@@ -1091,6 +1091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueName: 
   _purchasedState: 1
+  _purchasedStartState: 1
   _firstPrice: 100
   _buyStruct:
     UIObject: {fileID: 2159651600525946024}
@@ -1127,6 +1128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 2
+  _color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5387475809904710432
 GameObject:
   m_ObjectHideFlags: 0

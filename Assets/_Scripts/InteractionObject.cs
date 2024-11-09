@@ -11,6 +11,8 @@ public class InteractionObject : MonoBehaviour
     [SerializeField]
     private PurchasedState _purchasedState;
     [SerializeField]
+    private PurchasedState _purchasedStartState;
+    [SerializeField]
     private int _firstPrice;
     [SerializeField]
     private BuyStruct _buyStruct;
@@ -62,13 +64,13 @@ public class InteractionObject : MonoBehaviour
     {
         _lockStruct.LevelText.text = _levelToUnlock.ToString();
         _unlock = _levelToUnlock <= WitchPlayerController.Instanse.PlayerLevel;
-        _purchasedState = _unlock ? PurchasedState.Unpurchased : PurchasedState.Locked;
+        _purchasedState = _unlock ? _purchasedStartState : PurchasedState.Locked;
     }
     private void CheckLock(int level)
     {
         if (_purchasedState != PurchasedState.Locked) { return; }
         _unlock = _levelToUnlock <= level;
-        _purchasedState = _unlock ? PurchasedState.Unpurchased : PurchasedState.Locked;
+        _purchasedState = _unlock ? _purchasedStartState : PurchasedState.Locked;
         CheckState();
     }
     private void OnDisable()

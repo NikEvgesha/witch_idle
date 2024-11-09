@@ -12,6 +12,7 @@ public class ItemCollector : MonoBehaviour
     private float _distance;
     private float _minDist = 1f;
     private float _lerpPoint = 0;
+    [SerializeField] private Color _color;
 
     public void ItemCollect(InventoryItem item, Transform obj, bool toPlayer)
     {

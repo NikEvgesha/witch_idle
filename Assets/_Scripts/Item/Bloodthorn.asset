@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bc8dffbbbd1ca4188674e151383ee7, type: 3}
   m_Name: Bloodthorn
   m_EditorClassIdentifier: 
-  _itemIcon: {fileID: -4402948435363229608, guid: b30b93a7ef8bfdb43a42ecbf31834160, type: 3}
+  _itemIcon: {fileID: -4402948435363229608, guid: 8f1b9ac1fa845244eb0cd98ff50df743, type: 3}
   _itemPrefab: {fileID: 7575691288366290081, guid: 77b97708bd2007249a962c1f3bb9a2d2, type: 3}
   _itemType: 0
   _potionType: 5

@@ -16,6 +16,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5938151885607978211, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938151885607978211, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: _purchasedState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938151885607978211, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
+      propertyPath: _purchasedStartState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6491833937972350910, guid: 5b871c6cc9b222e4d9437b1ff03db81a, type: 3}
       propertyPath: m_LocalPosition.z
       value: -21.7
