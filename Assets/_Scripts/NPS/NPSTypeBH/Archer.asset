@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Druid
   _skin: {fileID: 1832220664399794, guid: 180a5d9ad208141468642642ab23e0ad, type: 3}
-  _potion: {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
+  _potion: {fileID: 11400000, guid: 5029939fa9ee8c340aaa2a36cb340fcb, type: 2}
   _potions:
-  - {fileID: 11400000, guid: 3c69c9e12809f0a429bcd2153f34cde3, type: 2}
-  - {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}
-  - {fileID: 11400000, guid: e66c6785dbb830e428b466a748448172, type: 2}
+  - {fileID: 11400000, guid: 5029939fa9ee8c340aaa2a36cb340fcb, type: 2}
+  - {fileID: 11400000, guid: 4d275257f7af26644a40fc70aab78b29, type: 2}
+  - {fileID: 11400000, guid: 643fef15eea3be745a4fe8fd55bd3887, type: 2}
+  - {fileID: 11400000, guid: 8337c1af050b0b345a87ee12e82f4e0a, type: 2}

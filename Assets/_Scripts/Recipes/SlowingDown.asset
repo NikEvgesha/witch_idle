@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e478a7bcc3db45a02ff97bca3d16b, type: 3}
+  m_Name: SlowingDown
+  m_EditorClassIdentifier: 
+  _potionName: Potion of slowing down
+  _cookTime: 800
+  _ingredients:
+  - {fileID: 11400000, guid: 50ada9c136c9b3748856f7a18084d45d, type: 2}
+  - {fileID: 11400000, guid: acd3be674a776b5448987f10a506b1fd, type: 2}
+  _basisItem: {fileID: 11400000, guid: a284e30c300ee9943b029ac0545799af, type: 2}
+  _cost: 2000
+  _status: 0
+  _potionIcon: {fileID: 21300000, guid: 29636656a0ab24842b7ea280cf4050fb, type: 3}
+  _potionItem: {fileID: 11400000, guid: 4d275257f7af26644a40fc70aab78b29, type: 2}
+  _needLevelToUse: 4
+  _experience: 100

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: PoisonPotion
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: 3186829fabd3f344c9416c47fd949395, type: 3}
+  _itemPrefab: {fileID: 0}
   _itemType: 1
-  _potionType: 3
+  _potionType: 1
   _plantType: 2
-  _price: 400
-  _experience: 30
+  _price: 200
+  _experience: 15
   _levelUnlock: 0

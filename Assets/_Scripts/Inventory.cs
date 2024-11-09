@@ -60,13 +60,17 @@ public class Inventory : MonoBehaviour
         return iconList;*/
     }
 
-    public bool AddItem(InventoryItem item) {
+    public bool AddItem(InventoryItem item, bool getXP = false ) {
 
         if (_inventory.Count >= _capacity) 
             return false;
 
         _inventory.Add(item);
         UIInventory.Instance.UpdateUI();
+        if (getXP)
+        {
+            WitchPlayerController.Instanse.Experience += item.GetExperience();
+        }
         return true;
     }
 

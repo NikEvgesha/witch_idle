@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e478a7bcc3db45a02ff97bca3d16b, type: 3}
+  m_Name: Frost
+  m_EditorClassIdentifier: 
+  _potionName: Potion of frost
+  _cookTime: 86400
+  _ingredients:
+  - {fileID: 11400000, guid: 9ba6bc23ce9e8db4f9228d3989529f7c, type: 2}
+  - {fileID: 11400000, guid: b2da5ecf762264d4eb400a228cfd2c33, type: 2}
+  _basisItem: {fileID: 11400000, guid: a284e30c300ee9943b029ac0545799af, type: 2}
+  _cost: 30000
+  _status: 0
+  _potionIcon: {fileID: 21300000, guid: 7505e7c6c292328429095ab7c7667e5e, type: 3}
+  _potionItem: {fileID: 11400000, guid: 046d32a38df48e1489a85632728a86ea, type: 2}
+  _needLevelToUse: 8
+  _experience: 1500

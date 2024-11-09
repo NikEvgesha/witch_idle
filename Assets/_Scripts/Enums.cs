@@ -23,9 +23,16 @@ using UnityEngine;
     public enum PotionTypes
     {
         Health,
-        Strength,
-        Brave,
         Poison,
+        Strength,
+        Dexterity,
+        Sleep,
+        SlowingDown,
+        ExuberantGrowth,
+        swiftness,
+        fire,
+        frost,
+        Brave,
         Love,
         None,
     }

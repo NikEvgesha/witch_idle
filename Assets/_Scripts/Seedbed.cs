@@ -170,7 +170,7 @@ public class Seedbed :  InteractionObject
 
     private void Harvest()
     {
-        if (!Inventory.Instanse.AddItem(_plantData.GetItem()))
+        if (!Inventory.Instanse.AddItem(_plantData.GetItem(),true))
         {
             return;
         }

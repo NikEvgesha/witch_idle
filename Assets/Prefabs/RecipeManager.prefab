@@ -120,7 +120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4959270704599797583}
   m_HandleRect: {fileID: 4458773923394332668}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -291,7 +291,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6417107724620103324}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.0000015497208}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -369,7 +369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 420.5}
+  m_AnchoredPosition: {x: 0, y: 420.5614}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1157110435874878776
@@ -943,10 +943,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _recipes:
   - {fileID: 11400000, guid: 3ab138de6f0cbda429f28aa2eb970f91, type: 2}
-  - {fileID: 11400000, guid: 975c246ce53a2a245bb9d038bac7e3fe, type: 2}
-  - {fileID: 11400000, guid: e30a330d114542441b09c75a7fb531c9, type: 2}
-  - {fileID: 11400000, guid: 89fdfb5fff53ca8468696dc86ea279e1, type: 2}
   - {fileID: 11400000, guid: ae90e98db5f2df442be2bf8f90ed140a, type: 2}
+  - {fileID: 11400000, guid: 975c246ce53a2a245bb9d038bac7e3fe, type: 2}
+  - {fileID: 11400000, guid: bb85c80e122b5424ea3d208f3f3ca822, type: 2}
+  - {fileID: 11400000, guid: c5b57417310d68145ab7b92061cb6a87, type: 2}
+  - {fileID: 11400000, guid: 1ac7fa3c04822af469ce7a5ed245e54c, type: 2}
+  - {fileID: 11400000, guid: a5348c67fe8120b47af4fd31aa22ef8c, type: 2}
+  - {fileID: 11400000, guid: 5230f77f5217ff7499efb9a800df3200, type: 2}
+  - {fileID: 11400000, guid: 5160c2b317de6a442b52ed4fd635ac4b, type: 2}
+  - {fileID: 11400000, guid: a03cc2c9fbd763d49a7c88a99173146f, type: 2}
   _canvas: {fileID: 3116395117177627060}
   _recipePrefab: {fileID: 1265957043896492802, guid: a07b36e8981e78741bbfa15d75845bef, type: 3}
   _UIRecipeBook: {fileID: 1157110435874878776}

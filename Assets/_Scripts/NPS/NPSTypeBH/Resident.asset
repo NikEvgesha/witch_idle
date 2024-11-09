@@ -17,4 +17,5 @@ MonoBehaviour:
   _potion: {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}
   _potions:
   - {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}
-  - {fileID: 11400000, guid: e66c6785dbb830e428b466a748448172, type: 2}
+  - {fileID: 11400000, guid: 49fcc5eb27690d0498e90452d1f2d99c, type: 2}
+  - {fileID: 11400000, guid: b70462c37ae605e44a23678fe7cf6d38, type: 2}

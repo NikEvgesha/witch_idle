@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Strength
   m_EditorClassIdentifier: 
   _potionName: Strength Potion
-  _cookTime: 6
+  _cookTime: 75
   _ingredients:
-  - {fileID: 11400000, guid: ccd585b72be1af64a8475d630b8c829f, type: 2}
+  - {fileID: 11400000, guid: 3d7041fbf84b979478d777f5f0da8b64, type: 2}
+  - {fileID: 11400000, guid: acd3be674a776b5448987f10a506b1fd, type: 2}
   _basisItem: {fileID: 11400000, guid: a284e30c300ee9943b029ac0545799af, type: 2}
-  _cost: 100
+  _cost: 300
   _status: 0
   _potionIcon: {fileID: 21300000, guid: 29636656a0ab24842b7ea280cf4050fb, type: 3}
   _potionItem: {fileID: 11400000, guid: 5029939fa9ee8c340aaa2a36cb340fcb, type: 2}
-  _needLevelToUse: 4
+  _needLevelToUse: 2
+  _experience: 25

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: StrengthPotion
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: 1dc505a1d170b6641841e12d07811266, type: 3}
+  _itemPrefab: {fileID: 0}
   _itemType: 1
   _potionType: 1
   _plantType: 2
-  _price: 500
-  _experience: 300
+  _price: 300
+  _experience: 25
   _levelUnlock: 0

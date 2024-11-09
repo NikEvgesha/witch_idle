@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: LovePotion
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: 4a8facbf4d807af42ba8252eeb24d9d1, type: 3}
+  _itemPrefab: {fileID: 0}
   _itemType: 1
-  _potionType: 4
+  _potionType: 11
   _plantType: 2
   _price: 300
   _experience: 500

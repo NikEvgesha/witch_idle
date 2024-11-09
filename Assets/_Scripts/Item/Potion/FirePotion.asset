@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5bc8dffbbbd1ca4188674e151383ee7, type: 3}
+  m_Name: FirePotion
+  m_EditorClassIdentifier: 
+  _itemIcon: {fileID: -4402948435363229608, guid: bb365eb3d2bb4124ab1ba793b74eb384, type: 3}
+  _itemPrefab: {fileID: 0}
+  _itemType: 1
+  _potionType: 8
+  _plantType: 2
+  _price: 18000
+  _experience: 800
+  _levelUnlock: 0

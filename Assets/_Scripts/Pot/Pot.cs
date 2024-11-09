@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Pot : InteractionObject
 {
@@ -110,7 +111,7 @@ public class Pot : InteractionObject
         {
             return;
         }
-
+        WitchPlayerController.Instanse.Experience += _currentRecipe.GetExperience();
         _recipeInfoUI.HideCookingItem();
         _potState = PotState.Empty;
         CheckState();

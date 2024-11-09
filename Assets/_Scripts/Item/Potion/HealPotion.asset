@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: HealPotion
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: c9b051c1cb804384eb30eb937f59b8d7, type: 3}
+  _itemPrefab: {fileID: 0}
   _itemType: 1
   _potionType: 0
   _plantType: 2
-  _price: 200
-  _experience: 20
+  _price: 100
+  _experience: 5
   _levelUnlock: 0

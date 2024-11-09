@@ -14,6 +14,7 @@ public class RecipeData : ScriptableObject, IComparable
     [SerializeField] private Sprite _potionIcon;
     [SerializeField] private InventoryItem _potionItem;
     [SerializeField] private int _needLevelToUse;
+    [SerializeField] private int _experience;
 
 
     public string GetPotionName() { return _potionName; }
@@ -83,6 +84,10 @@ public class RecipeData : ScriptableObject, IComparable
     public InventoryItem GetBasis()
     {
         return _basisItem;
+    }
+    public int GetExperience()
+    {
+        return _experience;
     }
 
     public int CompareTo(object? o)
