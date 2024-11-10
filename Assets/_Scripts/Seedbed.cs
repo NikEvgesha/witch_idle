@@ -117,10 +117,13 @@ public class Seedbed :  InteractionObject
     }
     private void TryCollect(bool inTrigger = true)
     {
-        _timer.gameObject.SetActive(inTrigger);
-        if (inTrigger && Inventory.Instanse.HaveEmptySlot())
+        if (Inventory.Instanse.HaveEmptySlot())
         {
-            _timer.StartWellTimer(_fillTime);
+            _timer.gameObject.SetActive(inTrigger);
+            if (inTrigger)
+            {
+                _timer.StartWellTimer(_fillTime);
+            }
         } else
         {
             // анимация отсутствия места в инвентаре
@@ -130,7 +133,7 @@ public class Seedbed :  InteractionObject
             CheckState();*/
     }
 
-    private new void CheckState(bool inTrigger) {
+    private void CheckState(bool inTrigger) {
         base.CheckState();
         switch (state)
         {
@@ -180,8 +183,8 @@ public class Seedbed :  InteractionObject
 
         state = SeedbedState.Empty;
         _timer.gameObject.SetActive(false);
-        CheckState();
         SaveSeedBed();
+        CheckState(true);
     }
 
     /*

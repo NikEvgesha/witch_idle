@@ -11,6 +11,8 @@ public class Pot : InteractionObject
     [SerializeField] private GrowthTimer _cookingTimer;
     [SerializeField] private RecipeInfoUI _recipeInfoUI;
     [SerializeField] private ItemCollector _itemCollector;
+    [SerializeField] private HarvestTimer _harvestTimer;
+    [SerializeField] private int _harvestTime = 1;
     //[SerializeField] private ItemStateProdaction _itemStateInfoUI;
     private RecipeData _currentRecipe;
     private List<InventoryItem> _requiredIngredients;
@@ -22,6 +24,7 @@ public class Pot : InteractionObject
         _potArea.OnTrigger += TryCollect;
         _cookingTimer.TimerFinish += FinishCooking;
         _recipeInfoUI.DropButtonClick += DropRecipe;
+        _harvestTimer.TimerFinish += Collect;
     }
 
     private void OnDisable()
@@ -29,6 +32,7 @@ public class Pot : InteractionObject
         _potArea.OnTrigger -= TryCollect;
         _cookingTimer.TimerFinish -= FinishCooking;
         _recipeInfoUI.DropButtonClick -= DropRecipe;
+        _harvestTimer.TimerFinish -= Collect;
     }
 
     private void TryCollect(bool inTrigger = true)
@@ -95,7 +99,7 @@ public class Pot : InteractionObject
                 }
             case PotState.Done:
                 {
-                    PotionCollect();
+                    TryPotionCollect();
                     break;
                 }
             default:
@@ -104,18 +108,29 @@ public class Pot : InteractionObject
         
     }
 
-    private void PotionCollect()
+    private void TryPotionCollect()
     {
-
-        if (!Inventory.Instanse.AddItem(_currentRecipe.GetItem()))
+        if (Inventory.Instanse.HaveEmptySlot()) 
         {
-            return;
+            _harvestTimer.gameObject.SetActive(_inTrigger);
+            if (_inTrigger)
+            {
+                _harvestTimer.StartWellTimer(_harvestTime);
+            }
         }
-        WitchPlayerController.Instanse.Experience += _currentRecipe.GetExperience();
-        _recipeInfoUI.HideCookingItem();
-        _potState = PotState.Empty;
-        CheckState();
-        //SaveSeedBed();
+    }
+
+    private void Collect()
+    {
+        if (Inventory.Instanse.AddItem(_currentRecipe.GetItem()))
+        {
+            WitchPlayerController.Instanse.Experience += _currentRecipe.GetExperience();
+            _recipeInfoUI.HideCookingItem();
+            _harvestTimer.gameObject.SetActive(false);
+            _potState = PotState.Empty;
+            CheckState();
+            //SaveSeedBed();
+        }
     }
 
     public void SetRecipe(RecipeData recipeData)

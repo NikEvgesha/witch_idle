@@ -342,7 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactionArea: {fileID: 4771814979184619825}
   _timer: {fileID: 453467922979246343}
-  _fillTime: 1
+  _harvestTime: 1
   _waterItem: {fileID: 11400000, guid: a284e30c300ee9943b029ac0545799af, type: 2}
   _itemCollector: {fileID: 6677260707204545021}
 --- !u!114 &6677260707204545021
@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 2
+  _color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &1985707521871203483
 PrefabInstance:
   m_ObjectHideFlags: 0

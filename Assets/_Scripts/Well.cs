@@ -5,10 +5,10 @@ public class Well : MonoBehaviour
     [SerializeField] private CheckPlayer _interactionArea;
     [SerializeField] private HarvestTimer _timer;
     //[SerializeField] private float _fillSpeed = 1f;
-    [SerializeField] private int _fillTime = 5;
+    [SerializeField] private int _harvestTime = 5;
     [SerializeField] private InventoryItem _waterItem;
     [SerializeField] private ItemCollector _itemCollector;
-    //private bool _inInteractionArea;
+    private bool _inInteractionArea;
 
 
     private void Start()
@@ -32,10 +32,11 @@ public class Well : MonoBehaviour
 
     private void tryCollectItem()
     {
+        _timer.gameObject.SetActive(false);
         if (Inventory.Instanse.AddItem(_waterItem))
         {
-             _timer.gameObject.SetActive(false);
             _itemCollector.ItemCollect(_waterItem, this.transform, true);
+            TryHarvest();
         }
        
     }
@@ -43,11 +44,22 @@ public class Well : MonoBehaviour
 
     private void onInteractionAreaEnter(bool inTrigger)
     {
-        //_inInteractionArea = inTrigger;
-        _timer.gameObject.SetActive(inTrigger);
-        if (inTrigger)
+        _inInteractionArea = inTrigger;
+        TryHarvest();
+    }
+
+    private void TryHarvest()
+    {
+        if (Inventory.Instanse.HaveEmptySlot())
         {
-            _timer.StartWellTimer(_fillTime);
+            _timer.gameObject.SetActive(_inInteractionArea);
+            if (_inInteractionArea)
+            {
+                _timer.StartWellTimer(_harvestTime);
+            }
+        } else
+        {
+            // No space message
         }
         
     }
