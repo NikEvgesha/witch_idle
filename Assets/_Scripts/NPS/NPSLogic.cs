@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,14 +30,14 @@ public class NPSLogic : MonoBehaviour
 
     [HideInInspector] public NPSStates _nPSStates = new NPSStates();
 
-    public void SetSettingsNPS(storefront storefront)
+    public void SetSettingsNPS(storefront storefront, List<PotionTypes> dontUsePotion)
     {
         _storefront = storefront;
         SetMovePoint(_storefront.StorefrontPoint);
         SetLookPoint(_storefront.LookPoint);
         _nPSStates = NPSStates.WalkingToStore; 
         StartSetting();
-        _needItem = _nPSType.SelectPotion();
+        _needItem = _nPSType.SelectPotion(dontUsePotion);
         _itemIcon = Instantiate(_needItem.GetIcon(),_itemIconPosition);
         
     }

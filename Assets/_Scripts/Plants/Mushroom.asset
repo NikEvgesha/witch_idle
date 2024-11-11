@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Mushroom
   m_EditorClassIdentifier: 
   _plantPrefab: {fileID: 7021581923392854783, guid: 07b6c68fef3de00459de0692f85b27de, type: 3}
-  _growthTime: 15
+  _growthTime: 10
   _inventoryItem: {fileID: 11400000, guid: c2123e9d7b36fc84d83d15b9d4f6b485, type: 2}

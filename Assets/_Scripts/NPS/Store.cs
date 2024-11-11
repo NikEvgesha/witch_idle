@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 [System.Serializable]
 public struct storefront
@@ -13,7 +14,7 @@ public class Store : MonoBehaviour
     [SerializeField] private Storage _storage;
     [SerializeField] private List<storefront> _storefrontPoints;
     [SerializeField] private List<Transform> _queuePoints = new List<Transform>();
-    [SerializeField] private List<NPSLogic> _nPSInStorefront;
+    [SerializeField] private List<NPSLogic> _nPSInStorefront = new List<NPSLogic>();
     [SerializeField] private List<NPSLogic> _nPSInQueue;
     //[SerializeField] private int _nPSInStorefrontCount = 0;
     [SerializeField] private int _nPSInQueueCount = 0;
@@ -21,6 +22,8 @@ public class Store : MonoBehaviour
     [SerializeField] private SellZone _sellZone;
     [SerializeField] private int _storefrontCount;
     [SerializeField] private int _queueCount;
+    [SerializeField] private int _potionReapitCount;
+    [SerializeField] private List<PotionTypes> _useAllTimePotionTypes = new List<PotionTypes>();
     private List<InventoryItem> _itemsInQueue = new List<InventoryItem>();
     [SerializeField] private List<storefront> _storefrontPointsDontUse = new List<storefront>();
     private void Awake()
@@ -54,8 +57,8 @@ public class Store : MonoBehaviour
     }
     public void New—ustomers(NPSLogic customer)
     {
+        customer.SetSettingsNPS(GetStorefrontPoint(customer), CheckDontUsePotionTypes());
         _nPSInStorefront.Add(customer);
-        customer.SetSettingsNPS(GetStorefrontPoint(customer));
         //_nPSInStorefrontCount++;
     }
     private storefront GetStorefrontPoint(NPSLogic customer = null)
@@ -207,5 +210,48 @@ public class Store : MonoBehaviour
                 }
             }
         }
+    }
+    public List<PotionTypes> CheckDontUsePotionTypes()
+    {
+        int countRepeats = 0;
+        List<PotionTypes> potionTypes = new List<PotionTypes>();
+        List<PotionTypes> dontUsePotionTypes = new List<PotionTypes>();
+        PotionTypes temp;
+
+        foreach (NPSLogic customer in _nPSInStorefront)
+        {
+            temp = customer.GetInventoryItem().GetPotionType();
+            if (UsePotionType(temp, dontUsePotionTypes))
+            {
+                continue;
+            }
+            countRepeats = 0;
+            foreach (PotionTypes item in potionTypes)
+            {
+                if (item == temp)
+                {
+                    countRepeats++;
+                    if (countRepeats >= _potionReapitCount)
+                    {
+                        dontUsePotionTypes.Add(temp);
+                    }
+                }
+            }
+            potionTypes.Add(temp);
+
+        }
+        return dontUsePotionTypes;
+    }
+    private bool UsePotionType(PotionTypes potions, List<PotionTypes> potionTypes)
+    {
+        foreach (PotionTypes item in _useAllTimePotionTypes)
+        {
+            if (item == potions) { return true; }
+        }
+        foreach (PotionTypes item2 in potionTypes)
+        {
+            if (item2 == potions) { return true; }
+        }
+        return false;
     }
 }

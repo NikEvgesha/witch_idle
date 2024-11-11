@@ -6,7 +6,10 @@ public class NPSSpawner : MonoBehaviour
     public static NPSSpawner Instans; 
 
     [SerializeField] private NPSLogic _NPSLogic;
-    [SerializeField] private List<Transform> _spawnPoints;
+    [SerializeField] private List<Transform> _spawnPointsLeft;
+    [SerializeField] private List<Transform> _spawnPointsRight;
+    [SerializeField] private List<Transform> _outPointsLeft;
+    [SerializeField] private List<Transform> _outPointsRight;
     [SerializeField] private Store _store;
     [SerializeField] private NPSAllTypes _NPSTypes;
     [SerializeField] private List<NPSLogic> _spawnNPS;
@@ -40,7 +43,7 @@ public class NPSSpawner : MonoBehaviour
     }
     private void Start()
     {
-        _spawnTimeLast = _spawnTime;
+        _spawnTimeLast = 0;
     }
     private void SpawnNewNPS()
     {
@@ -51,9 +54,19 @@ public class NPSSpawner : MonoBehaviour
     }
     private Transform GetRandomSpawnpoint()
     {
+        bool randomSide = Random.Range(0, 2) == 1;
+        List<Transform> temp = randomSide ? _spawnPointsLeft : _spawnPointsRight;
         int random = 0;
-        random = Random.Range(0, _spawnPoints.Count);
-        return _spawnPoints[random];
+        random = Random.Range(0, temp.Count);
+        return temp[random];
+    }
+    private Transform GetRandomOutPoint()
+    {
+        bool randomSide = Random.Range(0,2) == 1;
+        List<Transform> temp = randomSide ? _outPointsLeft : _outPointsRight;
+        int random = 0;
+        random = Random.Range(0, temp.Count);
+        return temp[random];
     }
     private void ChoiceTravel(NPSLogic nPS)
     {
@@ -67,7 +80,7 @@ public class NPSSpawner : MonoBehaviour
     }
     public void NPSGoHome(NPSLogic nPS)
     {
-        nPS.GoHome(GetRandomSpawnpoint());
+        nPS.GoHome(GetRandomOutPoint());
     }
     public void NPSGone (NPSLogic nPS)
     {

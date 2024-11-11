@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Bloodthorn
   m_EditorClassIdentifier: 
   _plantPrefab: {fileID: 5654480806470483594, guid: b659ce3c33af61442bd41c214cbf2798, type: 3}
-  _growthTime: 60
+  _growthTime: 30
   _inventoryItem: {fileID: 11400000, guid: 3d7041fbf84b979478d777f5f0da8b64, type: 2}

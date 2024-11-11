@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   _potionName: Heal Potion
-  _cookTime: 30
+  _cookTime: 20
   _ingredients:
   - {fileID: 11400000, guid: c2123e9d7b36fc84d83d15b9d4f6b485, type: 2}
   - {fileID: 11400000, guid: c2123e9d7b36fc84d83d15b9d4f6b485, type: 2}

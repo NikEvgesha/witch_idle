@@ -1117,7 +1117,7 @@ MonoBehaviour:
   _lockStruct:
     UIObject: {fileID: 4576794527473058128}
     LevelText: {fileID: 1429491617607551467}
-  _SpeedFill: 2
+  _SpeedFill: 1
   _stringGUID: 
   _levelToUnlock: 0
   _potState: 0
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   _recipeInfoUI: {fileID: 4611566986370677927}
   _itemCollector: {fileID: 6900414292322852935}
   _harvestTimer: {fileID: 8362891851282107006}
-  _harvestTime: 2
+  _harvestTime: 1
 --- !u!114 &6900414292322852935
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,14 +20,14 @@ public class NPSType : ScriptableObject
     private int _minLevel = int.MaxValue;
     //private bool _minLevelInit = false;
     
-    public InventoryItem SelectPotion()
+    public InventoryItem SelectPotion(List<PotionTypes> dontUsePotion)
     {
         int level = WitchPlayerController.Instanse.PlayerLevel;
         List<InventoryItem> potions = new List<InventoryItem>();
 
         foreach (InventoryItem potion in _potions)
         {
-            if (potion.GetLevelUnlockRecept() <= level)
+            if (potion.GetLevelUnlockRecept() <= level && CheckUsePotion(potion.GetPotionType(), dontUsePotion))
             {
                 potions.Add(potion);
             }
@@ -37,6 +37,15 @@ public class NPSType : ScriptableObject
         random = Random.Range(0, potions.Count);
         _potion = potions[random];
         return _potion;
+    }
+    private bool CheckUsePotion(PotionTypes potion, List<PotionTypes> dontUsePotion)
+    {
+        foreach (PotionTypes item in dontUsePotion)
+        {
+            if (potion == item) return false;
+        }
+
+        return true;
     }
     public GameObject GetSkin() 
     { 

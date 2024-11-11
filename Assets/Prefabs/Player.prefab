@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12e51c43a9c2bd4096c42b6e394487e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _money: 5000
+  _money: 100
   _experience: 0
   _level: 0
   _levelSteps: {fileID: 11400000, guid: c2f4ca666ee24384ab50ae57fa9cca48, type: 2}
@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d67a5af1e0c0f74286927ea21aacffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 4343672479639655189}
   _moveSpeed: 5
+  _color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &5137853045889618783
 PrefabInstance:
   m_ObjectHideFlags: 0

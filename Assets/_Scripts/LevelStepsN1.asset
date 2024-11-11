@@ -16,23 +16,25 @@ MonoBehaviour:
   - Level: 0
     Experience: 10
   - Level: 1
-    Experience: 100
+    Experience: 40
   - Level: 2
-    Experience: 200
+    Experience: 100
   - Level: 3
-    Experience: 500
+    Experience: 150
   - Level: 4
-    Experience: 750
+    Experience: 200
   - Level: 5
-    Experience: 1500
+    Experience: 300
   - Level: 6
-    Experience: 2000
+    Experience: 400
   - Level: 7
-    Experience: 4000
+    Experience: 550
   - Level: 8
-    Experience: 5000
+    Experience: 700
   - Level: 9
-    Experience: 7000
+    Experience: 900
   - Level: 10
-    Experience: 10000
+    Experience: 1200
+  - Level: 11
+    Experience: 1500
   _multiplyMaxLevelExp: 1.2
