@@ -32,7 +32,7 @@ public class RecipeInfoUI : MonoBehaviour
     public void SetRecipeUI(InventoryItem potion, List<InventoryItem> ingredients)
     {
         DestroySlots();
-        _requiredIngredients = ingredients;
+        _requiredIngredients = new List<InventoryItem>(ingredients);
         _ingredients.SetActive(true);
         _arrowImg.SetActive(true);
         if (_currentItem == null)
@@ -54,8 +54,9 @@ public class RecipeInfoUI : MonoBehaviour
         {
             if (_requiredIngredients.Contains(item))
             {
+                Debug.Log("---Item UI add---");
                 AddToUIIngredient(item);
-                //_requiredIngredients.Remove(item);
+                _requiredIngredients.Remove(item);
             }
         }
         //DisplayIngredients();

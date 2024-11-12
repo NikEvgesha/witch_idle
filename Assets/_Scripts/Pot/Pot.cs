@@ -206,11 +206,12 @@ public class Pot : InteractionObject
 
     public void DropRecipe()
     {
-        if (_potState == PotState.IngredientRequire)
+        if (_potState == PotState.IngredientRequire || _potState == PotState.BasisRequire)
         {
             _recipeInfoUI.HideCookingItem();
         }
         _recipeInfoUI.HideIngredients();
+        _recipeInfoUI.HideDropButton();
         _potState = PotState.Empty;
         _currentRecipe = null;
         CheckState();
