@@ -4,7 +4,7 @@ using UnityEngine;
 public class InventoryItem : ScriptableObject
 {
     [SerializeField] private ItemIcon _itemIcon;
-    [SerializeField] private GameObject _itemPrefab;
+    [SerializeField] private ItemModel _itemPrefab;
     [SerializeField] private ItemTypes _itemType;
     [SerializeField] private PotionTypes _potionType;
     [SerializeField] private PlantTypes _plantType;
@@ -54,7 +54,7 @@ public class InventoryItem : ScriptableObject
         return _levelUnlock;
     }
 
-    public GameObject GetItemPrefab() 
+    public ItemModel GetItemPrefab() 
     {
         return _itemPrefab;
     }

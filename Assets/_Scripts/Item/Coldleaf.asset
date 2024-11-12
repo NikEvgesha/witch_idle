@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coldleaf
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: 9d22417f179084145b5c833608e95d34, type: 3}
-  _itemPrefab: {fileID: 919132149155446097, guid: 6b1de48d414f57b46947f46bf4733a5f, type: 3}
+  _itemPrefab: {fileID: 1760730933552951722, guid: 81863ee57a8978242b2cdffbab250210, type: 3}
   _itemType: 0
   _potionType: 5
   _plantType: 5

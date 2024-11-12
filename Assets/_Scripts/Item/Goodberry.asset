@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Goodberry
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: 3e5fd3976be40b24c87fb7d4592f0d13, type: 3}
-  _itemPrefab: {fileID: 919132149155446097, guid: 779b865b5bfae1a4687cca7f6aa6e254, type: 3}
+  _itemPrefab: {fileID: 7166777792832346500, guid: b2d06ae22d0cef842a4ecd78e615496d, type: 3}
   _itemType: 0
   _potionType: 5
   _plantType: 7

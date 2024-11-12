@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boombloom
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: dd2f81f69191ada49b012c731d69db61, type: 3}
-  _itemPrefab: {fileID: 919132149155446097, guid: cb2fc31693fdde44c98c1d589d810e1c, type: 3}
+  _itemPrefab: {fileID: 1265149774246419945, guid: 00f825d32814fbc4daf0de608382c629, type: 3}
   _itemType: 0
   _potionType: 5
   _plantType: 4

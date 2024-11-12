@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spellbloom
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: 49fba1e769d96f64eab40cd2e57ed3bf, type: 3}
-  _itemPrefab: {fileID: 5183984203217268231, guid: 821b288ff8cf88d4bbfa0b319924cdbb, type: 3}
+  _itemPrefab: {fileID: 8327310554645404636, guid: 89dd2f6d4a8272f4d890aabd919156b9, type: 3}
   _itemType: 0
   _potionType: 5
   _plantType: 10

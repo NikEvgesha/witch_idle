@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lifelist
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: d9c86ac6e0bfd8e44b433b24652db7fc, type: 3}
-  _itemPrefab: {fileID: 919132149155446097, guid: 47a0296de08d116499dd99c47c85a035, type: 3}
+  _itemPrefab: {fileID: 427243827224021609, guid: de70726f6a898a147ad65ecf09bb63e4, type: 3}
   _itemType: 0
   _potionType: 5
   _plantType: 8

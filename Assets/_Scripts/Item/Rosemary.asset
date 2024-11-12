@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rosemary
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: -4402948435363229608, guid: 0e26d4e9bf5b3834b9c19648a63cba87, type: 3}
-  _itemPrefab: {fileID: 919132149155446097, guid: fb7f044a7a6030f448e243fe534fa66b, type: 3}
+  _itemPrefab: {fileID: 3766599703722748899, guid: 8ff14b60127b90641ad148dfc0209348, type: 3}
   _itemType: 0
   _potionType: 5
   _plantType: 9
