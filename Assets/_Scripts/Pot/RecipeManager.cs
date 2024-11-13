@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RecipeManager : MonoBehaviour
 {
@@ -7,8 +9,13 @@ public class RecipeManager : MonoBehaviour
     [SerializeField] private GameObject _canvas;
     [SerializeField] private Recipe _recipePrefab;
     [SerializeField] private UIRecipeBook _UIRecipeBook;
+    [SerializeField] private GameObject _recipeUIObj;
+    [SerializeField] private Transform _activePoint;
+    [SerializeField] private Transform _hidePoint;
+    [SerializeField] private float _moveStep = 5f;
     //[SerializeField] private Animator _animator;
     private Pot _currentPot;
+    private float _lerpPoint = 0;
 
     public static RecipeManager Instance;
 
@@ -36,18 +43,39 @@ public class RecipeManager : MonoBehaviour
         if (!_canvas.activeInHierarchy)
         {
             _canvas.SetActive(true);
-            //_animator.SetTrigger("Display");
-            UpdateTimeRate(timeDecreaseRate);
         }
+            StopAllCoroutines();
+            StartCoroutine(Slide(_hidePoint.position,_activePoint.position, true));
+            UpdateTimeRate(timeDecreaseRate);
+        
     }
     
     private void HideRecipeBook()
     {
         if (_canvas.activeInHierarchy)
         {
-            //_animator.SetTrigger("Hide");
-            _canvas.SetActive(false);
+            StopAllCoroutines();
+            StartCoroutine(Slide(_activePoint.position, _hidePoint.position, false));
         }
+    }
+
+
+    IEnumerator Slide(Vector3 moveFrom, Vector3 moveTo, bool setActive)
+    {
+        while (_lerpPoint < 1)
+        {
+            _lerpPoint += Time.fixedDeltaTime * _moveStep;
+            //Vector3 curPos = _recipeUIObj.transform.position;
+            _recipeUIObj.transform.position = Vector3.Lerp(_recipeUIObj.transform.position, moveTo, _lerpPoint);
+            //_RecipeUIObj.transform.Translate((moveTo - curPos).normalized * _moveStep);
+            yield return new WaitForFixedUpdate();
+        }
+        _lerpPoint = 0;
+        if (!setActive)
+        {
+           _canvas.SetActive(false);
+        }
+
     }
 
     public void RequestRecipe(Pot pot) {

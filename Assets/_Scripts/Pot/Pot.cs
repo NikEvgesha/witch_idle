@@ -43,11 +43,13 @@ public class Pot : InteractionObject
 
     private new void CheckState()
     {
+        Debug.Log("CHECK STATE: " + _potState);
         base.CheckState();
         switch (_potState) 
         {
             case PotState.Empty:
                 {
+                    
                     _cookingTimer.gameObject.SetActive(false);
                     if (_inTrigger)
                         {
