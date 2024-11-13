@@ -4,12 +4,12 @@ using YG;
 public class Seedbed :  InteractionObject
 {
     //[SerializeField] private PlantArea _plantArea;
-    [SerializeField] CheckPlayer _plantArea;
-    [SerializeField] private GrowthTimer _growthTimer;
+    [SerializeField] private CheckPlayer _plantArea;
+    [SerializeField] protected GrowthTimer _growthTimer;
     //[SerializeField] private Plant _plant;
     [SerializeField] private SeedbedState state;
     [SerializeField] private Transform _plantPoint;
-    [SerializeField] private HarvestTimer _timer;
+    [SerializeField] protected HarvestTimer _timer;
     [SerializeField] private int _fillTime = 1;
     [SerializeField] private Transform _iconSign;
 
@@ -33,7 +33,7 @@ public class Seedbed :  InteractionObject
 
     }*/
 
-    private new void OnEnable()
+    protected new void OnEnable()
     {
         base.OnEnable();
         //_plantArea.PlayerOnPlantArea += CheckState;
@@ -43,13 +43,13 @@ public class Seedbed :  InteractionObject
     }
 
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         _plantArea.OnTrigger -= CheckState;
         _growthTimer.TimerFinish -= AddPlant;
         _timer.TimerFinish -= Harvest;
     }
-    private new void Start()
+    protected new void Start()
     {
         base.Start();
         UpdateYGSaveSistem(ref YandexGame.savesData.SBState);
@@ -164,7 +164,11 @@ public class Seedbed :  InteractionObject
 
     private void AddPlant() {
         _growthTimer.gameObject.SetActive(false);
-        _plant = Instantiate(_plantData.GetPlant(), _plantPoint);
+        if (_plantData.GetPlant())
+        {
+            _plant = Instantiate(_plantData.GetPlant(), _plantPoint);
+        }
+        
         state = SeedbedState.Grown;
         _plantArea.gameObject.SetActive(true);
         _plantPoint.gameObject.SetActive(true);
